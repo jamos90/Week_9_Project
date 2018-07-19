@@ -112,11 +112,20 @@ public class Fixture {
         this.matchReport = matchReport;
     }
 
-    public void addTeamToFixture(Team team){
-        this.teams.add(team);
+    public void addTeamsToFixture(Team homeTeam, Team awayTeam){
+        this.teams.add(homeTeam);
+        this.teams.add(awayTeam);
     }
 
     public int countTeams(){
         return this.teams.size();
+    }
+
+    public Team getHomeTeam(){
+        return this.teams.get(0);
+    }
+
+    public Team getAwayTeam(){
+        return this.teams.get(1);
     }
 }

@@ -16,7 +16,7 @@ public class ManagerTest {
     public void before(){
         League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
         manager = new Manager("Lionel Spencer", "01847 873245", "lionel@btinternet.com");
-        team = new FootballTeam("Bury", manager, league, "d", "Bury Saint Edmonds");
+        team = new FootballTeam("Bury", manager, league, "d", "Bury Saint Edmonds");}
 
         assertEquals("Lionel Spencer", manager.getName());
     }
