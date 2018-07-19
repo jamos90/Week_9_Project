@@ -76,4 +76,11 @@ public class LeagueTest {
         league.addToFixtures(fixture);
         assertEquals(1,league.fixtureCount());
     }
+
+    @Test
+    public void canRemoveFixture(){
+        league.addToFixtures(fixture);
+        league.removeFromFixtures(fixture);
+        assertEquals(0,league.fixtureCount());
+    }
 }
