@@ -111,6 +111,25 @@ public class League {
         return this.fixtures.size();
     }
 
+    public void addToFixtures(Fixture fixture){
+        this.fixtures.add(fixture);
+    }
+
+    public void removeFromFixtures(Fixture fixture){
+        this.fixtures.remove(fixture);
+    }
+
+    public void clearFixtures(){
+        this.fixtures.clear();
+    }
+
+    public boolean leagueContiansFixture(Fixture fixture){
+        if(this.fixtures.contains(fixture)){
+            return true;
+        }
+        else return  false;
+    }
+
 }
 
 
