@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class League {
         this.region = region;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -29,6 +33,7 @@ public class League {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -37,6 +42,7 @@ public class League {
         this.name = name;
     }
 
+    @Column(name = "league_type")
     public LeagueType getLeagueType() {
         return leagueType;
     }
@@ -49,6 +55,7 @@ public class League {
         return this.leagueType.getLeagueType();
     }
 
+    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
     public List<Team> getTeams() {
         return teams;
     }
@@ -56,6 +63,7 @@ public class League {
     public void setTeams(List<Team> teams) {
         this.teams = teams;
     }
+
 
     public List<Fixture> getFixtures() {
         return fixtures;

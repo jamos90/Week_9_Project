@@ -16,6 +16,7 @@ public class Fixture {
     private int week;
     private String venue;
     private MatchReport matchReport;
+    private League league;
 
     public Fixture(){}
 
@@ -94,6 +95,16 @@ public class Fixture {
     @OneToOne(mappedBy = "fixture", fetch = FetchType.LAZY)
     public MatchReport getMatchReport() {
         return matchReport;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="league_id", nullable = false)
+    public League getLeague() {
+        return league;
+    }
+
+    public void setLeague(League league) {
+        this.league = league;
     }
 
     public void setMatchReport(MatchReport matchReport) {
