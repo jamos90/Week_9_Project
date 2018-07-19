@@ -19,4 +19,9 @@ public class ManagerTest{
         assertEquals("John", manager.getName());
     }
 
+    @Test
+    public void hasMobileNumber(){
+        assertEquals(0760456, manager.getPhoneNo());
+    }
+
 }
