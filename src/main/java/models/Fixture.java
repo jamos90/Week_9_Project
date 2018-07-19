@@ -1,6 +1,7 @@
 package models;
 
 public class Fixture {
+    private int id;
     private Team homeTeam;
     private Team awayTeam;
     private int homeGoals;
