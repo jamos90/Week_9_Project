@@ -32,5 +32,16 @@ public class FixtureTest {
         assertEquals(1, fixture.getWeek());
     }
 
+    @Test
+    public void hasVenue(){
+        assertEquals("Liberty Stadium", fixture.getVenue());
+    }
+
+    @Test
+    public void hasLeague(){
+        assertEquals(league, fixture.getLeague());
+    }
+
+
 
 }
