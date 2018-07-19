@@ -1,6 +1,10 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="teams")
@@ -19,6 +23,7 @@ public abstract class Team {
     private String teamLogo;
     private String homePitch;
     private String location;
+    private List<Fixture> fixtures;
 
     public Team(){}
 
@@ -29,6 +34,7 @@ public abstract class Team {
         this.points = points;
         this.teamLogo = teamLogo;
         this.location = location;
+        this.fixtures = new ArrayList<Fixture>();
     }
 
     @Id
@@ -105,5 +111,18 @@ public abstract class Team {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "teams_fixtures",
+            joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "fixture_id", nullable = false, updatable = false)})
+    public List<Fixture> getFixtures() {
+        return fixtures;
+    }
+
+    public void setFixtures(List<Fixture> fixtures) {
+        this.fixtures = fixtures;
     }
 }

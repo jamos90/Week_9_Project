@@ -1,16 +1,18 @@
 package models;
 
 import com.sun.javafx.beans.IDProperty;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="fixtures")
 
 public class Fixture {
     private int id;
-    private Team homeTeam;
-    private Team awayTeam;
+    private List<Team> teams;
     private int homeGoals;
     private int awayGoals;
     private int week;
@@ -20,9 +22,8 @@ public class Fixture {
 
     public Fixture(){}
 
-    public Fixture(Team homeTeam, Team awayTeam, int homeGoals, int awayGoals, int week, String venue){
-        this.homeTeam = homeTeam;
-        this.awayTeam = awayTeam;
+    public Fixture(int homeGoals, int awayGoals, int week, String venue){
+        this.teams = new ArrayList<Team>();
         this.week = week;
         this.venue = venue;
     }
@@ -38,22 +39,17 @@ public class Fixture {
         this.id = id;
     }
 
-    @Column(name ="home_team")
-    public Team getHomeTeam() {
-        return homeTeam;
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "teams_fixtures",
+            joinColumns = {@JoinColumn(name = "fixture_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)})
+    public List<Team> getTeams() {
+        return teams;
     }
 
-    public void setHomeTeam(Team homeTeam) {
-        this.homeTeam = homeTeam;
-    }
-
-    @Column(name = "away_team")
-    public Team getAwayTeam() {
-        return awayTeam;
-    }
-
-    public void setAwayTeam(Team awayTeam) {
-        this.awayTeam = awayTeam;
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
     }
 
     @Column(name = "home_goals")

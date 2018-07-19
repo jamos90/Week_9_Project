@@ -64,7 +64,7 @@ public class League {
         this.teams = teams;
     }
 
-
+    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
     public List<Fixture> getFixtures() {
         return fixtures;
     }
@@ -73,6 +73,7 @@ public class League {
         this.fixtures = fixtures;
     }
 
+    @Column(name = "region")
     public String getRegion() {
         return region;
     }
