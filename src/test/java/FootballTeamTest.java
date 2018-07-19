@@ -50,6 +50,11 @@ public class FootballTeamTest {
         assertEquals(0, footballTeam.getGoalsScored() );
     }
 
+    @Test
+    public void canGetGoalsConceded(){
+        assertEquals(0, footballTeam.getGoalsConceded() );
+    }
+
 
 
 
