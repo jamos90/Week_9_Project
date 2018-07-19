@@ -83,4 +83,12 @@ public class League {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    public int teamCount(){
+        return this.teams.size();
+    }
+
+    public int fixtureCount(){
+        this.fixtures.size();
+    }
 }

@@ -34,4 +34,9 @@ public class LeagueTest {
     public void hasRegion(){
         assertEquals("Midlothian", league.getRegion());
     }
+
+    @Test
+    public void teamListStartEmpty(){
+
+    }
 }
