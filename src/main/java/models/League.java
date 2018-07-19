@@ -14,9 +14,10 @@ public class League {
     private List<Fixture> fixtures;
     private String region;
 
-    public League(){}
+    public League() {
+    }
 
-    public League(String name, LeagueType leagueType, String region){
+    public League(String name, LeagueType leagueType, String region) {
         this.name = name;
         this.leagueType = leagueType;
         this.teams = new ArrayList<Team>();
@@ -53,7 +54,7 @@ public class League {
         this.leagueType = leagueType;
     }
 
-    public String returnLeagueTypeFromEnum(){
+    public String returnLeagueTypeFromEnum() {
         return this.leagueType.getLeagueType();
     }
 
@@ -83,4 +84,53 @@ public class League {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    public int teamCount() {
+        return this.teams.size();
+    }
+
+    public void addToTeams(Team team) {
+        this.teams.add(team);
+    }
+
+    public void removeTeams(Team team) {
+        this.teams.remove(team);
+    }
+
+    public void clearTeams() {
+        this.teams.clear();
+    }
+
+    public boolean leagueContainsTeam(Team team) {
+        if (this.teams.contains(team)) {
+            return true;
+        } else return false;
+    }
+
+    public int fixtureCount() {
+        return this.fixtures.size();
+    }
+
+    public void addToFixtures(Fixture fixture){
+        this.fixtures.add(fixture);
+    }
+
+    public void removeFromFixtures(Fixture fixture){
+        this.fixtures.remove(fixture);
+    }
+
+    public void clearFixtures(){
+        this.fixtures.clear();
+    }
+
+    public boolean leagueContiansFixture(Fixture fixture){
+        if(this.fixtures.contains(fixture)){
+            return true;
+        }
+        else return  false;
+    }
+
 }
+
+
+
