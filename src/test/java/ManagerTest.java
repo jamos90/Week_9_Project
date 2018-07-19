@@ -10,7 +10,7 @@ public class ManagerTest{
 
     @Before
     public void setUp(){
-        manager = new Manager("John", 0760456,"john.gmail.com");
+        manager = new Manager("John", "0760456","john.gmail.com");
 
     }
 
