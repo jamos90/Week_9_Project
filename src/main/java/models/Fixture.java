@@ -111,4 +111,12 @@ public class Fixture {
     public void setMatchReport(MatchReport matchReport) {
         this.matchReport = matchReport;
     }
+
+    public void addTeamToFixture(Team team){
+        this.teams.add(team);
+    }
+
+    public int countTeams(){
+        return this.teams.size();
+    }
 }
