@@ -18,10 +18,6 @@ public class ManagerTest {
         manager = new Manager("Lionel Spencer", "01847 873245", "lionel@btinternet.com");
         team = new FootballTeam("Bury", manager, league, "d", "Bury Saint Edmonds");
 
-    public void setUp(){
-        manager = new Manager("John", "0760456","john.gmail.com");
-
-
         assertEquals("Lionel Spencer", manager.getName());
     }
 
