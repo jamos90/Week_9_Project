@@ -61,4 +61,13 @@ public class LeagueTest {
         league.removeTeams(team1);
         assertEquals(1,league.teamCount());
     }
+
+    @Test
+    public void canClearTeamList(){
+        league.addToTeams(team1);
+        league.addToTeams(team2);
+        league.clearTeams();
+        assertEquals(0,league.teamCount());
+
+    }
 }
