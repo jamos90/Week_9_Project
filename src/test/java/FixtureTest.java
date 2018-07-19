@@ -42,6 +42,12 @@ public class FixtureTest {
         assertEquals(league, fixture.getLeague());
     }
 
+    @Test
+    public void canChangeVenue(){
+        fixture.setVenue("Ibrox");
+        assertEquals("Ibrox", fixture.getVenue());
+    }
+
 
 
 }
