@@ -1,5 +1,13 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table( name ="football_teams")
+@Inheritance(strategy = InheritanceType.JOINED)
+
+
+@DiscriminatorColumn(name= "sport_type")
 public class FootballTeam extends Team {
     private int goalsScored;
     private int goalsConceded;
@@ -13,6 +21,7 @@ public class FootballTeam extends Team {
 
     public FootballTeam(){};
 
+    @Column(name = "goals_scored")
     public int getGoalsScored() {
         return goalsScored;
     }
@@ -21,6 +30,7 @@ public class FootballTeam extends Team {
         this.goalsScored = goalsScored;
     }
 
+    @Column(name = "goals_conceded")
     public int getGoalsConceded() {
         return goalsConceded;
     }

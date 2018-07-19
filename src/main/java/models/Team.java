@@ -1,5 +1,12 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="teams")
+
 public abstract class Team {
     private int id;
     private String name;

@@ -1,5 +1,12 @@
 package models;
 
+import com.sun.javafx.beans.IDProperty;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name ="fixtures")
+
 public class Fixture {
     private int id;
     private Team homeTeam;
@@ -8,6 +15,7 @@ public class Fixture {
     private int awayGoals;
     private int week;
     private String venue;
+    private MatchReport matchReport;
 
     public Fixture(){}
 
@@ -18,6 +26,18 @@ public class Fixture {
         this.venue = venue;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name ="home_team")
     public Team getHomeTeam() {
         return homeTeam;
     }
@@ -26,6 +46,7 @@ public class Fixture {
         this.homeTeam = homeTeam;
     }
 
+    @Column(name = "away_team")
     public Team getAwayTeam() {
         return awayTeam;
     }
@@ -34,6 +55,7 @@ public class Fixture {
         this.awayTeam = awayTeam;
     }
 
+    @Column(name = "home_goals")
     public int getHomeGoals() {
         return homeGoals;
     }
@@ -42,6 +64,7 @@ public class Fixture {
         this.homeGoals = homeGoals;
     }
 
+    @Column(name = "away_goals")
     public int getAwayGoals() {
         return awayGoals;
     }
@@ -50,6 +73,7 @@ public class Fixture {
         this.awayGoals = awayGoals;
     }
 
+    @Column(name = "week")
     public int getWeek() {
         return week;
     }
@@ -58,11 +82,21 @@ public class Fixture {
         this.week = week;
     }
 
+    @Column(name = "venue")
     public String getVenue() {
         return venue;
     }
 
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    @OneToOne(mappedBy = "fixture", fetch = FetchType.LAZY)
+    public MatchReport getMatchReport() {
+        return matchReport;
+    }
+
+    public void setMatchReport(MatchReport matchReport) {
+        this.matchReport = matchReport;
     }
 }
