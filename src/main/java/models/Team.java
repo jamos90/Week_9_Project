@@ -8,15 +8,17 @@ public abstract class Team {
     private int points;
     private String teamLogo;
     private String homePitch;
+    private String location;
 
     public Team(){}
 
-    public Team(String name, Manager manager, League league, int points, String teamLogo){
+    public Team(String name, Manager manager, League league, int points, String teamLogo, String location){
         this.name = name;
         this.manager = manager;
         this.league = league;
         this.points = points;
         this.teamLogo = teamLogo;
+        this.location = location;
     }
 
     public int getId() {
@@ -73,5 +75,13 @@ public abstract class Team {
 
     public void setHomePitch(String homePitch) {
         this.homePitch = homePitch;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
