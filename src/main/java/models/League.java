@@ -91,4 +91,8 @@ public class League {
     public int fixtureCount(){
         return this.fixtures.size();
     }
+
+    public void addToTeam(Team team){
+        this.teams.add(team);
+    }
 }
