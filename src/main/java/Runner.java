@@ -6,7 +6,7 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        Manager manager = new Manager("Zsolt Poboda-Salai", 07610335467, "Zsolt@hungarianmail.hu");
+        Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
         League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
