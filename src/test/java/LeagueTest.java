@@ -70,4 +70,10 @@ public class LeagueTest {
         assertEquals(0,league.teamCount());
 
     }
+
+    @Test
+    public void canAddFixture(){
+        league.addToFixtures(fixture);
+        assertEquals(1,league.fixtureCount());
+    }
 }
