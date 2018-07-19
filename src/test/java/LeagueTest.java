@@ -29,4 +29,9 @@ public class LeagueTest {
     public void hasLeagueType(){
         assertEquals(LeagueType.SCHOOLS, league.getLeagueType());
     }
+
+    @Test
+    public void hasRegion(){
+        assertEquals("Midlothian", league.getRegion());
+    }
 }
