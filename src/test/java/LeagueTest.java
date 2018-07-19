@@ -90,4 +90,17 @@ public class LeagueTest {
         league.clearFixtures();
         assertEquals(0,league.fixtureCount());
     }
+
+    @Test
+    public void canTellIfLeagueContainsFixture__ture(){
+        league.addToFixtures(fixture);
+        assertEquals(true, league.leagueContiansFixture(fixture));
+    }
+
+    @Test
+    public void canTellIfLeagueContainsFixture__false(){
+        league.addToFixtures(fixture);
+        league.removeFromFixtures(fixture);
+        assertEquals(false, league.leagueContiansFixture(fixture));
+    }
 }
