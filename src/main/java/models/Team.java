@@ -51,7 +51,8 @@ public abstract class Team {
         this.name = name;
     }
 
-    @Column(name ="manager")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id", nullable =false)
     public Manager getManager() {
         return manager;
     }
