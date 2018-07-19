@@ -10,6 +10,7 @@ public class FootballTeam extends Team {
         this.goalsConceded = goalsConceded;
     }
 
+
     public int getGoalsScored() {
         return goalsScored;
     }
