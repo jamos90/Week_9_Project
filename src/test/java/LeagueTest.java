@@ -24,4 +24,9 @@ public class LeagueTest {
     public void hasName(){
         assertEquals("Edinburgh Schools", league.getName());
     }
+
+    @Test
+    public void hasLeagueType(){
+        assertEquals(LeagueType.SCHOOLS, league.getLeagueType());
+    }
 }
