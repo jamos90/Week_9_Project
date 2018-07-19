@@ -89,11 +89,11 @@ public class League {
         return this.teams.size();
     }
 
-    public void addToTeam(Team team) {
+    public void addToTeams(Team team) {
         this.teams.add(team);
     }
 
-    public void removeTeam(Team team) {
+    public void removeTeams(Team team) {
         this.teams.remove(team);
     }
 
