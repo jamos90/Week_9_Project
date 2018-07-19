@@ -1,8 +1,14 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table( name ="football_teams")
+
 public class FootballTeam extends Team {
     private int goalsScored;
     private int goalsConceded;
+
 
     public FootballTeam(String name, Manager manager, League league, int points, String teamLogo, int goalsScored, int goalsConceded, String location){
         super(name, manager,league,points,teamLogo,location);
@@ -10,7 +16,9 @@ public class FootballTeam extends Team {
         this.goalsConceded = goalsConceded;
     }
 
+    public FootballTeam(){};
 
+    @Column(name = "goals_scored")
     public int getGoalsScored() {
         return goalsScored;
     }
@@ -19,6 +27,7 @@ public class FootballTeam extends Team {
         this.goalsScored = goalsScored;
     }
 
+    @Column(name = "goals_conceded")
     public int getGoalsConceded() {
         return goalsConceded;
     }

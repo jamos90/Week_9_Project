@@ -1,6 +1,14 @@
 package models;
 
+import org.hibernate.annotations.JoinColumnOrFormula;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "match_reports")
+
 public class MatchReport {
+
 
     private int id;
     private Fixture fixture;
@@ -17,6 +25,9 @@ public class MatchReport {
         this.picture = picture;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -25,6 +36,8 @@ public class MatchReport {
         this.id = id;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="fixture_id", nullable = false)
     public Fixture getFixture() {
         return fixture;
     }
@@ -33,6 +46,7 @@ public class MatchReport {
         this.fixture = fixture;
     }
 
+    @Column(name="headline")
     public String getHeadline() {
         return headline;
     }
@@ -41,6 +55,7 @@ public class MatchReport {
         this.headline = headline;
     }
 
+    @Column(name="blurb")
     public String getBlurb() {
         return blurb;
     }
@@ -49,6 +64,7 @@ public class MatchReport {
         this.blurb = blurb;
     }
 
+    @Column(name= "picture")
     public String getPicture() {
         return picture;
     }

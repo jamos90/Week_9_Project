@@ -1,5 +1,10 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "managers")
+
 public class Manager {
 
     private int id;
@@ -16,6 +21,9 @@ public Manager(String name, int phoneNo, String email){
     this.email = email;
 }
 
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "id")
     public int getId() {
         return id;
     }
@@ -24,6 +32,7 @@ public Manager(String name, int phoneNo, String email){
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -32,6 +41,7 @@ public Manager(String name, int phoneNo, String email){
         this.name = name;
     }
 
+    @Column(name = "phone_number")
     public int getPhoneNo() {
         return phoneNo;
     }
@@ -40,6 +50,7 @@ public Manager(String name, int phoneNo, String email){
         this.phoneNo = phoneNo;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -48,6 +59,7 @@ public Manager(String name, int phoneNo, String email){
         this.email = email;
     }
 
+    @OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
     public Team getTeam() {
         return team;
     }
