@@ -9,8 +9,7 @@ public class MatchReport {
 
     public MatchReport(){}
 
-    public MatchReport(Fixture fixture, String headline, String blurb){
-        this.fixture = fixture;
+    public MatchReport(String headline, String blurb){
         this.headline = headline;
         this.blurb = blurb;
     }
