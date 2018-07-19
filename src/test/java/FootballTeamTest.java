@@ -45,6 +45,10 @@ public class FootballTeamTest {
         assertEquals("Midlothian", footballTeam.getLocation() );
     }
 
+    @Test
+    public void canGetGoalsScored(){
+        assertEquals(0, footballTeam.getGoalsScored() );
+    }
 
 
 
