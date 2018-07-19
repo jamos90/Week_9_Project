@@ -24,6 +24,8 @@ public class Fixture {
 
     public Fixture(int homeGoals, int awayGoals, int week, String venue){
         this.teams = new ArrayList<Team>();
+        this.homeGoals = homeGoals;
+        this.awayGoals = awayGoals;
         this.week = week;
         this.venue = venue;
     }
@@ -41,9 +43,7 @@ public class Fixture {
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
-    @JoinTable(name = "teams_fixtures",
-            joinColumns = {@JoinColumn(name = "fixture_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)})
+    @JoinTable(name = "teams_fixtures")
     public List<Team> getTeams() {
         return teams;
     }
