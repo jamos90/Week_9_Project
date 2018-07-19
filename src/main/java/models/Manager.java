@@ -9,13 +9,13 @@ public class Manager {
 
     private int id;
     private String name;
-    private int phoneNo;
+    private String phoneNo;
     private String email;
     private Team team;
 
 public Manager(){}
 
-public Manager(String name, int phoneNo, String email){
+public Manager(String name, String phoneNo, String email){
     this.name = name;
     this.phoneNo = phoneNo;
     this.email = email;
@@ -42,11 +42,11 @@ public Manager(String name, int phoneNo, String email){
     }
 
     @Column(name = "phone_number")
-    public int getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
 
