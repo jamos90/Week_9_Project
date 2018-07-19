@@ -34,4 +34,15 @@ public class MatchReportTest{
 
     }
 
+    @Test
+    public void hasHeadLine(){
+        assertEquals("one", matchReport.getHeadline());
+    }
+
+    @Test
+    public void canSetHeadline(){
+        matchReport.setHeadline("New game");
+        assertEquals("New game", matchReport.getHeadline());
+    }
+
 }
