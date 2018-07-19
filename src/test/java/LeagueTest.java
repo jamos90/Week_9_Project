@@ -1,8 +1,5 @@
 
-import models.Fixture;
-import models.League;
-import models.LeagueType;
-import models.Team;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,12 +10,16 @@ public class LeagueTest {
     Fixture fixture;
     Team team;
     LeagueType leagueType;
+    Manager manager;
 
     @Before
     public void setUp(){
         league = new League("Edinburgh Schools", LeagueType.SCHOOLS, "Midlothian");
         fixture = new Fixture(1,"Edinburgh Football Club", league);
-    }
+        manager = new Manager("David", 077507545, "haggishunters@football.con");
+        team = new FootballTeam("Edinburgh Haggis Hunters", manager, league, "logo.jpg","Edinburgh");
+        }
+
 
     @Test
     public void hasName(){
@@ -43,5 +44,11 @@ public class LeagueTest {
     @Test
     public void fixtureListStartsEmpty(){
         assertEquals(0,league.fixtureCount());
+    }
+
+    @Test
+    public void canAddToTeam(){
+        league.addToTeam(team);
+        assertEquals(1, league.teamCount());
     }
 }
