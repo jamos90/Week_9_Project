@@ -45,4 +45,15 @@ public class MatchReportTest{
         assertEquals("New game", matchReport.getHeadline());
     }
 
+    @Test
+    public void hasBlurb(){
+        assertEquals("two",matchReport.getBlurb());
+    }
+
+    @Test
+    public void canSetBlurb(){
+        matchReport.setBlurb("another defeat");
+        assertEquals("another defeat", matchReport.getBlurb());
+    }
+
 }
