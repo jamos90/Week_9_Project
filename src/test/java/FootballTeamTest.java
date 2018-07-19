@@ -22,17 +22,17 @@ public class FootballTeamTest {
 
     @Test
     public void canGetName(){
-        assertEquals("Neil Lennon",manager.getName() );
+        assertEquals("Team 1",footballTeam.getName() );
     }
 
     @Test
-    public void canGetPhoneNo(){
-        assertEquals("07929897362",manager.getPhoneNo() );
+    public void canGetManager(){
+        assertEquals(manager,footballTeam.getManager() );
     }
 
     @Test
-    public void canGetEmail(){
-        assertEquals("neil.lennon@topmanager.com",manager.getEmail() );
+    public void canGetLeague(){
+        assertEquals(league, footballTeam.getLeague() );
     }
 
 
