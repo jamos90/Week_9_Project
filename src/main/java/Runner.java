@@ -5,6 +5,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
+
         Manager manager = new Manager("Zsolt Poboda-Salai", 07610335467, "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
@@ -16,11 +17,12 @@ public class Runner {
         footballTeam.setGoalsScored(56);
         DBHelper.save(footballTeam);
 
-        Fixture fixture = new Fixture(1, "Liberty Stadium");
+        Fixture fixture = new Fixture(1, "Liberty Stadium", league);
         DBHelper.save(fixture);
 
         MatchReport matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
         DBHelper.save(matchReport1);
+
 
 
 

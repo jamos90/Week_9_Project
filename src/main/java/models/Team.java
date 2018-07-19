@@ -67,7 +67,7 @@ public abstract class Team {
         this.manager = manager;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {
         return league;

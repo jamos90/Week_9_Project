@@ -22,11 +22,12 @@ public class Fixture {
 
     public Fixture(){}
 
-    public Fixture(int week, String venue){
+    public Fixture(int week, String venue, League league){
         this.teams = new ArrayList<Team>();
         this.homeGoals = "";
         this.awayGoals = "";
         this.week = week;
+        this.league = league;
         this.venue = venue;
     }
 

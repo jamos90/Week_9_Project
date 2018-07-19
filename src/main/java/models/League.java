@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name ="leagues")
 public class League {
     private int id;
     private String name;
@@ -51,7 +53,7 @@ public class League {
         this.leagueType = leagueType;
     }
 
-    public String getLeagueTypeFromEnum(){
+    public String returnLeagueTypeFromEnum(){
         return this.leagueType.getLeagueType();
     }
 
