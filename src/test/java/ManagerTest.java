@@ -24,4 +24,9 @@ public class ManagerTest{
         assertEquals(0760456, manager.getPhoneNo());
     }
 
+    @Test
+    public void hasEmail(){
+        assertEquals("john.gmail.com", manager.getEmail());
+    }
+
 }
