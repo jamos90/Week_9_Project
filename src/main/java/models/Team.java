@@ -27,11 +27,11 @@ public abstract class Team {
 
     public Team(){}
 
-    public Team(String name, Manager manager, League league, int points, String teamLogo, String location){
+    public Team(String name, Manager manager, League league, String teamLogo, String location){
         this.name = name;
         this.manager = manager;
         this.league = league;
-        this.points = points;
+        this.points = 0;
         this.teamLogo = teamLogo;
         this.location = location;
         this.fixtures = new ArrayList<Fixture>();
@@ -67,7 +67,7 @@ public abstract class Team {
         this.manager = manager;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {
         return league;

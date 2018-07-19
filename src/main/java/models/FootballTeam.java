@@ -10,10 +10,10 @@ public class FootballTeam extends Team {
     private int goalsConceded;
 
 
-    public FootballTeam(String name, Manager manager, League league, int points, String teamLogo, int goalsScored, int goalsConceded, String location){
-        super(name, manager,league,points,teamLogo,location);
-        this.goalsScored = goalsScored;
-        this.goalsConceded = goalsConceded;
+    public FootballTeam(String name, Manager manager, League league, String teamLogo, String location){
+        super(name, manager,league,teamLogo,location);
+        this.goalsScored = 0;
+        this.goalsConceded = 0;
     }
 
     public FootballTeam(){};

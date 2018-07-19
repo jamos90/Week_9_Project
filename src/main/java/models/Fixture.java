@@ -13,8 +13,8 @@ import java.util.List;
 public class Fixture {
     private int id;
     private List<Team> teams;
-    private int homeGoals;
-    private int awayGoals;
+    private String homeGoals;
+    private String awayGoals;
     private int week;
     private String venue;
     private MatchReport matchReport;
@@ -22,11 +22,12 @@ public class Fixture {
 
     public Fixture(){}
 
-    public Fixture(int homeGoals, int awayGoals, int week, String venue){
+    public Fixture(int week, String venue, League league){
         this.teams = new ArrayList<Team>();
-        this.homeGoals = homeGoals;
-        this.awayGoals = awayGoals;
+        this.homeGoals = "";
+        this.awayGoals = "";
         this.week = week;
+        this.league = league;
         this.venue = venue;
     }
 
@@ -53,21 +54,25 @@ public class Fixture {
     }
 
     @Column(name = "home_goals")
-    public int getHomeGoals() {
+    public String getHomeGoals() {
         return homeGoals;
     }
 
-    public void setHomeGoals(int homeGoals) {
+    public void setHomeGoals(String homeGoals) {
         this.homeGoals = homeGoals;
     }
 
     @Column(name = "away_goals")
-    public int getAwayGoals() {
+    public String getAwayGoals() {
         return awayGoals;
     }
 
-    public void setAwayGoals(int awayGoals) {
+    public void setAwayGoals(String awayGoals) {
         this.awayGoals = awayGoals;
+    }
+
+    public int convertGoalsToInteger(String goals){
+        return Integer.parseInt(goals);
     }
 
     @Column(name = "week")
