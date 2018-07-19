@@ -26,9 +26,15 @@ public class FootballTeamTest {
     }
 
     @Test
-    public void canPhoneNo(){
+    public void canGetPhoneNo(){
         assertEquals("07929897362",manager.getPhoneNo() );
     }
+
+    @Test
+    public void canGetEmail(){
+        assertEquals("neil.lennon@topmanager.com",manager.getEmail() );
+    }
+
 
 
 }
