@@ -13,13 +13,13 @@ public class ManagerTest {
     @Before
     public void before(){
         League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
-        manager = new Manager("Lionel Spencer-Clark", "01847 873245", "lionel.lad@btinternet.com");
+        manager = new Manager("Lionel Spencer", "01847 873245", "lionel@btinternet.com");
         team = new FootballTeam("Bury", manager, league, "d", "Bury Saint Edmonds");
     }
 
     @Test
     public void hasName(){
-        assertEquals("Lionel Spencer-Clark", manager.getName());
+        assertEquals("Lionel Spencer", manager.getName());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class ManagerTest {
 
     @Test
     public void hasEmailAddress(){
-        assertEquals("lionel.lad@btinternet.com", manager.getEmail());
+        assertEquals("lionel@btinternet.com", manager.getEmail());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class ManagerTest {
 
     @Test
     public void canUpdateEmailAddress(){
-        manager.setEmail("lionel.spencer.clark@aol.com");
-        assertEquals("lionel.spencer.clark@aol.com", manager.getEmail());
+        manager.setEmail("lionel.spencer@aol.com");
+        assertEquals("lionel.spencer@aol.com", manager.getEmail());
     }
 
 }
