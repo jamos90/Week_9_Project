@@ -39,4 +39,9 @@ public class LeagueTest {
     public void teamListStartEmpty(){
         assertEquals(0, league.teamCount());
     }
+
+    @Test
+    public void fixtureListStartsEmpty(){
+        assertEquals(0,league.fixtureCount());
+    }
 }
