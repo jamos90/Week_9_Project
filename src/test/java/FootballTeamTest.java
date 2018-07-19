@@ -40,6 +40,12 @@ public class FootballTeamTest {
         assertEquals("logo.jpg", footballTeam.getTeamLogo() );
     }
 
+    @Test
+    public void canGetLocation(){
+        assertEquals("Midlothian", footballTeam.getLocation() );
+    }
+
+
 
 
 
