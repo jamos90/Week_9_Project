@@ -89,6 +89,6 @@ public class League {
     }
 
     public int fixtureCount(){
-        this.fixtures.size();
+        return this.fixtures.size();
     }
 }

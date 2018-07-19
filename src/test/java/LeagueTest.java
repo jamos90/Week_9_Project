@@ -37,6 +37,6 @@ public class LeagueTest {
 
     @Test
     public void teamListStartEmpty(){
-
+        assertEquals(0, league.teamCount());
     }
 }
