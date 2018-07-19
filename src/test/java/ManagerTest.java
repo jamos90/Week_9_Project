@@ -29,4 +29,9 @@ public class ManagerTest{
         assertEquals("john.gmail.com", manager.getEmail());
     }
 
+    @Test
+    public void startsWithNoTeam(){
+        assertEquals(null, manager.getTeam());
+    }
+
 }
