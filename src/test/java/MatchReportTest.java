@@ -6,22 +6,32 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertSame;
 
 public class MatchReportTest{
 
     MatchReport matchReport;
-    Fixture fixture;
+    Fixture fixture1;
+    Fixture fixture2;
     League league;
 
     @Before
     public void setUp(){
-        fixture = new Fixture(1,"Edinburgh",league);
+        fixture1 = new Fixture(1,"Edinburgh",league);
+        fixture2 = new Fixture(1,"Edinburgh",league);
         league = new League("Edinburgh Schools", LeagueType.SCHOOLS, "Midlothian");
-        matchReport = new MatchReport(fixture,"one", "two", "pic.jpg");
+        matchReport = new MatchReport(fixture1,"one", "two", "pic.jpg");
     }
     @Test
     public void hasFixture(){
-        assertEquals(fixture, matchReport.getFixture());
+        assertEquals(fixture1, matchReport.getFixture());
+    }
+
+    @Test
+    public void canSetFixture(){
+        matchReport.setFixture(fixture2);
+        assertEquals(fixture2,matchReport.getFixture());
+
     }
 
 }
