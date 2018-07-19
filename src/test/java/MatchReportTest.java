@@ -56,4 +56,15 @@ public class MatchReportTest{
         assertEquals("another defeat", matchReport.getBlurb());
     }
 
+    @Test
+    public void hasLogo(){
+        assertEquals("pic.jpg", matchReport.getPicture());
+    }
+
+    @Test
+    public void canSetLogo(){
+        matchReport.setPicture("pic_one.png");
+        assertEquals("pic_one.png", matchReport.getPicture());
+    }
+
 }
