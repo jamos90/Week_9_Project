@@ -17,7 +17,7 @@ public class LeagueTest {
     public void setUp(){
         league = new League("Edinburgh Schools", LeagueType.SCHOOLS, "Midlothian");
         fixture = new Fixture(1,"Edinburgh Football Club", league);
-        manager = new Manager("David", 077507545, "haggishunters@football.con");
+        manager = new Manager("David", 077507545, "haggishunters@football.com");
         team1 = new FootballTeam("Edinburgh Haggis Hunters", manager, league, "logo.jpg","Edinburgh");
         team2 = new FootballTeam("Dundee Dodgers", manager, league, "logo.jpg","Dundee");
         }
