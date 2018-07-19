@@ -17,13 +17,9 @@ public class FixtureTest {
     @Before
     public void before() {
         manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
-
         league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
-
         footballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "Bolton");
-
         fixture = new Fixture(1, "Liberty Stadium", league);
-
         matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
     }
 
@@ -48,6 +44,35 @@ public class FixtureTest {
         assertEquals("Ibrox", fixture.getVenue());
     }
 
+    @Test
+    public void canSetWeek(){
+        fixture.setWeek(2);
+        assertEquals(2, fixture.getWeek());
+    }
 
+    @Test
+    public void canConvertHomeGoalsToInteger(){
+        fixture.setHomeGoals("3");
+        fixture.convertGoalsToInteger(fixture.getHomeGoals());
+        assertEquals(3, fixture.getHomeGoals());
+    }
+
+    @Test
+    public void canConvertAwayGoalsToInteger(){
+        fixture.setAwayGoals("3");
+        fixture.convertGoalsToInteger(fixture.getAwayGoals());
+        assertEquals(3, fixture.getAwayGoals());
+    }
+
+    @Test
+    public void canSetMatchReport(){
+        fixture.setMatchReport(matchReport1);
+        assertEquals(matchReport1, fixture.getMatchReport());
+    }
+
+    @Test
+    public void canSetHomeTeam(){
+
+    }
 
 }
