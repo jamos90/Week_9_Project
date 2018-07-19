@@ -6,12 +6,15 @@ public class MatchReport {
     private Fixture fixture;
     private String headline;
     private String blurb;
+    private String picture;
 
     public MatchReport(){}
 
-    public MatchReport(String headline, String blurb){
+    public MatchReport(Fixture fixture, String headline, String blurb, String picture){
         this.headline = headline;
         this.blurb = blurb;
+        this.fixture = fixture;
+        this.picture = picture;
     }
 
     public int getId() {
@@ -44,5 +47,13 @@ public class MatchReport {
 
     public void setBlurb(String blurb) {
         this.blurb = blurb;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
