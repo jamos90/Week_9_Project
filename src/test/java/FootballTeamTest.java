@@ -25,5 +25,10 @@ public class FootballTeamTest {
         assertEquals("Neil Lennon",manager.getName() );
     }
 
+    @Test
+    public void canPhoneNo(){
+        assertEquals("07929897362",manager.getPhoneNo() );
+    }
+
 
 }
