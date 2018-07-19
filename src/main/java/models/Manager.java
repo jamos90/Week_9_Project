@@ -1,5 +1,11 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "managers")
+
 public class Manager {
 
     private int id;

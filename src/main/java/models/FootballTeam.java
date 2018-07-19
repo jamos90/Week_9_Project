@@ -4,10 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table( name ="football_teams")
-@Inheritance(strategy = InheritanceType.JOINED)
 
-
-@DiscriminatorColumn(name= "sport_type")
 public class FootballTeam extends Team {
     private int goalsScored;
     private int goalsConceded;

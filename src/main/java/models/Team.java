@@ -1,11 +1,14 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="teams")
+
+@Inheritance(strategy = InheritanceType.JOINED)
+
+
+@DiscriminatorColumn(name= "sport_type")
 
 public abstract class Team {
     private int id;
@@ -28,6 +31,9 @@ public abstract class Team {
         this.location = location;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "id")
     public int getId() {
         return id;
     }
@@ -36,6 +42,7 @@ public abstract class Team {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -44,6 +51,7 @@ public abstract class Team {
         this.name = name;
     }
 
+    @Column(name ="manager")
     public Manager getManager() {
         return manager;
     }
@@ -52,6 +60,8 @@ public abstract class Team {
         this.manager = manager;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {
         return league;
     }
@@ -60,6 +70,7 @@ public abstract class Team {
         this.league = league;
     }
 
+    @Column(name = "points")
     public int getPoints() {
         return points;
     }
@@ -68,6 +79,7 @@ public abstract class Team {
         this.points = points;
     }
 
+    @Column(name = "team_logo")
     public String getTeamLogo() {
         return teamLogo;
     }
@@ -76,6 +88,7 @@ public abstract class Team {
         this.teamLogo = teamLogo;
     }
 
+    @Column(name = "home_pitch")
     public String getHomePitch() {
         return homePitch;
     }
@@ -84,6 +97,7 @@ public abstract class Team {
         this.homePitch = homePitch;
     }
 
+    @Column(name = "location")
     public String getLocation() {
         return location;
     }
