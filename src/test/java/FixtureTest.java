@@ -109,7 +109,7 @@ public class FixtureTest {
         league.addToTeams(tenthfootballTeam);
 //        System.out.println(league.fixtureGenerator(false, league.getTeams(), league));
 //        System.out.println(league.getFixtures());
-        league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
+//        league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
         System.out.println(league.getFixtures());
     }
 

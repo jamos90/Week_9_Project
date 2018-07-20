@@ -116,8 +116,8 @@ public abstract class Team {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany
     @JoinTable(name = "teams_fixtures",
-            joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "fixture_id", nullable = false, updatable = false)})
+            joinColumns = {@JoinColumn(name = "teams_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "fixtures_id", nullable = false, updatable = false)})
     public List<Fixture> getFixtures() {
         return fixtures;
     }

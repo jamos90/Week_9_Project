@@ -1,6 +1,9 @@
 import db.DBFixture;
 import db.DBHelper;
+import db.DBLeague;
 import models.*;
+
+import java.util.List;
 
 public class Runner {
 
@@ -55,17 +58,22 @@ public class Runner {
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
         league.addToTeams(tenthfootballTeam);
+
+
+        league.generateFixtures(true);
+
         DBHelper.update(league);
+        for (Fixture fixture : league.getFixtures()) {
+            DBHelper.save(fixture);
+        }
+
+        Fixture f = new Fixture(4,league);
+        f.addAwayTeamToFixture(awayfootballTeam);
+        f.addAwayTeamToFixture(fourthfootballTeam);
+        DBHelper.save(f);
 
 
-        Fixture fixture = new Fixture(1, league);
-        DBHelper.save(fixture);
-
-        DBFixture.generateFixtures(league);
-        DBHelper.update(league);
-
-        MatchReport matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
-        DBHelper.save(matchReport1);
+        List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
 
 

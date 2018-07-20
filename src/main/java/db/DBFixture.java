@@ -12,9 +12,9 @@ public class DBFixture {
 
 
     public static void generateFixtures(League league){
-       List<List<Fixture>> tempList =  league.fixtureGenerator(true, league.getTeams(), league);
-       league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
-        DBHelper.update(league);
+//       List<List<Fixture>> tempList =  league.fixtureGenerator(true);
+//       league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
+//        DBHelper.update(league);
     }
 
 

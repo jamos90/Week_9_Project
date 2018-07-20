@@ -13,6 +13,7 @@ public class League {
     private LeagueType leagueType;
     private List<Team> teams;
     private List<Fixture> fixtures;
+    private List<List<Fixture>> season;
     private String region;
 
     public League() {
@@ -130,7 +131,7 @@ public class League {
         } else return false;
     }
 
-    public List<List<Fixture>> fixtureGenerator(Boolean reverseFixtures, List<Team> teams, League league) {
+    public void generateFixtures(Boolean reverseFixtures) {
         //THIS ESTABLISHES IF WE NEED A GHOST
         //Set integer variable called number of teams = teams.size()
         int numberofTeams = teams.size();
@@ -169,7 +170,7 @@ public class League {
                 if (match == 0) {
                     away = numberofTeams - 1;
                 }
-                Fixture fixture = new Fixture((week + 1), league);
+                Fixture fixture = new Fixture((week + 1), this);
                 fixture.addTeamsToFixture(this.teams.get(home), this.teams.get(away));
                 roundOfFixtures.add(fixture);
             }
@@ -228,14 +229,14 @@ public class League {
             }
             // Reassing the fixturesList
         }
-        return fixturesList;
 
+        this.season = fixturesList;
+        this.fixtures = seasonsFixtures();
 
     }
 
-    public void getFixtureFromListOfListOfFixturesAndAddToFixtureList(League league) {
-        List<List<Fixture>> returnedWeeklyFixtures = fixtureGenerator(false, league.getTeams(), league);
-
+    public ArrayList<Fixture> seasonsFixtures() {
+        ArrayList<Fixture> newFixtures = new ArrayList<Fixture>();
         int matchesPerWeek = (teams.size() / 2);
         int numberOfWeeks = (teams.size() - 1);
 
@@ -244,12 +245,13 @@ public class League {
         for (int week = 0; week < numberOfWeeks; week++) {
 
             for (int match = 0; match < matchesPerWeek; match++) {
-                List<Fixture> weeklyFixtures = returnedWeeklyFixtures.get(week);
+                List<Fixture> weeklyFixtures = season.get(week);
                 Fixture retrievedFixture = weeklyFixtures.get(match);
-                this.fixtures.add(retrievedFixture);
+                newFixtures.add(retrievedFixture);
             }
 
         }
+        return newFixtures;
     }
 }
 
