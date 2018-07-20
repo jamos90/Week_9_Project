@@ -139,7 +139,7 @@ public class League {
         //ghost = false
         Boolean ghost = false;
 
-        // if number of teams is odd incrment no of teams by 1 and set ghost to true
+        // if number of teams is odd increment no of teams by 1 and set ghost to true
         if (teams.size() % 2 != 0) {
             ghost = true;
             numberofTeams += 1;
@@ -162,50 +162,50 @@ public class League {
         //GENERATES THE NUMBER OF ROUNDS OF FIXTURES
         //Initiate for loop stating at week = 0, week < number of weeks, week++
         for (int week = 0; week < numberOfWeeks; week++) {
+
+            //MAKES AN EMPTY LIST OF FIXTURES THAT WE CAN ADD FIXTURES TO
             List<Fixture> roundOfFixtures = new ArrayList<Fixture>();
 
+            //GENERATES THE CORRECT AMOUNT OF FIXTURES PER ROUND
+            // Iterate nested for loop set match to 0 then while match is less than matches per week increment match by 1
             for (int match = 0; match < matchesPerWeek; match++) {
+
+                //SET INTEGER OF HOME TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
+                //Set integer home equal to the remainder (week + match) divided by (number of teams -1 )
                 int home = (week + match) % (numberofTeams - 1);
+
+                //SETSINTEGER OF AWAY TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
+                // Set integer away equal to the remainder of (number of teams - 1 - match + week) devided by number of teams -1
                 int away = ((numberofTeams - 1) - match + week) % (numberofTeams - 1);
+
+                // If match is equal 0 set away to equal number of teams - 1
                 if (match == 0) {
                     away = numberofTeams - 1;
                 }
+
+                //  Create new fixture with home and away teams retrieved from the array of teams. Using the integers home and away.
                 Fixture fixture = new Fixture((week + 1), this);
                 fixture.addTeamsToFixture(this.teams.get(home), this.teams.get(away));
+
+                //Add the fixture above to the main list of round of fixtures
                 roundOfFixtures.add(fixture);
             }
             fixturesList.add(roundOfFixtures);
         }
 
-        //MAKES AN EMPTY LIST OF FIXTURES THAT WE CAN ADD FIXTURES TO
-        // Set list of fixtures called roundofFixtures = List<Fixture>
 
-        //GENERATES THE CORRECT AMOUNT OF FIXTURES PER ROUND
-        // Iiterrate nested for loop set match to 0 then while match is less than matches per week increment match by 1
+        //WE NOW HAVE A LIST OF FIXTURES AND WE WANT TO MAKE SURE THAT THE SAME TEAM ISN'T PLAYING HOME TWO OR THREE WEEKS IN A ROW.
 
-
-        //LINES BELOW
-        //SETS INTERGER OF HOME TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
-        //Set integer home equal to the remainder (week + match) devided by (number of teams -1 ) this is where we set
-
-        //SETS INTERGER OF AWAY TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
-        // Set integer away equal to the remainder of (number of teams - 1 - match + week) devided by number of teams -1
-
-        //
-        // If match is equal 0 set away is equal number of teams - 1
-
-        //  Create new fixture with home and away teams retrieved from the array of teams. Using the integers home and away.
-
-        //Add the fixture above to the main list of round of fixtures
-
-        //WE KNOW HAVE A LIST OF FIXTURES AND WE WANT TO MAKE SURE THAT THE SAME TEAM ISN'T PLAYING HOME TWO OR THREE WEEKS IN A ROW.
         //Make a new list of list of fixtures(as above)
         List<List<Fixture>> filteredFixtures = new ArrayList<List<Fixture>>();
+
         //Creating two integer variables, even and odd. Even will be 0 and odd will be the no of teams devided by 2.
         int even = 0;
         int odd = numberofTeams / 2;
+
         //Start a for loop to get weeks for the list of lists with the aim of evening out a team playing away all the time. i Starts at 0, while i is less than our list of list of fixtures , i is incremented by          one.
         for (int i = 0; i < fixturesList.size(); i++) {
+
             //If i is divisible by 2 with no remainder (ie even), then get the list of weekly fixtures positioned at the even integer index from the fixtureList List of Lists
             if (i % 2 == 0) {
                 filteredFixtures.add(fixturesList.get(even++));
@@ -213,7 +213,7 @@ public class League {
 
             //ELse i is not divisible by 2 with no remainder (ie odd), then get the list of weekly fixtures positioned at the odd integer index from the fixtureList List of Lists
             else filteredFixtures.add(fixturesList.get(odd++));
-            //OutSide of the loop. Set fixtures list to filteredFixtures then return fixturesList.
+
         }
 
         //SO THE LAST ITEM IN THE TEAM ARRAY IS NOT ALWAYS SET AS THE AWAY TEAM
@@ -227,13 +227,14 @@ public class League {
                     Collections.reverse(flippedFixture.getTeams());
                 }
             }
-            // Reassing the fixturesList
-        }
 
+        }
+        // Reassign the fixturesList
         this.season = fixturesList;
         this.fixtures = seasonsFixtures();
 
     }
+
 
     public ArrayList<Fixture> seasonsFixtures() {
         ArrayList<Fixture> newFixtures = new ArrayList<Fixture>();
