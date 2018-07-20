@@ -164,7 +164,7 @@ public class League {
 
             for( int match = 0 ; match < matchesPerWeek; match++){
              int home = (week+match) % (numberofTeams-1);
-             int away = ((numberofTeams -1) - (match + week)) % (numberofTeams -1);
+             int away = ((numberofTeams -1) - match + week) % (numberofTeams -1);
              if (match == 0){
                  away = numberofTeams - 1;
              }

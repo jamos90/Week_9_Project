@@ -13,6 +13,12 @@ public class FixtureTest {
     FootballTeam awayfootballTeam;
     FootballTeam thirdFootballTeam;
     FootballTeam fourthfootballTeam;
+    FootballTeam fithfootballTeam;
+    FootballTeam sixthfootballTeam;
+    FootballTeam seventhfootballTeam;
+    FootballTeam eighthfootballTeam;
+    FootballTeam ninethfootballTeam;
+    FootballTeam tenthfootballTeam;
     Manager manager;
     League league;
     MatchReport matchReport1;
@@ -26,6 +32,12 @@ public class FixtureTest {
         awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager, league, "yes", "Dagenham");
         thirdFootballTeam = new FootballTeam("Burton Albion", manager, league, "yes", "Burton");
         fourthfootballTeam = new FootballTeam("Edinburgh City", manager, league, "no", "Edinburgh");
+        fithfootballTeam = new FootballTeam("Glasgow City", manager, league, "no", "Edinburgh");
+        sixthfootballTeam = new FootballTeam("Dundee City", manager, league, "no", "Edinburgh");
+        seventhfootballTeam = new FootballTeam("Aberdeen City", manager, league, "no", "Edinburgh");
+        eighthfootballTeam = new FootballTeam("FortWilliam City", manager, league, "no", "Edinburgh");
+        ninethfootballTeam = new FootballTeam("Inverness City", manager, league, "no", "Edinburgh");
+        tenthfootballTeam = new FootballTeam("Sterling City", manager, league, "no", "Edinburgh");
         fixture = new Fixture(1,  league);
         matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
     }
@@ -90,6 +102,12 @@ public class FixtureTest {
         league.addToTeams(awayfootballTeam);
         league.addToTeams(thirdFootballTeam);
         league.addToTeams(fourthfootballTeam);
+        league.addToTeams(fithfootballTeam);
+        league.addToTeams(sixthfootballTeam);
+        league.addToTeams(seventhfootballTeam);
+        league.addToTeams(eighthfootballTeam);
+        league.addToTeams(ninethfootballTeam);
+        league.addToTeams(tenthfootballTeam);
 //        System.out.println(league.fixtureGenerator(false, league.getTeams(), league));
 //        System.out.println(league.getFixtures());
         league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
