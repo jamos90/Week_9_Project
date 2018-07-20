@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -214,6 +215,17 @@ public class League {
             else filteredFixtures.add(fixturesList.get(odd++));
             //OutSide of the loop. Set fixtures list to filteredFixtures then return fixturesList.
         }
+
+        //SO THE LAST ITEM IN THE TEAM ARRAY IS NOT ALWAYS SET AS THE AWAY TEAM
+        //Initiate for loop stating at week = 0, week < number of weeks, week++
+        for ( int week = 0; week < numberOfWeeks; week++) {
+            //if week is odd set a new fixture which reassings the zeroth position in the weekly fixtures array.
+         if (week % 2 != 0){
+             Fixture flippedFixture = fixturesList.get(week).get(0);
+             Collections.reverse(flippedFixture.getTeams());
+         }
+         }
+        // Reassing the fixturesList
 
        return fixturesList;
 

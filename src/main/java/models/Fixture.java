@@ -117,6 +117,14 @@ public class Fixture {
         this.teams.add(awayTeam);
     }
 
+    public void addHomeTeamToFixture(Team homeTeam){
+        this.teams.add(homeTeam);
+    }
+
+    public void addAwayTeamToFixture(Team awayTeam){
+        this.teams.add(awayTeam);
+    }
+
     public int countTeams(){
         return this.teams.size();
     }
@@ -128,4 +136,5 @@ public class Fixture {
     public Team getAwayTeam(){
         return this.teams.get(1);
     }
+
 }
