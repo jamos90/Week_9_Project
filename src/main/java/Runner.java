@@ -45,10 +45,24 @@ public class Runner {
         FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager, league, "no", "Edinburgh");
         DBHelper.save(tenthfootballTeam);
 
+        league.addToTeams(awayfootballTeam);
+        league.addToTeams(homefootballTeam);
+        league.addToTeams(thirdFootballTeam);
+        league.addToTeams(fourthfootballTeam);
+        league.addToTeams(fithfootballTeam);
+        league.addToTeams(sixthfootballTeam);
+        league.addToTeams(seventhfootballTeam);
+        league.addToTeams(eighthfootballTeam);
+        league.addToTeams(ninethfootballTeam);
+        league.addToTeams(tenthfootballTeam);
+        DBHelper.update(league);
+
+
         Fixture fixture = new Fixture(1, league);
         DBHelper.save(fixture);
 
         DBFixture.generateFixtures(league);
+        DBHelper.update(league);
 
         MatchReport matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
         DBHelper.save(matchReport1);

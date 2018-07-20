@@ -129,11 +129,11 @@ public class Fixture {
         return this.teams.size();
     }
 
-    public Team getHomeTeam(){
+    public Team returnHomeTeam(){
         return this.teams.get(0);
     }
 
-    public Team getAwayTeam(){
+    public Team returnAwayTeam(){
         return this.teams.get(1);
     }
 

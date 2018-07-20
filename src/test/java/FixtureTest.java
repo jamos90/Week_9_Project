@@ -91,8 +91,8 @@ public class FixtureTest {
     @Test
     public void canSetTeams(){
         fixture.addTeamsToFixture(homefootballTeam, awayfootballTeam);
-        assertEquals(awayfootballTeam, fixture.getAwayTeam());
-        assertEquals(homefootballTeam, fixture.getHomeTeam());
+        assertEquals(awayfootballTeam, fixture.returnAwayTeam());
+        assertEquals(homefootballTeam, fixture.returnAwayTeam());
     }
 
     @Test
