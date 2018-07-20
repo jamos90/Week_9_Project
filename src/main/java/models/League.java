@@ -141,6 +141,7 @@ public class League {
         // if number of teams is odd incrment no of teams by 1 and set ghost to true
         if (teams.size() % 2 != 0){
             ghost = true;
+            numberofTeams += 1;
         }
         //ESTABLISH HOW MANY ROUNDS OF FIXTURES THERE WILL BE
         //Set int number of weeks = teams.size - 1
@@ -181,6 +182,7 @@ public class League {
         //GENERATES THE CORRECT AMOUNT OF FIXTURES PER ROUND
         // Iiterrate nested for loop set match to 0 then while match is less than matches per week increment match by 1
 
+
         //LINES BELOW
         //SETS INTERGER OF HOME TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
         //Set integer home equal to the remainder (week + match) devided by (number of teams -1 ) this is where we set
@@ -197,11 +199,21 @@ public class League {
 
         //WE KNOW HAVE A LIST OF FIXTURES AND WE WANT TO MAKE SURE THAT THE SAME TEAM ISN'T PLAYING HOME TWO OR THREE WEEKS IN A ROW.
         //Make a new list of list of fixtures(as above)
+        List<List<Fixture>> filteredFixtures = new ArrayList<List<Fixture>>();
         //Creating two integer variables, even and odd. Even will be 0 and odd will be the no of teams devided by 2.
+        int even = 0;
+        int odd = numberofTeams/2;
         //Start a for loop to get weeks for the list of lists with the aim of evening out a team playing away all the time. i Starts at 0, while i is less than our list of list of fixtures , i is incremented by          one.
-        //If i is divisible by 2 with no remainder (ie even), then get the list of weekly fixtures positioned at the even integer index from the fixtureList List of Lists
-        //ELse i is not divisible by 2 with no remainder (ie odd), then get the list of weekly fixtures positioned at the odd integer index from the fixtureList List of Lists
-        //OutSide of the loop. Set fixtures list to filteredFixtures then return fixturesList.
+        for ( int i = 0; i < fixturesList.size(); i++) {
+            //If i is divisible by 2 with no remainder (ie even), then get the list of weekly fixtures positioned at the even integer index from the fixtureList List of Lists
+            if (i % 2 == 0) {
+                filteredFixtures.add(fixturesList.get(even++));
+            }
+
+            //ELse i is not divisible by 2 with no remainder (ie odd), then get the list of weekly fixtures positioned at the odd integer index from the fixtureList List of Lists
+            else filteredFixtures.add(fixturesList.get(odd++));
+            //OutSide of the loop. Set fixtures list to filteredFixtures then return fixturesList.
+        }
 
        return fixturesList;
 
