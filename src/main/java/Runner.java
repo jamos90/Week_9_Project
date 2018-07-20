@@ -17,7 +17,7 @@ public class Runner {
         footballTeam.setGoalsScored(56);
         DBHelper.save(footballTeam);
 
-        Fixture fixture = new Fixture(1, "Liberty Stadium", league);
+        Fixture fixture = new Fixture(1, league);
         DBHelper.save(fixture);
 
         MatchReport matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");

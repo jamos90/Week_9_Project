@@ -4,12 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertSame;
 
 public class FixtureTest {
 
     Fixture fixture;
     FootballTeam homefootballTeam;
     FootballTeam awayfootballTeam;
+    FootballTeam thirdFootballTeam;
+    FootballTeam fourthfootballTeam;
     Manager manager;
     League league;
     MatchReport matchReport1;
@@ -21,7 +24,9 @@ public class FixtureTest {
         league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
         homefootballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "Bolton");
         awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager, league, "yes", "Dagenham");
-        fixture = new Fixture(1, "Liberty Stadium", league);
+        thirdFootballTeam = new FootballTeam("Burton Albion", manager, league, "yes", "Burton");
+        fourthfootballTeam = new FootballTeam("Edinburgh City", manager, league, "no", "Edinburgh");
+        fixture = new Fixture(1,  league);
         matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
     }
 
@@ -77,6 +82,18 @@ public class FixtureTest {
         fixture.addTeamsToFixture(homefootballTeam, awayfootballTeam);
         assertEquals(awayfootballTeam, fixture.getAwayTeam());
         assertEquals(homefootballTeam, fixture.getHomeTeam());
+    }
+
+    @Test
+    public void canGetFixtureList(){
+        league.addToTeams(homefootballTeam);
+        league.addToTeams(awayfootballTeam);
+        league.addToTeams(thirdFootballTeam);
+        league.addToTeams(fourthfootballTeam);
+//        System.out.println(league.fixtureGenerator(false, league.getTeams(), league));
+//        System.out.println(league.getFixtures());
+        league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
+        System.out.println(league.getFixtures());
     }
 
 }

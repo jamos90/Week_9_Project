@@ -198,7 +198,24 @@ public class League {
        return fixturesList;
     }
 
+    public void getFixtureFromListOfListOfFixturesAndAddToFixtureList(League league) {
+        List<List<Fixture>> returnedWeeklyFixtures = fixtureGenerator(false, league.getTeams(), league);
 
+        int matchesPerWeek = (teams.size() / 2);
+        int numberOfWeeks = (teams.size() - 1);
+
+//        FOR EACH WEEK, GO INTO THE LIST OF LISTS AND ACCESS THE LIST FOR THAT WEEK. THEN, TAKE EACH FIXTURE FROM THAT LIST ONE BY ONE AND ADD IT TO THE FIXTURE ATTRIBUTE OF THE LEAGUE CLASS.
+
+        for (int week = 0; week < numberOfWeeks; week++) {
+
+            for (int match = 0; match < matchesPerWeek; match++) {
+                List<Fixture> weeklyFixtures = returnedWeeklyFixtures.get(week);
+                Fixture retrievedFixture = weeklyFixtures.get(match);
+                this.fixtures.add(retrievedFixture);
+            }
+
+        }
+    }
 }
 
 
