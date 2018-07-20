@@ -152,7 +152,7 @@ public class League {
 
         //SET UP AN EMPTY FIXTURE LIST
         //List<<List> Fixtures> = new List<List<Fixture>>
-         List<List<Fixture>> fixturesList  = new List<List<Fixture>>;
+         List<List<Fixture>> fixturesList  = new ArrayList<List<Fixture>>();
 
 
          //GENERATE A LIST OF FIXTURES THAT STILL NEED TO BE REFACTORED TO MEET OUR NEEDS(WHOLE BLOCK)
@@ -170,7 +170,9 @@ public class League {
              }
              Fixture fixture = new Fixture((week +1),league);
              fixture.addTeamsToFixture(this.teams.get(home), this.teams.get(away));
+             roundOfFixtures.add(fixture);
             }
+            fixturesList.add(roundOfFixtures);
         }
 
         //MAKES AN EMPTY LIST OF FIXTURES THAT WE CAN ADD FIXTURES TO
@@ -193,8 +195,9 @@ public class League {
 
         //Add the fixture above to the main list of round of fixtures
 
-
+       return fixturesList;
     }
+
 
 }
 
