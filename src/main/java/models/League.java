@@ -130,16 +130,69 @@ public class League {
         else return  false;
     }
 
-    public List<List<Fixture>> fixtureGenerator(Boolean reverseFixtures, List<Team> teams){
+    public List<List<Fixture>> fixtureGenerator(Boolean reverseFixtures, List<Team> teams, League league){
+        //THIS ESTABLISHES IF WE NEED A GHOST
         //Set integer variable called number of teams = teams.size()
         int numberofTeams = teams.size();
+
         //ghost = false
         Boolean ghost = false;
+
         // if number of teams is odd incrment no of teams by 1 and set ghost to true
         if (teams.size() % 2 != 0){
             ghost = true;
         }
-        //
+        //ESTABLISH HOW MANY ROUNDS OF FIXTURES THERE WILL BE
+        //Set int number of weeks = teams.size - 1
+        int numberOfWeeks = (teams.size()-1);
+
+        //ESTABLISH HOW MANY MATCHES A WEE THERE WILL BE
+        // Set matches per week = number of teams / 2
+        int matchesPerWeek = (teams.size()/2);
+
+        //SET UP AN EMPTY FIXTURE LIST
+        //List<<List> Fixtures> = new List<List<Fixture>>
+         List<List<Fixture>> fixturesList  = new List<List<Fixture>>;
+
+
+         //GENERATE A LIST OF FIXTURES THAT STILL NEED TO BE REFACTORED TO MEET OUR NEEDS(WHOLE BLOCK)
+
+        //GENERATES THE NUMBER OF ROUNDS OF FIXTURES
+         //Initiate for loop stating at week = 0, week < number of weeks, week++
+        for (int week = 0; week < numberOfWeeks; week++){
+            List<Fixture> roundOfFixtures = new ArrayList<Fixture>();
+
+            for( int match = 0 ; match < matchesPerWeek; match++){
+             int home = (week+match) % (numberofTeams-1);
+             int away = ((numberofTeams -1) - (match + week)) % (numberofTeams -1);
+             if (match == 0){
+                 away = numberofTeams - 1;
+             }
+             Fixture fixture = new Fixture((week +1),league);
+             fixture.addTeamsToFixture(this.teams.get(home), this.teams.get(away));
+            }
+        }
+
+        //MAKES AN EMPTY LIST OF FIXTURES THAT WE CAN ADD FIXTURES TO
+        // Set list of fixtures called roundofFixtures = List<Fixture>
+
+        //GENERATES THE CORRECT AMOUNT OF FIXTURES PER ROUND
+        // Iiterrate nested for loop set match to 0 then while match is less than matches per week increment match by 1
+
+        //LINES BELOW
+        //SETS INTERGER OF HOME TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
+        //Set integer home equal to the remainder (week + match) devided by (number of teams -1 ) this is where we set
+
+        //SETS INTERGER OF AWAY TEAM TO USE AS AN INDEX FOR THE TEAMS ARRAY
+        // Set integer away equal to the remainder of (number of teams - 1 - match + week) devided by number of teams -1
+
+       //
+        // If match is equal 0 set away is equal number of teams - 1
+
+        //  Create new fixture with home and away teams retrieved from the array of teams. Using the integers home and away.
+
+        //Add the fixture above to the main list of round of fixtures
+
 
     }
 
