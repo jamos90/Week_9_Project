@@ -195,7 +195,17 @@ public class League {
 
         //Add the fixture above to the main list of round of fixtures
 
+        //WE KNOW HAVE A LIST OF FIXTURES AND WE WANT TO MAKE SURE THAT THE SAME TEAM ISN'T PLAYING HOME TWO OR THREE WEEKS IN A ROW.
+        //Make a new list of list of fixtures(as above)
+        //Creating two integer variables, even and odd. Even will be 0 and odd will be the no of teams devided by 2.
+        //Start a for loop to get weeks for the list of lists with the aim of evening out a team playing away all the time. i Starts at 0, while i is less than our list of list of fixtures , i is incremented by          one.
+        //If i is divisible by 2 with no remainder (ie even), then get the list of weekly fixtures positioned at the even integer index from the fixtureList List of Lists
+        //ELse i is not divisible by 2 with no remainder (ie odd), then get the list of weekly fixtures positioned at the odd integer index from the fixtureList List of Lists
+        //OutSide of the loop. Set fixtures list to filteredFixtures then return fixturesList.
+
        return fixturesList;
+
+
     }
 
     public void getFixtureFromListOfListOfFixturesAndAddToFixtureList(League league) {
