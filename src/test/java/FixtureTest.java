@@ -37,7 +37,6 @@ public class FixtureTest {
         seventhfootballTeam = new FootballTeam("Aberdeen City", manager, league, "no", "Edinburgh");
         eighthfootballTeam = new FootballTeam("FortWilliam City", manager, league, "no", "Edinburgh");
         ninethfootballTeam = new FootballTeam("Inverness City", manager, league, "no", "Edinburgh");
-        tenthfootballTeam = new FootballTeam("Sterling City", manager, league, "no", "Edinburgh");
         fixture = new Fixture(1,  league);
         matchReport1 = new MatchReport(fixture, "Wanderers slaughtered in humiliating rout!", "Same", "logo");
     }
