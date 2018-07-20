@@ -130,6 +130,19 @@ public class League {
         else return  false;
     }
 
+    public List<List<Fixture>> fixtureGenerator(Boolean reverseFixtures, List<Team> teams){
+        //Set integer variable called number of teams = teams.size()
+        int numberofTeams = teams.size();
+        //ghost = false
+        Boolean ghost = false;
+        // if number of teams is odd incrment no of teams by 1 and set ghost to true
+        if (teams.size() % 2 != 0){
+            ghost = true;
+        }
+        //
+
+    }
+
 }
 
 
