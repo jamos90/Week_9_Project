@@ -17,7 +17,12 @@ public class MainController {
 
         Seeds.seedData();
         ManagerController managerController = new ManagerController();
+
         FootballTeamController footballTeamController = new FootballTeamController();
+
+        MatchReportController matchReportController = new MatchReportController();
+
+
 
         get("/all", (req,res)-> {
             Map<String, Object> model = new HashMap<>();
@@ -26,8 +31,6 @@ public class MainController {
             return new ModelAndView(model, "templates/layout.vtl");
 
     }, new VelocityTemplateEngine());
-
-
 
     }
 }
