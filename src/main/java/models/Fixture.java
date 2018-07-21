@@ -23,7 +23,7 @@ public class Fixture {
 
     public Fixture(){}
 
-    public Fixture(int week, League league){
+    public Fixture(int week, int match, League league){
         this.teams = new ArrayList<Team>();
         this.homeGoals = "";
         this.awayGoals = "";
