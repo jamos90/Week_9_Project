@@ -16,7 +16,7 @@ public class LeagueTest {
     @Before
     public void setUp(){
         league = new League("Edinburgh Schools", LeagueType.SCHOOLS, "Midlothian");
-        fixture = new Fixture(1, league);
+        fixture = new Fixture(1, 2, league);
         manager = new Manager("David", "077507545", "haggishunters@football.com");
         team1 = new FootballTeam("Edinburgh Haggis Hunters", manager, league, "logo.jpg","Edinburgh");
         team2 = new FootballTeam("Dundee Dodgers", manager, league, "logo.jpg","Dundee");

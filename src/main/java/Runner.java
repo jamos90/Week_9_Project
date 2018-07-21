@@ -75,7 +75,7 @@ public class Runner {
             DBHelper.save(fixture);
         }
 
-        Fixture f = new Fixture(4,league);
+        Fixture f = new Fixture(4, 2, league);
         f.addAwayTeamToFixture(awayfootballTeam);
         f.addHomeTeamToFixture(fourthfootballTeam);
         DBHelper.save(f);

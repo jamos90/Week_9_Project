@@ -16,17 +16,19 @@ public class Fixture {
     private String homeGoals;
     private String awayGoals;
     private int week;
+    private int match;
     private String venue;
     private MatchReport matchReport;
     private League league;
 
     public Fixture(){}
 
-    public Fixture(int week, League league){
+    public Fixture(int week, int match, League league){
         this.teams = new ArrayList<Team>();
         this.homeGoals = "";
         this.awayGoals = "";
         this.week = week;
+        this.match = match;
         this.league = league;
         this.venue = venue;
     }
@@ -82,6 +84,15 @@ public class Fixture {
 
     public void setWeek(int week) {
         this.week = week;
+    }
+
+    @Column(name = "match")
+    public int getMatch() {
+        return match;
+    }
+
+    public void setMatch(int match) {
+        this.match = match;
     }
 
     @Column(name = "venue")
