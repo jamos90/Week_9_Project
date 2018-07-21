@@ -17,7 +17,7 @@ public class MainController {
 
         Seeds.seedData();
         ManagerController managerController = new ManagerController();
-//        FootballTeamController footballTeamController = new FootballTeamController();
+        FootballTeamController footballTeamController = new FootballTeamController();
 
         get("/all", (req,res)-> {
             Map<String, Object> model = new HashMap<>();

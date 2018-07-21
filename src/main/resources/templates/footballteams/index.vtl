@@ -1,0 +1,29 @@
+<p class="pageHeader">All Managers</p>
+
+
+<div>
+    <a href="/footballteam/new" class="button center">New Team</a>
+</div>
+<br>
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+
+        #foreach($team in $teamList)
+        <tr>
+
+            <td>$team.getName()</td>
+
+            <td>
+                <form action="/managers/$manager.getId()/delete" method="post">
+                    <input type="submit" value="Delete Manager">
+                </form>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>

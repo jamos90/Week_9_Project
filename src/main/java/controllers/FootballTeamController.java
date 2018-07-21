@@ -32,7 +32,7 @@ public class FootballTeamController {
             model.put("template", "templates/footballteams/index.vtl");
             List<FootballTeam> footballTeamList = DBHelper.getAll(FootballTeam.class);
             model.put("teamList", footballTeamList);
-            return new ModelAndView(model, "templates/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
         //new team
