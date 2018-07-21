@@ -17,8 +17,8 @@ public class MatchReportTest{
 
     @Before
     public void setUp(){
-        fixture1 = new Fixture(1, league);
-        fixture2 = new Fixture(1,league);
+        fixture1 = new Fixture(1, 2,  league);
+        fixture2 = new Fixture(1,2 ,league);
         league = new League("Edinburgh Schools", LeagueType.SCHOOLS, "Midlothian");
         matchReport = new MatchReport(fixture1,"one", "two", "pic.jpg");
     }

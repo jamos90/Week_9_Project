@@ -186,7 +186,7 @@ public class League {
                     }
 
                     //  Create new fixture with home and away teams retrieved from the array of teams. Using the integers home and away.
-                    Fixture fixture = new Fixture((week + 1), this);
+                    Fixture fixture = new Fixture((week + 1), (match + 1), this);
                     fixture.addTeamsToFixture(this.teams.get(home), this.teams.get(away));
 
                     //Add the fixture above to the main list of round of fixtures
@@ -244,7 +244,7 @@ public class League {
             for(List<Fixture> weekOfFixtures: fixturesList){
                 List<Fixture> reversedWeek = new ArrayList<Fixture>();
                 for(Fixture fixture: weekOfFixtures){
-                    Fixture tempfix = new Fixture((fixture.getWeek() + numberofTeams - 1), this);
+                    Fixture tempfix = new Fixture((fixture.getWeek() + numberofTeams - 1), (fixture.getMatch() + 1), this);
                     tempfix.addTeamsToFixture(fixture.returnAwayTeam(), fixture.returnHomeTeam());
                     reversedWeek.add(tempfix);
                 }
