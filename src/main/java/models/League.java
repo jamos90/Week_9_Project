@@ -150,7 +150,7 @@ public class League {
             int numberOfWeeks = (teams.size() - 1);
 
 
-            //ESTABLISH HOW MANY MATCHES A WEE THERE WILL BE
+            //ESTABLISH HOW MANY MATCHES A WEEK THERE WILL BE
             // Set matches per week = number of teams / 2
             int matchesPerWeek = (teams.size() / 2);
 

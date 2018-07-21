@@ -78,7 +78,7 @@ public class FootballTeamController {
 
             String location = req.queryParams("location");
 
-            FootballTeam newFootballTeam = new FootballTeam(name,manager, league,teamlogo,location);
+            FootballTeam newFootballTeam = new FootballTeam(name,manager,league,teamlogo,location);
 
             DBHelper.save(newFootballTeam);
 
@@ -91,19 +91,16 @@ public class FootballTeamController {
 
 
         //view for a team
-        get("/footballteams:id", (req,res)->{
+        get("/footballteams/:id", (req,res)->{
             Map<String, Object> model = new HashMap<>();
             int footballTeamId = Integer.parseInt(req.params(":id"));
             FootballTeam footballTeam = DBHelper.find(footballTeamId, FootballTeam.class);
-
-            int leagueId = Integer.parseInt(req.queryParams("league"));
+//            int leagueId = Integer.parseInt(req.queryParams("league"));
             //find league by id
-            League league = DBHelper.find(leagueId, League.class);
-
-            int managerId = Integer.parseInt(req.queryParams("manager"));
-
-            Manager manager = DBHelper.find(managerId, Manager.class);
-
+             List<League> league = DBHelper.getAll(League.class);
+//            int managerId = Integer.parseInt(req.queryParams("manager"));
+//            Manager manager = DBHelper.find(managerId, Manager.class);
+            List<Manager> manager = DBHelper.getAll(Manager.class);git
             model.put("leauge", league);
             model.put("manage", manager);
             model.put("footballTeam", footballTeam);
