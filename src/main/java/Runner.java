@@ -86,6 +86,8 @@ public class Runner {
         DBHelper.update(f);
 
 
+
+
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
 
