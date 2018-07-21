@@ -31,6 +31,12 @@ public class MatchReportController {
             List<MatchReport> matchreports = DBHelper.getAll(MatchReport.class);
             model.put("matchreports", matchreports);
 
+            List<MatchReport> matchreports = DBHelper.getAll(MatchReport.class);
+            model.put("matchreports", matchreports);
+
+            List<MatchReport> matchreports = DBHelper.getAll(MatchReport.class);
+            model.put("matchreports", matchreports);
+
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
     }
