@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import db.DBHelper;
 import db.DBLeague;
 import models.FootballTeam;
@@ -85,6 +86,22 @@ public class FootballTeamController {
             model.put("template", "templates/footballteams/view.vtl");
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+        get("/footballteams/:id/edit",(req,res)->{
+            Map<String,Object> model = new HashMap<>();
+            int footballTeamId = Integer.parseInt(req.params("league"));
+            FootballTeam selectedFootballTeam = DBHelper.find(footballTeamId,FootballTeam.class);
+            List<League> leagues = DBHelper.getAll(League.class);
+            List<Manager> managers = DBHelper.getAll(Manager.class);
+            model.put("footballTeam", selectedFootballTeam);
+            model.put("leagues", leagues);
+            model.put("managers", managers);
+            model.put("template", "templates/footballteams/edit.vtl");
+            return new ModelAndView(model, "templates/index.vtl");
+        });
+
+
 
 
 
