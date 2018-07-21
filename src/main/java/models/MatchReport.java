@@ -73,7 +73,15 @@ public class MatchReport {
         this.picture = picture;
     }
 
-    public String
+    public int returnWeekForMatchReport(){
+        return this.getFixture().getWeek();
+    }
 
+    public String returnHomeTeamName(){
+        return this.getFixture().returnHomeTeam().getName();
+    }
 
+    public String returnAwayTeamName(){
+        return this.getFixture().returnAwayTeam().getName();
+    }
 }
