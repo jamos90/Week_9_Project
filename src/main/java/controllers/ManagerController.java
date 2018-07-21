@@ -30,27 +30,14 @@ public class ManagerController {
         }, velocityTemplateEngine);
 
 
-
         //READ
-
 
 
         //UPDATE
 
 
-
         //DELETE
 
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

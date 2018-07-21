@@ -7,11 +7,13 @@ import models.League;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class FootballTeamController {
 
@@ -38,6 +40,19 @@ public class FootballTeamController {
             model.put("leagues", leagues);
             model.put("templates", "templates/footballteams/create.vtl");
             return new ModelAndView(model, "templates/index.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/footballteams", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            //getting league id
+            int leagueId = Integer.parseInt(req.queryParams("league"));
+            //find league by id
+            League league = DBHelper.find(leagueId, League.class);
+            //Set the other class requirements
+            String name = req.queryParams("name");
+            return null;
+
+
         }, new VelocityTemplateEngine());
 
 
