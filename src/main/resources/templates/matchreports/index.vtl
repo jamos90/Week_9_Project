@@ -8,13 +8,13 @@
 <div class="row">
     <div class="col">
         <table class="center">
+            #foreach($matchreport in $matchreports)
         <tr>
-            <th>Week $matchreport.getFixture().getWeek() - $matchreport.getFixture().returnHomeTeam() vs $matchreport.getFixture().returnAwayTeam(): $matchreport.getHeadline()</th>
+            <th></th>
         </tr>
 
-        #foreach($matchreport in $matchreports)
         <tr>
-            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getName()</a></td>
+            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getHeadline()</a></td>
             <td>$matchreport.getBlurb()</td>
             <td>
                 <form action="/matchreports/$matchreport.getId()/delete" method="post">

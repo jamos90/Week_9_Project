@@ -17,6 +17,7 @@ public class MainController {
 
         Seeds.seedData();
         ManagerController managerController = new ManagerController();
+        MatchReportController matchReportController = new MatchReportController();
 //        FootballTeamController footballTeamController = new FootballTeamController();
 
         get("/all", (req,res)-> {
@@ -26,8 +27,6 @@ public class MainController {
             return new ModelAndView(model, "templates/layout.vtl");
 
     }, new VelocityTemplateEngine());
-
-
 
     }
 }

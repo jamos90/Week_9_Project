@@ -72,4 +72,8 @@ public class MatchReport {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public String
+
+
 }
