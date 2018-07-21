@@ -31,7 +31,8 @@ public class FootballTeamController {
             Map<String, Object> model = new HashMap<>();
 
             model.put("template", "templates/footballteams/index.vtl");
-
+            List<League> leages = DBHelper.getAll(League.class);
+            model.put("leagues", leages);
             List<FootballTeam> footballTeamList = DBHelper.getAll(FootballTeam.class);
             model.put("teamList", footballTeamList);
 
