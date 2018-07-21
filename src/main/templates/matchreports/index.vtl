@@ -1,0 +1,31 @@
+<p class="pageHeader">Match report archives</p>
+
+
+<div>
+    <a href="/matchreports/new" class="button center">Log new match report</a>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <table class="center">
+        <tr>
+            <th>Week $matchreport.getFixture().getWeek() - $matchreport.getFixture().returnHomeTeam() vs $matchreport.getFixture().returnAwayTeam(): $matchreport.getHeadline()</th>
+        </tr>
+
+        #foreach($matchreport in $matchreports)
+        <tr>
+            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getName()</a></td>
+            <td>$matchreport.getBlurb()</td>
+            <td>
+                <form action="/matchreports/$matchreport.getId()/delete" method="post">
+                    <input type="submit" value="Delete report">
+                </form>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <img src= $matchreport.getPicture() >
+</div>
+#end
+</div>
+
