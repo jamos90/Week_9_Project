@@ -34,6 +34,7 @@ public class FootballTeamController {
             return new ModelAndView(model, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
+        //new team
 
         get("/footballteams/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -43,6 +44,8 @@ public class FootballTeamController {
             return new ModelAndView(model, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
+
+        //post new team
         post("/footballteams", (req,res)->{
             Map<String, Object> model = new HashMap<>();
             //getting league id
@@ -60,6 +63,30 @@ public class FootballTeamController {
             res.redirect("/footballteams");
             return null;
         }, new VelocityTemplateEngine());
+
+
+        //view for a team
+        get("/footballteams:id", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            int footballTeamId = Integer.parseInt(req.params(":id"));
+            FootballTeam footballTeam = DBHelper.find(footballTeamId, FootballTeam.class);
+
+            int leagueId = Integer.parseInt(req.queryParams("league"));
+            //find league by id
+            League league = DBHelper.find(leagueId, League.class);
+
+            int managerId = Integer.parseInt(req.queryParams("manager"));
+
+            Manager manager = DBHelper.find(managerId, Manager.class);
+
+            model.put("leauge", league);
+            model.put("manage", manager);
+            model.put("footballTeam", footballTeam);
+            model.put("template", "templates/footballteams/view.vtl");
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
 
 
     }
