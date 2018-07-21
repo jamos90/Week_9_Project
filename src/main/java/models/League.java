@@ -244,7 +244,7 @@ public class League {
             for(List<Fixture> weekOfFixtures: fixturesList){
                 List<Fixture> reversedWeek = new ArrayList<Fixture>();
                 for(Fixture fixture: weekOfFixtures){
-                    Fixture tempfix = new Fixture((fixture.getWeek() + numberofTeams - 1), (fixture.getMatch() + 1), this);
+                    Fixture tempfix = new Fixture((fixture.getWeek() + numberofTeams - 1), (fixture.getMatch()), this);
                     tempfix.addTeamsToFixture(fixture.returnAwayTeam(), fixture.returnHomeTeam());
                     reversedWeek.add(tempfix);
                 }
