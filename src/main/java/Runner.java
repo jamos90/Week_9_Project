@@ -82,6 +82,8 @@ public class Runner {
 
         MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
         DBHelper.save(report1);
+        f.setMatchReport(report1);
+        DBHelper.update(f);
 
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
