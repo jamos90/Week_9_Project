@@ -10,7 +10,7 @@
         <table class="center">
             #foreach($matchreport in $matchreports)
         <tr>
-            <th> : $matchreport.returnHomeTeamName() vs $matchreport.returnAwayTeamName() </th>
+            <th>Week $matchreport.getFixture().getWeek(), match $matchreport.getFixture().getMatch() : $matchreport.returnHomeTeamName() vs $matchreport.returnAwayTeamName() </th>
         </tr>
 
         <tr>

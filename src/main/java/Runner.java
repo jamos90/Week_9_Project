@@ -85,7 +85,7 @@ public class Runner {
         f.setMatchReport(report1);
         DBHelper.update(f);
 
-
+        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
 
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
