@@ -21,6 +21,9 @@ public class Runner {
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
+        Manager manager1 = new Manager("Stwart Amos", "04545353", "sa@gmail.com");
+        DBHelper.save(manager1);
+
         League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
         DBHelper.save(league);
 
@@ -86,10 +89,12 @@ public class Runner {
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
+       List<Manager> managers = DBHelper.getAll(Manager.class);
 
+       List<Team> teamList = DBHelper.getAll(Team.class);
 
 //        DBLeague.getFullSeasonFixtures(2, league);
 //        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
-
+//        Manager manager = DBHelper.find(81,Manager.class);
     }
 }
