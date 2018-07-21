@@ -100,7 +100,7 @@ public class FootballTeamController {
              List<League> league = DBHelper.getAll(League.class);
 //            int managerId = Integer.parseInt(req.queryParams("manager"));
 //            Manager manager = DBHelper.find(managerId, Manager.class);
-            List<Manager> manager = DBHelper.getAll(Manager.class);git
+            List<Manager> manager = DBHelper.getAll(Manager.class);
             model.put("leauge", league);
             model.put("manage", manager);
             model.put("footballTeam", footballTeam);
