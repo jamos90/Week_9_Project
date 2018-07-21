@@ -11,6 +11,12 @@ public class Runner {
 
     public static void main(String[] args) {
 
+        DBHelper.deleteAll(Manager.class);
+        DBHelper.deleteAll(Team.class);
+        DBHelper.deleteAll(MatchReport.class);
+        DBHelper.deleteAll(FootballTeam.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(Fixture.class);
 
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
@@ -62,6 +68,8 @@ public class Runner {
 
         league.generateFixtures(true);
 
+
+
         DBHelper.update(league);
         for (Fixture fixture : league.getFixtures()) {
             DBHelper.save(fixture);
@@ -76,6 +84,8 @@ public class Runner {
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
 
+//        DBLeague.getFullSeasonFixtures(2, league);
+//        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
 
 
     }
