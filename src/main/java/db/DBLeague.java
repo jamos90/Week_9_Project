@@ -30,6 +30,14 @@ public class DBLeague {
             }
             return results;
         }
+
+//        public static List<Fixture> getFullSeasonFixtures(int numberOfHeadToHeads, League league){
+//        for (int i = 1; i <= numberOfHeadToHeads; i++){
+//            league.generateFixtures(true);
+//        }
+//        DBHelper.update(league);
+//        return league.getFixtures();
+//        }
     }
 
 
