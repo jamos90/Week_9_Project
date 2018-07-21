@@ -4,6 +4,7 @@ import db.DBHelper;
 import db.DBLeague;
 import models.FootballTeam;
 import models.League;
+import models.Manager;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -49,10 +50,15 @@ public class FootballTeamController {
             //find league by id
             League league = DBHelper.find(leagueId, League.class);
             //Set the other class requirements
+            int managerId = Integer.parseInt(req.queryParams("manager"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
             String name = req.queryParams("name");
+            String teamlogo = req.queryParams("team_logo");
+            String location = req.queryParams("location");
+            FootballTeam newFootballTeam = new FootballTeam(name,manager, league,teamlogo,location);
+            DBHelper.save(newFootballTeam);
+            res.redirect("/footballteams");
             return null;
-
-
         }, new VelocityTemplateEngine());
 
 
