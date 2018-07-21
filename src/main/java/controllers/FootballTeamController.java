@@ -29,9 +29,12 @@ public class FootballTeamController {
     private  void  setUpEndPoints() {
         get("/footballteams", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+
             model.put("template", "templates/footballteams/index.vtl");
+
             List<FootballTeam> footballTeamList = DBHelper.getAll(FootballTeam.class);
             model.put("teamList", footballTeamList);
+
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
