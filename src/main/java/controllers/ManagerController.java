@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class ManagerController {
 
@@ -31,6 +32,24 @@ public class ManagerController {
 
 
 
+        post("/managers", (req, res) -> {
+            String name = req.queryParams("name");
+
+            String email = req.queryParams("email");
+
+            String phone = req.queryParams("phone");
+
+            int managerId = Integer.parseInt(req.queryParams("manager"));
+            Manager manager = DBHelper.find(managerId, Manager.class);
+
+            Manager newManager = new Manager(name, phone, email);
+            DBHelper.save(newManager);
+
+            res.redirect("/managers");
+            return null;
+        }, velocityTemplateEngine);
+
+
         //READ
 
 
@@ -38,17 +57,10 @@ public class ManagerController {
         //UPDATE
 
 
-
         //DELETE
 
 
-
-
-
-
-
-
-
+    }
 
 
 
