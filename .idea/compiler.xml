@@ -10,5 +10,8 @@
         <module name="SportsProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SportsProject" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
