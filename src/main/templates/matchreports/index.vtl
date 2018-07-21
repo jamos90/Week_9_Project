@@ -1,0 +1,26 @@
+<p class="pageHeader">All match reports</p>
+
+
+<div>
+    <a href="/matchreports/new" class="button center">Log new match report</a>
+</div>
+<br>
+<div class="container">
+    <table>
+        <tr>
+            <th>Week $matchreport.getFixture().getWeek()</th>
+        </tr>
+
+        #foreach($matchreport in $matchreports)
+        <tr>
+            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getName()</a></td>
+            <td>$matchreport.getPhone()</td>
+            <td>
+                <form action="/matchreports/$matchreport.getId()/delete" method="post">
+                    <input type="submit" value="Delete Manager">
+                </form>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>
