@@ -140,7 +140,7 @@ public class League {
             //ghost = false
             Boolean ghost = false;
 
-            // if number of teams is odd increment no of teams by 1 and set ghost to true
+            // if number of teams is odd increment no of teams by 1 and set ghost to true (imaginary team to preserve method logic)
             if (teams.size() % 2 != 0) {
                 ghost = true;
                 numberofTeams += 1;
