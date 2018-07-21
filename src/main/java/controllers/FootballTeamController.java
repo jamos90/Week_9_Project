@@ -131,6 +131,27 @@ public class FootballTeamController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        post("/footballteams/:id/update", (req,res) -> {
+                    int leagueId = Integer.parseInt(req.queryParams("league"));
+                    League league = DBHelper.find(leagueId, League.class);
+
+                    int managerId = Integer.parseInt(req.queryParams("manager"));
+
+                    Manager manager = DBHelper.find(managerId, Manager.class);
+                    String name = req.queryParams("name");
+
+                    String logo = req.queryParams("logo");
+
+                    String location = req.queryParams("location");
+
+                    FootballTeam updatedFootballTeam = new FootballTeam(name, manager, league, logo, location);
+                    int teamId = Integer.parseInt(req.params(":id"));
+                    updatedFootballTeam.setId(teamId);
+                    DBHelper.update(updatedFootballTeam);
+                    res.redirect("/footballteams");
+            return null;
+        }, new VelocityTemplateEngine());
+
         post("/footballteams/:id/delete", (req,res)->{
             int id = Integer.parseInt(req.params(":id"));
             FootballTeam teamToDelete = DBHelper.find(id, FootballTeam.class);
