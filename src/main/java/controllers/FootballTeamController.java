@@ -36,6 +36,9 @@ public class FootballTeamController {
             List<FootballTeam> footballTeamList = DBHelper.getAll(FootballTeam.class);
             model.put("teamList", footballTeamList);
 
+            List<Manager> managers = DBHelper.getAll(Manager.class);
+            model.put("manager", managers);
+
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
@@ -94,16 +97,22 @@ public class FootballTeamController {
 
         get("/footballteams/:id/edit",(req,res)->{
             Map<String,Object> model = new HashMap<>();
-            int footballTeamId = Integer.parseInt(req.params("league"));
+
+            int footballTeamId = Integer.parseInt(req.params(":id"));
+
             FootballTeam selectedFootballTeam = DBHelper.find(footballTeamId,FootballTeam.class);
+            model.put("selectedTeam", selectedFootballTeam);
+
             List<League> leagues = DBHelper.getAll(League.class);
             List<Manager> managers = DBHelper.getAll(Manager.class);
+
             model.put("footballTeam", selectedFootballTeam);
             model.put("leagues", leagues);
             model.put("managers", managers);
             model.put("template", "templates/footballteams/edit.vtl");
-            return new ModelAndView(model, "templates/index.vtl");
-        });
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
 
 
