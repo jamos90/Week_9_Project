@@ -77,8 +77,11 @@ public class Runner {
 
         Fixture f = new Fixture(4,league);
         f.addAwayTeamToFixture(awayfootballTeam);
-        f.addAwayTeamToFixture(fourthfootballTeam);
+        f.addHomeTeamToFixture(fourthfootballTeam);
         DBHelper.save(f);
+
+        MatchReport report1 = new MatchReport(f, "Dagenham pull of shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
+
 
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
