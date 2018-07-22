@@ -25,6 +25,8 @@ public class MainController {
 
         LeagueController leagueController = new LeagueController();
 
+        FixtureController fixtureController = new FixtureController();
+
 
 
         get("/all", (req,res)-> {

@@ -44,8 +44,9 @@ public class Fixture {
         this.id = id;
     }
 
+
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "teams_fixtures")
     public List<Team> getTeams() {
         return teams;
