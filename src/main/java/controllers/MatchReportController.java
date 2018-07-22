@@ -2,10 +2,7 @@ package controllers;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import db.DBHelper;
-import models.Fixture;
-import models.FootballTeam;
-import models.Team;
-import models.MatchReport;
+import models.*;
 import models.MatchReport;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -40,6 +37,33 @@ public class MatchReportController {
             model.put("footballteams", footballTeams);
 
             return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        //UPDATE
+        get("/matchreports/:id/edit", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            List<MatchReport> matchreports = DBHelper.getAll(MatchReport.class);
+
+            int matchreportId = Integer.parseInt(req.params(":id"));
+            MatchReport matchreport = DBHelper.find(matchreportId, MatchReport.class);
+
+            model.put("matchreport", matchreport);
+            model.put("template", "templates/matchreports/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, velocityTemplateEngine);
+
+        post("/matchreports/:id", (req, res) -> {
+            String headline = (req.queryParams("headline"));
+            String blurb = (req.queryParams("blurb"));
+
+            int matchreportId = Integer.parseInt(req.params(":id"));
+            MatchReport matchreport = DBHelper.find(matchreportId, MatchReport.class);
+            matchreport.setHeadline(headline);
+            matchreport.setBlurb(blurb);
+            DBHelper.update(matchreport);
+
+            res.redirect("/matchreports");
+            return null;
         }, velocityTemplateEngine);
     }
 }
