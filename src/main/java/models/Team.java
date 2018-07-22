@@ -125,4 +125,8 @@ public abstract class Team {
     public void setFixtures(List<Fixture> fixtures) {
         this.fixtures = fixtures;
     }
+
+    public void addPointsToTeam(int points){
+     this.points += points;
+    }
 }

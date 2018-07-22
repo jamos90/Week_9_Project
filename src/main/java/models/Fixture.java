@@ -148,4 +148,18 @@ public class Fixture {
         return this.teams.get(1);
     }
 
+    public void inputGoalsToGenerateResult(int homeGoals, int awayGoals){
+        if (homeGoals > awayGoals){
+            teams.get(0).addPointsToTeam(3);}
+
+            else if (awayGoals > homeGoals){
+            teams.get(1).addPointsToTeam(3);}
+
+            else {
+            teams.get(0).addPointsToTeam(1);
+            teams.get(0).addPointsToTeam(1);
+        }
+
+    }
+
 }
