@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertSame;
 
 public class FixtureTest {
@@ -112,5 +113,12 @@ public class FixtureTest {
 //        league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
         System.out.println(league.getFixtures());
     }
+//
+//    @Test
+//    public void CanAdd3PointsForWin(){
+//        fixture.inputGoalsToGenerateResult(1, 0);
+//        assertEquals();
+
+//    }
 
 }
