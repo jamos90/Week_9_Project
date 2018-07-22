@@ -60,7 +60,7 @@ public class League {
         return this.leagueType.getLeagueType();
     }
 
-    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
     public List<Team> getTeams() {
         return teams;
     }
