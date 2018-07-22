@@ -11,6 +11,8 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
+            <th>Team Name</th>
+
         </tr>
 
         #foreach($manager in $managers)
@@ -18,6 +20,7 @@
             <td><a href="/managers/$manager.getId()">$manager.getName()</a></td>
             <td>$manager.getPhoneNo()</td>
             <td>$manager.getEmail()</td>
+            <td>$manager.getTeam().getName()</td>
             <td>
                 </form>
             </td>
