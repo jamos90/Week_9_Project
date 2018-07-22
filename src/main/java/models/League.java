@@ -63,7 +63,7 @@ public class League {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
     public List<Team> getTeams() {
         return teams;
     }
