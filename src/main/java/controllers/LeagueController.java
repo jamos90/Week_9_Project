@@ -2,10 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import db.DBLeague;
-import models.Fixture;
-import models.League;
-import models.LeagueType;
-import models.Team;
+import models.*;
 import org.apache.velocity.runtime.log.LogSystem;
 import org.junit.Test;
 import spark.ModelAndView;
@@ -53,9 +50,6 @@ public class LeagueController {
 
 
 
-
-
-
             post("/leagues", (req,res) ->{
                 String name = req.queryParams("name");
                 LeagueType leagueType =  LeagueType.valueOf(req.queryParams("league_type"));
@@ -98,6 +92,9 @@ public class LeagueController {
             List<Team> allTeams = DBHelper.getAll(Team.class);
             model.put("allTeams", allTeams);
 
+            EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
+            model.put("leagueTypes", leagueTypes);
+
 
             List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToEdit);
             model.put("leaguesTeams", teams);
@@ -110,9 +107,27 @@ public class LeagueController {
 
         }, new VelocityTemplateEngine());
 
-//        post("/leagues/:id/update", (req,res) ->{
-//
-//        }, new VelocityTemplateEngine());
+        post("/leagues/:id/update", (req,res) ->{
+
+            EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
+
+            String name = req.queryParams("name");
+            LeagueType leagueType =  LeagueType.valueOf("league_type");
+            String region = req.queryParams("region");
+
+            int leagueId = Integer.parseInt(req.params(":id"));
+            League league = DBHelper.find(leagueId, League.class);
+
+            league.setName(name);
+            league.getLeagueType();
+            league.setLeagueType(leagueType);
+            league.setRegion(region);
+            DBHelper.update(league);
+
+            res.redirect("/leagues");
+            return null;
+
+        }, new VelocityTemplateEngine());
 
         post("/leagues/:id/addTeams", (req,res) ->{
             int leagueId = Integer.parseInt(req.params(":id"));
