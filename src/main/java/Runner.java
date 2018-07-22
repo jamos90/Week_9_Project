@@ -1,3 +1,4 @@
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import db.DBFixture;
 import db.DBHelper;
 import db.DBLeague;
@@ -13,10 +14,12 @@ public class Runner {
 
         DBHelper.deleteAll(Manager.class);
         DBHelper.deleteAll(Team.class);
-        DBHelper.deleteAll(MatchReport.class);
         DBHelper.deleteAll(FootballTeam.class);
+        DBHelper.deleteAll(MatchReport.class);
         DBHelper.deleteAll(League.class);
         DBHelper.deleteAll(Fixture.class);
+        DBHelper.deleteAll(League.class);
+
 
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
@@ -70,7 +73,6 @@ public class Runner {
 
 
 
-        DBHelper.update(league);
         for (Fixture fixture : league.getFixtures()) {
             DBHelper.save(fixture);
         }
@@ -83,6 +85,11 @@ public class Runner {
         MatchReport report1 = new MatchReport(f, "Dagenham pull of shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
         DBHelper.save(report1);
 
+        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
+        List<Manager> allManagers = DBHelper.getAll(Manager.class);
+        List<MatchReport> allReports = DBHelper.getAll(MatchReport.class);
+        List<FootballTeam> allFootballTeams = DBHelper.getAll(FootballTeam.class);
+        List<League> allLeagues = DBHelper.getAll(League.class);
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
