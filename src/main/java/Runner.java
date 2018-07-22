@@ -16,11 +16,19 @@ public class Runner {
         DBHelper.deleteAll(Team.class);
         DBHelper.deleteAll(FootballTeam.class);
         DBHelper.deleteAll(MatchReport.class);
-        DBHelper.deleteAll(League.class);
-        DBHelper.deleteAll(Fixture.class);
-        DBHelper.deleteAll(League.class);
+
         DBHelper.deleteAll(Fixture.class);
         DBHelper.deleteAll(Manager.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(League.class);
 
 
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
@@ -99,6 +107,7 @@ public class Runner {
 
 
         league.generateFixtures(true);
+        DBHelper.update(league);
 
 
 
