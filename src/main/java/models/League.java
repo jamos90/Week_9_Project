@@ -1,6 +1,7 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.FetchProfile;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -63,7 +64,8 @@ public class League {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
+
     public List<Team> getTeams() {
         return teams;
     }

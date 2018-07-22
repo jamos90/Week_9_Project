@@ -80,9 +80,15 @@ public class FootballTeamController {
 
             FootballTeam newFootballTeam = new FootballTeam(name,manager,league,teamlogo,location);
 
-            DBHelper.save(newFootballTeam);
+            DBHelper.find(leagueId,League.class);
 
             league.addToTeams(newFootballTeam);
+
+            DBHelper.save(newFootballTeam);
+
+            DBHelper.update(league)
+            ;
+
 
             res.redirect("/footballteams");
 
@@ -135,15 +141,23 @@ public class FootballTeamController {
                     int managerId = Integer.parseInt(req.queryParams("manager"));
 
                     Manager manager = DBHelper.find(managerId, Manager.class);
+
                     String name = req.queryParams("name");
 
                     String logo = req.queryParams("logo");
 
+                   int points = Integer.parseInt(req.queryParams("points"));
+
                     String location = req.queryParams("location");
 
                     FootballTeam updatedFootballTeam = new FootballTeam(name, manager, league, logo, location);
+
                     int teamId = Integer.parseInt(req.params(":id"));
+
                     updatedFootballTeam.setId(teamId);
+
+                    updatedFootballTeam.setPoints(points);
+
                     DBHelper.update(updatedFootballTeam);
                     res.redirect("/footballteams");
             return null;
