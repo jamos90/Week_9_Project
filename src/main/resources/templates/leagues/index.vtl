@@ -1,0 +1,29 @@
+<h1> Leagues page</h1>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>League Name</th>
+            <th>League Region</th>
+        </tr>
+
+        #foreach($league in $leagues)
+        <tr>
+
+            <td>$league.getName()</td>
+            <td>$league.getRegion()</td>
+
+            <td>
+                <form action="/leagues/$league.getId()/delete" method="post">
+                    <input type="submit" value="Delete Team">
+                </form>
+
+                <a href = "league/$league.getId()"> Further information</a>
+
+                <a href="league/$league.getId()/edit">Edit this team</a>
+                <br>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>
