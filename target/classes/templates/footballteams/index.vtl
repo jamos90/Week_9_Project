@@ -1,4 +1,4 @@
-<p class="pageHeader">All Managers</p>
+<p class="pageHeader">All Football Teams</p>
 
 
 <div>
@@ -11,6 +11,8 @@
             <th>Team Name</th>
             <th>League</th>
             <th>League Region</th>
+            <th>Points</th>
+
         </tr>
 
         #foreach($team in $teamList)
@@ -19,6 +21,11 @@
             <td>$team.getName()</td>
             <td>$team.getLeague().getName()</td>
             <td>$team.getLeague().getRegion()</td>
+            <td>$team.getPoints()</td>
+
+
+
+
 
             <td>
                 <form action="/footballteams/$team.getId()/delete" method="post">

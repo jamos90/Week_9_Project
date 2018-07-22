@@ -83,6 +83,13 @@ public class FixtureTest {
     }
 
     @Test
+    public void canGetTeamNames(){
+        fixture.addTeamsToFixture(thirdFootballTeam,fithfootballTeam);
+        assertEquals("Burton Albion Glasgow City", fixture.teamNames());
+
+    }
+
+    @Test
     public void canSetMatchReport(){
         fixture.setMatchReport(matchReport1);
         assertEquals(matchReport1, fixture.getMatchReport());
