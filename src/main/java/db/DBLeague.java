@@ -2,6 +2,7 @@ package db;
 
 import models.Fixture;
 import models.League;
+import models.LeagueType;
 import models.Team;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -48,6 +49,8 @@ public class DBLeague {
                 }
                 return teams;
         }
+
+
 
 //        public static List<Fixture> getFullSeasonFixtures(int numberOfHeadToHeads, League league){
 //        for (int i = 1; i <= numberOfHeadToHeads; i++){

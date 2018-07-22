@@ -141,5 +141,7 @@ public class Runner {
         List<Team> teams = DBLeague.getTeamsForALeaugue(league);
 
         League teamsLeagues = DBTeam.teamsLeauge(awayfootballTeam);
+
+        List<LeagueType> leagueTypes = DBHelper.getAll(LeagueType.class);
     }
 }

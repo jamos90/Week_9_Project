@@ -1,0 +1,17 @@
+<h1>Create a new League</h1>
+
+<form action="/leagues" method="post">
+    <label for ="name"> League Name</label>
+    <input type="string" name ="name" id="name">
+
+
+     <select name = "league_type", id ="league_type">
+         #foreach ($leagueType in $leagueTypes)
+      <option value="$leagueType.getId()")> $leagueType.getLeagueType()</option>
+         #end
+     </select>
+
+
+
+
+</form>

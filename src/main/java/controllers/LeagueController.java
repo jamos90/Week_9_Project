@@ -4,15 +4,16 @@ import db.DBHelper;
 import db.DBLeague;
 import models.Fixture;
 import models.League;
+import models.LeagueType;
 import models.Team;
+import org.apache.velocity.runtime.log.LogSystem;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import static java.util.EnumSet.allOf;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -34,6 +35,17 @@ public class LeagueController {
             model.put("template", "templates/leagues/index.vtl");
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+            get("/leagues/new", (req,res)->{
+                Map<String, Object> model = new HashMap<>();
+                model.put("template","templates/leagues/new.vtl");
+
+                EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
+                model.put("leagueTypes", leagueTypes);
+
+                return new ModelAndView(model, "templates/layout.vtl");
+
+            }, new VelocityTemplateEngine());
 
         get("/leagues/:id", (req,res) ->{
             Map<String, Object> model = new HashMap<>();
