@@ -136,5 +136,8 @@ public class Runner {
         List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
 
         List<Manager> mangers = DBHelper.getAll(Manager.class);
+
+
+
     }
 }
