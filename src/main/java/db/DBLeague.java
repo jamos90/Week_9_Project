@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class DBLeague {
             return results;
         }
 
-        public  static List<Team> getTeamsForALeaugue(League league){
+        public static List<Team> getTeamsForALeaugue(League league){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Team> teams = null;
                 try{
@@ -51,6 +52,26 @@ public class DBLeague {
         }
 
 
+            public static List<Team> sortLeagueByPoints(League league) {
+
+                List<Team> teams = null;
+                session = HibernateUtil.getSessionFactory().openSession();
+                try {
+                    Criteria cr = session.createCriteria(Team.class);
+                    cr.addOrder(Order.desc("points"));
+                    teams = cr.list();
+                } catch (HibernateException e) {
+                    e.printStackTrace();
+                } finally {
+                    session.close();
+                }
+                return teams;
+            }
+
+
+        }
+
+
 
 //        public static List<Fixture> getFullSeasonFixtures(int numberOfHeadToHeads, League league){
 //        for (int i = 1; i <= numberOfHeadToHeads; i++){
@@ -59,6 +80,6 @@ public class DBLeague {
 //        DBHelper.update(league);
 //        return league.getFixtures();
 //        }
-    }
+//    }
 
 
