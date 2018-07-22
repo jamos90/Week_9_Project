@@ -18,13 +18,13 @@
         <table class="center" align="center">
             <tr>
                 <td align="center">
-                    <form action="/matchreports/$matchreport.getId()/delete" method="post">
-                        <input type="submit" value="Delete report" align="center">
+                    <form method="get" action="/matchreports/$matchreport.getId()/edit">
+                        <input type="submit" value="Edit report" align="center">
                     </form>
                 </td>
                 <td align="center">
-                    <form method="get" action="/matchreports/$matchreport.getId()/edit">
-                        <input type="submit" value="Edit report" align="center">
+                    <form action="/matchreports/$matchreport.getId()/delete" method="post">
+                        <input type="submit" value="Delete report" align="center">
                     </form>
                 </td>
             </tr>
