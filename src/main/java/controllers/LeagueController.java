@@ -34,6 +34,23 @@ public class LeagueController {
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
+        get("/leagues/:id/edit", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            int leagueId = Integer.parseInt(req.params(":id"));
+            League leagueToEdit = DBHelper.find(leagueId,League.class);
+            model.put("league", leagueToEdit);
+            List<Team> allTeams = DBHelper.getAll(Team.class);
+            model.put("allTeams", allTeams );
+            List<Team> teams = leagueToEdit.getTeams();
+            model.put("leaguesTeams", teams);
+           List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+           List<Fixture> leaguesFixtures = leagueToEdit.getFixtures();
+           model.put("template", "/templates/leagues/edit.vtl");
+           return new ModelAndView(model,"templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
         post("/leagues/:id/delete", (req,res)->{
             int leagueToDeleteId = Integer.parseInt(req.params("id"));
             League leagueToDelete = DBHelper.find(leagueToDeleteId, League.class);
@@ -41,6 +58,8 @@ public class LeagueController {
             res.redirect("/leagues");
             return null;
         }, new VelocityTemplateEngine());
+
+
 
 
         }
