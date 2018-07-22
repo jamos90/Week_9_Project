@@ -2,6 +2,7 @@ package controllers;
 
 import db.Seeds;
 import models.FootballTeam;
+import models.League;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -21,6 +22,8 @@ public class MainController {
         FootballTeamController footballTeamController = new FootballTeamController();
 
         MatchReportController matchReportController = new MatchReportController();
+
+        LeagueController leagueController = new LeagueController();
 
 
 

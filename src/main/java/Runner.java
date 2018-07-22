@@ -27,8 +27,6 @@ public class Runner {
         FootballTeam homefootballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "Bolton");
         DBHelper.save(homefootballTeam);
 
-        manager.setTeam(homefootballTeam);
-
         FootballTeam awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager, league, "yes", "Dagenham");
         DBHelper.save(awayfootballTeam);
 
@@ -88,13 +86,16 @@ public class Runner {
         DBHelper.update(f);
 
         List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
-        List<Manager> allManagers = DBHelper.getAll(Manager.class);
+
+
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
 
 //        DBLeague.getFullSeasonFixtures(2, league);
-//        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
-//        Manager manager = DBHelper.find(81,Manager.class);
+
+        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
+
+        List<Manager> mangers = DBHelper.getAll(Manager.class);
     }
 }
