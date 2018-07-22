@@ -27,7 +27,7 @@ public class Fixture {
 
     public Fixture(int week, Integer match, League league){
         this.teams = new ArrayList<Team>();
-        this.homeGoals = "";
+        this.homeGoals = "vs";
         this.awayGoals = "";
         this.week = week;
         this.match = match;
@@ -45,7 +45,6 @@ public class Fixture {
     public void setId(int id) {
         this.id = id;
     }
-
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -30,8 +30,8 @@ public class FixtureController {
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
 
-            List<League> leagues = DBHelper.getAll(Fixture.class);
-            model.put("fixtures", fixtures);
+            List<League> leagues = DBHelper.getAll(League.class);
+            model.put("leagues", leagues);
 
             List<MatchReport> matchReports = DBHelper.getAll(MatchReport.class);
             model.put("matchreports", matchReports);
