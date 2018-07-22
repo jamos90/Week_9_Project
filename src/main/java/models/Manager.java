@@ -1,5 +1,8 @@
 package models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
 @Entity
@@ -60,6 +63,8 @@ public Manager(String name, String phoneNo, String email){
     }
 
     @OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
+
+
     public Team getTeam() {
         return team;
     }

@@ -1,6 +1,8 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -57,6 +59,7 @@ public abstract class Team {
         this.name = name;
     }
 
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", nullable =false)
     public Manager getManager() {
@@ -67,6 +70,7 @@ public abstract class Team {
         this.manager = manager;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne
     @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {

@@ -1,0 +1,7 @@
+<h1> $league.getName() The League</h1>
+
+
+#foreach($fixture in $fixtures)
+<p> $fixture.teamNames()</p>
+<p> Scheduled on week: $fixture.getWeek() </p>
+#end

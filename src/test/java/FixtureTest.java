@@ -84,6 +84,13 @@ public class FixtureTest {
     }
 
     @Test
+    public void canGetTeamNames(){
+        fixture.addTeamsToFixture(thirdFootballTeam,fithfootballTeam);
+        assertEquals("Burton Albion Glasgow City", fixture.teamNames());
+
+    }
+
+    @Test
     public void canSetMatchReport(){
         fixture.setMatchReport(matchReport1);
         assertEquals(matchReport1, fixture.getMatchReport());
@@ -113,12 +120,5 @@ public class FixtureTest {
 //        league.getFixtureFromListOfListOfFixturesAndAddToFixtureList(league);
         System.out.println(league.getFixtures());
     }
-//
-//    @Test
-//    public void CanAdd3PointsForWin(){
-//        fixture.inputGoalsToGenerateResult(1, 0);
-//        assertEquals();
-
-//    }
 
 }

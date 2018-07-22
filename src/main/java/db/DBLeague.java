@@ -2,6 +2,8 @@ package db;
 
 import models.Fixture;
 import models.League;
+import models.LeagueType;
+import models.Team;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -30,6 +32,25 @@ public class DBLeague {
             }
             return results;
         }
+
+        public  static List<Team> getTeamsForALeaugue(League league){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Team> teams = null;
+                try{
+                    Criteria cr = session.createCriteria(Team.class);
+                    cr.add(Restrictions.eq("league", league));
+                    teams = cr.list();
+                }
+                catch (HibernateException e){
+            e.printStackTrace();
+                }
+                finally {
+            session.close();
+                }
+                return teams;
+        }
+
+
 
 //        public static List<Fixture> getFullSeasonFixtures(int numberOfHeadToHeads, League league){
 //        for (int i = 1; i <= numberOfHeadToHeads; i++){
