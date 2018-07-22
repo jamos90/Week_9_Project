@@ -93,7 +93,9 @@ public class Runner {
 
 
 //        DBLeague.getFullSeasonFixtures(2, league);
-//        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
-//        Manager manager = DBHelper.find(81,Manager.class);
+
+        List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
+
+        List<Manager> mangers = DBHelper.getAll(Manager.class);
     }
 }
