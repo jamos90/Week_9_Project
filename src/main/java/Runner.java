@@ -91,7 +91,8 @@ public class Runner {
         List<FootballTeam> allFootballTeams = DBHelper.getAll(FootballTeam.class);
         List<League> allLeagues = DBHelper.getAll(League.class);
 
-
+        Manager foundManager = DBHelper.find(manager.getId(), Manager.class);
+        Fixture Foundfixture = DBHelper.find(f.getId(), Fixture.class);
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 
