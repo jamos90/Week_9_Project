@@ -109,7 +109,7 @@ public class Seeds {
         f.addHomeTeamToFixture(fourthfootballTeam);
         DBHelper.save(f);
 
-        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
+        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win at Edinburgh, their first away points of the season. Fans confident of coming out on top in the relegation bullfight.", "n");
         DBHelper.save(report1);
         f.setMatchReport(report1);
         DBHelper.update(f);

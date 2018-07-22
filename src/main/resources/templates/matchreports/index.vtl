@@ -16,15 +16,19 @@
         <tr>
             <td>$matchreport.getBlurb()</td>
             <td>
-                <form action="/matchreports/$matchreport.getId()/delete" method="post">
-                    <input type="submit" value="Delete report">
-                </form>
             </td>
         </tr>
+
     </table>
     </div>
     <img src= $matchreport.getPicture() >
 </div>
+<div>
+    <form action="/matchreports/$matchreport.getId()/delete" method="post">
+        <input type="submit" value="Delete report" align="middle">
+    </form>
+</div>
+
 #end
 </div>
 
