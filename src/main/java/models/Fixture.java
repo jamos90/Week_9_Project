@@ -2,6 +2,8 @@ package models;
 
 import com.sun.javafx.beans.IDProperty;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -45,10 +47,19 @@ public class Fixture {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     @JoinTable(name = "teams_fixtures")
     public List<Team> getTeams() {
         return teams;
+    }
+
+    public String teamNames(){
+        String teamNames = "";
+        for ( Team team : this.teams){
+            teamNames += team.getName() + " ";
+        }
+        return teamNames;
     }
 
     public void setTeams(List<Team> teams) {
@@ -105,7 +116,8 @@ public class Fixture {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToOne(mappedBy = "fixture", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "fixture", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public MatchReport getMatchReport() {
         return matchReport;
     }
@@ -129,6 +141,8 @@ public class Fixture {
         this.teams.add(homeTeam);
         this.teams.add(awayTeam);
     }
+
+
 
     public void addHomeTeamToFixture(Team homeTeam){
         this.teams.add(homeTeam);

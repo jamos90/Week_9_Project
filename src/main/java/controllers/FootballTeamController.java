@@ -80,13 +80,16 @@ public class FootballTeamController {
 
             FootballTeam newFootballTeam = new FootballTeam(name,manager,league,teamlogo,location);
 
-            DBHelper.find(leagueId,League.class);
-
             league.addToTeams(newFootballTeam);
 
-            DBHelper.save(newFootballTeam);
+            DBLeague.getTeamsForALeaugue(league);
 
+            league.addToTeams(newFootballTeam);
+            DBHelper.update(league);
+
+            DBHelper.save(newFootballTeam);
             DBHelper.update(league)
+
             ;
 
 

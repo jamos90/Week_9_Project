@@ -35,6 +35,26 @@ public class LeagueController {
             return new ModelAndView(model,"templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/leagues/:id", (req,res) ->{
+            Map<String, Object> model = new HashMap<>();
+            int leagueId = Integer.parseInt(req.params(":id"));
+
+            League league = DBHelper.find(leagueId, League.class);
+            model.put("league", league);
+
+            List<Fixture> fixtures = DBLeague.getFixturesForLeague(league);
+            model.put("fixtures", fixtures);
+
+            List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+            model.put("teams", teams);
+
+            model.put("template", "templates/leagues/view.vtl");
+
+            return new ModelAndView(model,"templates/layout.vtl");
+
+
+        }, new VelocityTemplateEngine());
+
 
         get("/leagues/:id/edit", (req,res)->{
             Map<String, Object> model = new HashMap<>();

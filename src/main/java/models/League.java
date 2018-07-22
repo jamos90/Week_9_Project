@@ -1,6 +1,8 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.FetchProfile;
 
 import javax.persistence.*;
@@ -64,8 +66,8 @@ public class League {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
-
+    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public List<Team> getTeams() {
         return teams;
     }
@@ -75,7 +77,8 @@ public class League {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "league", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "league", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public List<Fixture> getFixtures() {
         return fixtures;
     }
