@@ -2,6 +2,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import db.DBFixture;
 import db.DBHelper;
 import db.DBLeague;
+import db.DBTeam;
 import models.*;
 
 import java.util.List;
@@ -136,5 +137,9 @@ public class Runner {
         List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
 
         List<Manager> mangers = DBHelper.getAll(Manager.class);
+
+        List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+
+        League teamsLeagues = DBTeam.teamsLeauge(awayfootballTeam);
     }
 }

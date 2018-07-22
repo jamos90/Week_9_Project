@@ -67,6 +67,7 @@ public abstract class Team {
         this.manager = manager;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne
     @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {

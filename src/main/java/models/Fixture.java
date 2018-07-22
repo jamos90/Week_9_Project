@@ -104,11 +104,13 @@ public class Fixture {
         this.venue = venue;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToOne(mappedBy = "fixture", fetch = FetchType.LAZY)
     public MatchReport getMatchReport() {
         return matchReport;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne
     @JoinColumn(name="league_id", nullable = false)
     public League getLeague() {
