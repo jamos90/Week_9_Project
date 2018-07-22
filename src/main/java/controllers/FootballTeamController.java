@@ -142,7 +142,6 @@ public class FootballTeamController {
                     League league = DBHelper.find(leagueId, League.class);
 
                     int managerId = Integer.parseInt(req.queryParams("manager"));
-
                     Manager manager = DBHelper.find(managerId, Manager.class);
 
                     String name = req.queryParams("name");
@@ -160,6 +159,8 @@ public class FootballTeamController {
                     updatedFootballTeam.setId(teamId);
 
                     updatedFootballTeam.setPoints(points);
+
+                    updatedFootballTeam.setManager(manager);
 
                     DBHelper.update(updatedFootballTeam);
                     res.redirect("/footballteams");

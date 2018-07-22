@@ -1,6 +1,8 @@
 package models;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -56,6 +58,7 @@ public abstract class Team {
     public void setName(String name) {
         this.name = name;
     }
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id", nullable =false)

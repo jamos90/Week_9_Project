@@ -7,6 +7,7 @@ import models.League;
 import models.LeagueType;
 import models.Team;
 import org.apache.velocity.runtime.log.LogSystem;
+import org.junit.Test;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -40,12 +41,20 @@ public class LeagueController {
                 Map<String, Object> model = new HashMap<>();
                 model.put("template","templates/leagues/new.vtl");
 
+                List<Team> allTeams = DBHelper.getAll(Team.class);
+                model.put("allTeams", allTeams);
+
                 EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
                 model.put("leagueTypes", leagueTypes);
 
                 return new ModelAndView(model, "templates/layout.vtl");
 
             }, new VelocityTemplateEngine());
+
+
+
+
+
 
             post("/leagues", (req,res) ->{
                 String name = req.queryParams("name");
@@ -86,6 +95,10 @@ public class LeagueController {
             League leagueToEdit = DBHelper.find(leagueId,League.class);
             model.put("league", leagueToEdit);
 
+            List<Team> allTeams = DBHelper.getAll(Team.class);
+            model.put("allTeams", allTeams);
+
+
             List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToEdit);
             model.put("leaguesTeams", teams);
 
@@ -94,6 +107,21 @@ public class LeagueController {
 
            model.put("template", "/templates/leagues/edit.vtl");
            return new ModelAndView(model,"templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+//        post("/leagues/:id/update", (req,res) ->{
+//
+//        }, new VelocityTemplateEngine());
+
+        post("/leagues/:id/addTeams", (req,res) ->{
+            int leagueId = Integer.parseInt(req.params(":id"));
+            League league = DBHelper.find(leagueId, League.class);
+
+
+
+            res.redirect("/leagues/:id");
+            return null;
 
         }, new VelocityTemplateEngine());
 

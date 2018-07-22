@@ -22,7 +22,7 @@ public class Seeds {
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
-        Manager manager2 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager2 = new Manager("John Harper", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager2);
 
         Manager manager3 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
