@@ -10,11 +10,10 @@
         <table class="center">
             #foreach($matchreport in $matchreports)
         <tr>
-            <th>Week $matchreport.getFixture().getWeek(), match $matchreport.getFixture().getMatch() : $matchreport.returnHomeTeamName() vs $matchreport.returnAwayTeamName() </th>
+            <th><a href="/matchreports/$matchreport.getId()">$matchreport.getHeadline()</a></th>
         </tr>
 
         <tr>
-            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getHeadline()</a></td>
             <td>$matchreport.getBlurb()</td>
             <td>
                 <form action="/matchreports/$matchreport.getId()/delete" method="post">
