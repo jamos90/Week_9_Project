@@ -2,6 +2,8 @@ package models;
 
 import com.sun.javafx.beans.IDProperty;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -48,6 +50,7 @@ public class Fixture {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "teams_fixtures")
+    @Fetch(FetchMode.SELECT)
     public List<Team> getTeams() {
         return teams;
     }

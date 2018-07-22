@@ -3,6 +3,7 @@ package controllers;
 import db.DBHelper;
 import models.Fixture;
 import models.FootballTeam;
+import models.League;
 import models.MatchReport;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -29,8 +30,11 @@ public class FixtureController {
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
 
-            List<MatchReport> matchReports = DBHelper.getAll(MatchReport.class);
+            List<League> leagues = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
+
+            List<MatchReport> matchReports = DBHelper.getAll(MatchReport.class);
+            model.put("matchreports", matchReports);
 
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
             model.put("footballteams", footballTeams);
