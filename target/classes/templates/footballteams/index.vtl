@@ -1,0 +1,36 @@
+<p class="pageHeader">All Managers</p>
+
+
+<div>
+    <a href="/footballteam/new" class="button center">New Team</a>
+</div>
+<br>
+<div class="container">
+    <table>
+        <tr>
+            <th>Team Name</th>
+            <th>League</th>
+            <th>League Region</th>
+        </tr>
+
+        #foreach($team in $teamList)
+        <tr>
+
+            <td>$team.getName()</td>
+            <td>$team.getLeague().getName()</td>
+            <td>$team.getLeague().getRegion()</td>
+
+            <td>
+                <form action="/footballteams/$team.getId()/delete" method="post">
+                    <input type="submit" value="Delete Team">
+                </form>
+
+                <a href = "footballteams/$team.getId()"> Further information</a>
+
+                <a href="footballteams/$team.getId()/edit">Edit this team</a>
+                <br>
+            </td>
+        </tr>
+        #end
+    </table>
+</div>
