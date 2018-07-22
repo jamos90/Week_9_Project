@@ -16,14 +16,14 @@ public class Fixture {
     private String homeGoals;
     private String awayGoals;
     private int week;
-    private int match;
+    private Integer match;
     private String venue;
     private MatchReport matchReport;
     private League league;
 
     public Fixture(){}
 
-    public Fixture(int week, int match, League league){
+    public Fixture(int week, Integer match, League league){
         this.teams = new ArrayList<Team>();
         this.homeGoals = "";
         this.awayGoals = "";
@@ -87,11 +87,11 @@ public class Fixture {
     }
 
     @Column(name = "match")
-    public int getMatch() {
+    public Integer getMatch() {
         return match;
     }
 
-    public void setMatch(int match) {
+    public void setMatch(Integer match) {
         this.match = match;
     }
 

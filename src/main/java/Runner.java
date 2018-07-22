@@ -117,12 +117,12 @@ public class Runner {
         f.setMatchReport(report1);
         DBHelper.update(f);
 
-        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
 
         List<Manager> allManagers = DBHelper.getAll(Manager.class);
         List<MatchReport> allReports = DBHelper.getAll(MatchReport.class);
         List<FootballTeam> allFootballTeams = DBHelper.getAll(FootballTeam.class);
         List<League> allLeagues = DBHelper.getAll(League.class);
+        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
 
         Manager foundManager = DBHelper.find(manager.getId(), Manager.class);
         Fixture Foundfixture = DBHelper.find(f.getId(), Fixture.class);
