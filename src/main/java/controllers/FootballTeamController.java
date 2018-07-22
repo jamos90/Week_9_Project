@@ -152,7 +152,11 @@ public class FootballTeamController {
         post("/footballteams/:id/delete", (req,res)->{
             int id = Integer.parseInt(req.params(":id"));
             FootballTeam teamToDelete = DBHelper.find(id, FootballTeam.class);
+            League teamsLeague = teamToDelete.getLeague();
+            teamsLeague.removeTeams(teamToDelete);
+            DBHelper.update(teamsLeague);
             DBHelper.delete(teamToDelete);
+            DBHelper.update(teamsLeague);
             res.redirect("/footballteams");
             return null;
                 }, new VelocityTemplateEngine());

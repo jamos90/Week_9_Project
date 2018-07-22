@@ -4,13 +4,42 @@
     <label for="name"> Name </label>
     <input type="text" value="$league.getName()" name = "name" id = "name" required>
 
-    <label for = "teams"> Teams </label>
-    <select name = "teams" id = "teams">
-        #foreach ($team in $leaguesTeams)
-        <option value ="$team.getId()"> $team.getName() </option>
+    <table>
+        <tr>
+            <th>Team Name</th>
+            <th>League</th>
+        </tr>
+
+        #foreach($team in $leaguesTeams)
+        <tr>
+
+            <td>$team.getName()</td>
+            <td>$team.getLeague().getRegion()</td>
+
+            <br>
+            <td>
+
+                <a href = "footballteams/$team.getId()"> Further information</a>
+
+                <a href="footballteams/$team.getId()/edit">Edit this team</a>
+
+                <form action="footballteams/$team.getId()/removefromleague" method="post">
+                    <input type="submit" value="Remove $team.getName() from $league.getName()">
+                </form>
+
+                <form action="/footballteams/$team.getId()/delete" method="post">
+                    <input type="submit" value="Delete Team">
+                </form>
+
+
+                <br>
+            </td>
+        </tr>
         #end
-    </select>
+    </table>
 
-
+    <form action="/leagues/$league.getId()/delete" method="post">
+        <input type="submit" value="Delete League">
     <input type = "submit" value = "edit">
+    </form>
 </form>
