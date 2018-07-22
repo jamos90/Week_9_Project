@@ -16,8 +16,8 @@
         #foreach($manager in $managers)
         <tr>
             <td><a href="/managers/$manager.getId()">$manager.getName()</a></td>
-            <td>$manager.getPhone()</td>
-            <td>$manager.getEmail</td>
+            <td>$manager.getPhoneNo()</td>
+            <td>$manager.getEmail()</td>
             <td>
                 <form action="/managers/$manager.getId()/delete" method="post">
                     <input type="submit" value="Delete Manager">
@@ -27,3 +27,4 @@
         #end
     </table>
 </div>
+

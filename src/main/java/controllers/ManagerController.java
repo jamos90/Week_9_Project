@@ -39,9 +39,6 @@ public class ManagerController {
 
             String phone = req.queryParams("phone");
 
-            int managerId = Integer.parseInt(req.queryParams("manager"));
-            Manager manager = DBHelper.find(managerId, Manager.class);
-
             Manager newManager = new Manager(name, phone, email);
             DBHelper.save(newManager);
 
@@ -77,7 +74,7 @@ public class ManagerController {
         //UPDATE
         get("/managers/:id/edit", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
-            List<Manager> departments = DBHelper.getAll(Manager.class);
+            List<Manager> managers = DBHelper.getAll(Manager.class);
 
             int managerId = Integer.parseInt(req.params(":id"));
             Manager manager = DBHelper.find(managerId, Manager.class);
@@ -116,7 +113,6 @@ public class ManagerController {
             res.redirect("/managers");
             return null;
         }, velocityTemplateEngine);
-
 
 
     }
