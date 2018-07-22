@@ -1,16 +1,24 @@
 <p class="pageHeader">All fixtures</p>
 
-
+#foreach($fixture in $fixtures)
 <table class="center">
-    #foreach($fixture in $fixtures)
+
+    <tr>
+        <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
+    </tr>
+    <p></p>
     <tr>
         <th><a href="/fixtures/$fixture.getId()">$fixture.returnHomeTeam().getName() vs $fixture.returnAwayTeam().getName()</a></th>
     </tr>
 
     <tr>
         <td>At $fixture.returnHomeTeam().getName()'s stadium</td>
-        <td>
-        </td>
     </tr>
-#end
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 </table>
+#end

@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.JoinColumnOrFormula;
 
 import javax.persistence.*;
@@ -38,6 +40,7 @@ public class MatchReport {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="fixture_id", nullable = false)
+    @Fetch(FetchMode.SELECT)
     public Fixture getFixture() {
         return fixture;
     }
