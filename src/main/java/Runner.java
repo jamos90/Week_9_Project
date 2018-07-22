@@ -21,14 +21,13 @@ public class Runner {
         DBHelper.deleteAll(League.class);
         DBHelper.deleteAll(Manager.class);
 
-
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
-        Manager manager2 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager2 = new Manager("Zsolt 2", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager2);
 
-        Manager manager3 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager3 = new Manager("Zsolt Jr", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager3);
 
         Manager manager4 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
@@ -85,16 +84,7 @@ public class Runner {
         FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Edinburgh");
         DBHelper.save(tenthfootballTeam);
 
-        league.addToTeams(awayfootballTeam);
-        league.addToTeams(homefootballTeam);
-        league.addToTeams(thirdFootballTeam);
-        league.addToTeams(fourthfootballTeam);
-        league.addToTeams(fithfootballTeam);
-        league.addToTeams(sixthfootballTeam);
-        league.addToTeams(seventhfootballTeam);
-        league.addToTeams(eighthfootballTeam);
-        league.addToTeams(ninethfootballTeam);
-        league.addToTeams(tenthfootballTeam);
+        league.getTeams().addAll(DBHelper.getAll(FootballTeam.class)); //this adds all teams to the league
 
 
         league.generateFixtures(true);
