@@ -36,7 +36,7 @@ public class MatchReport {
         this.id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="fixture_id", nullable = false)
     public Fixture getFixture() {
         return fixture;
