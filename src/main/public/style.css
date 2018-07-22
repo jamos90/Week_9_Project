@@ -1,0 +1,9 @@
+.home-input {
+  display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-top: 300px;
+ display: inline-block;
+ margin-left: 600px;
+
+}
