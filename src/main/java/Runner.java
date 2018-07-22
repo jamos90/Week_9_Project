@@ -19,6 +19,7 @@ public class Runner {
         DBHelper.deleteAll(League.class);
         DBHelper.deleteAll(Fixture.class);
         DBHelper.deleteAll(League.class);
+        DBHelper.deleteAll(Fixture.class);
         DBHelper.deleteAll(Manager.class);
 
 
