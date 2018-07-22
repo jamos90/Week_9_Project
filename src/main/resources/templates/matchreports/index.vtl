@@ -5,8 +5,6 @@
     <a href="/matchreports/new" class="button center">Log new match report</a>
 </div>
 <br>
-<div class="row">
-    <div class="col">
         <table class="center">
             #foreach($matchreport in $matchreports)
         <tr>
@@ -15,20 +13,15 @@
 
         <tr>
             <td>$matchreport.getBlurb()</td>
-            <td>
-            </td>
         </tr>
+            <tr>
+                <td align="center"><form action="/matchreports/$matchreport.getId()/delete" method="post">
+                    <input type="submit" value="Delete report" align="center">
+                </form></td>
+        </tr>
+            <img src= $matchreport.getPicture() align="center">
 
     </table>
-    </div>
-    <img src= $matchreport.getPicture() >
-</div>
-<div>
-    <form action="/matchreports/$matchreport.getId()/delete" method="post">
-        <input type="submit" value="Delete report" align="middle">
-    </form>
-</div>
 
 #end
-</div>
 
