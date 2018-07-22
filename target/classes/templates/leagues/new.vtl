@@ -2,16 +2,17 @@
 
 <form action="/leagues" method="post">
     <label for ="name"> League Name</label>
-    <input type="string" name ="name" id="name">
+    <input type="text" name ="name" id="name">
 
 
-     <select name = "league_type", id ="league_type">
+     <select name = "league_type" id ="league_type">
          #foreach ($leagueType in $leagueTypes)
-      <option value="$leagueType.getId()")> $leagueType.getLeagueType()</option>
+      <option value="$leagueType")> $leagueType.getLeagueType()</option>
          #end
      </select>
 
+    <label for="region">League Region</label>
+    <input type="text" name ="region" id = "region">
 
-
-
+    <input type="submit" name ="save">
 </form>

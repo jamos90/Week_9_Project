@@ -47,6 +47,18 @@ public class LeagueController {
 
             }, new VelocityTemplateEngine());
 
+            post("/leagues", (req,res) ->{
+                String name = req.queryParams("name");
+                LeagueType leagueType =  LeagueType.valueOf(req.queryParams("league_type"));
+                String region = req.queryParams("region");
+                League leagueToSave = new League(name, LeagueType.valueOf(req.queryParams("league_type")),region);
+                DBHelper.save(leagueToSave);
+
+                res.redirect("/leagues");
+                return null;
+
+            }, new VelocityTemplateEngine());
+
         get("/leagues/:id", (req,res) ->{
             Map<String, Object> model = new HashMap<>();
             int leagueId = Integer.parseInt(req.params(":id"));
