@@ -15,7 +15,9 @@
         <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
     </tr>
     <tr>
-        <td align="center"><a href="/fixtures/edit" class="button center" align="center">Enter result</a></td>
+        <td align="center"><form method="get" action="/matchreports/$matchreport.getId()/edit">
+            <input type="submit" value="Enter result" align="center">
+        </form></td>
     </tr>
     <p></p>
     <p></p>
