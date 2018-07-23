@@ -27,7 +27,7 @@ public class Fixture {
 
     public Fixture(int week, Integer match, League league){
         this.teams = new ArrayList<Team>();
-        this.homeGoals = "vs";
+        this.homeGoals = "";
         this.awayGoals = "";
         this.week = week;
         this.match = match;

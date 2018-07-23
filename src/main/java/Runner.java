@@ -143,6 +143,6 @@ public class Runner {
         DBHelper.update(fithfootballTeam);
         List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
-
+        League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
     }
 }

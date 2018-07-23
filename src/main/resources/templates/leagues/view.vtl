@@ -5,3 +5,36 @@
 <p> $fixture.teamNames()</p>
 <p> Scheduled on week: $fixture.getWeek() </p>
 #end
+
+
+
+<div class="container">
+    <table>
+        <tr>
+            <th></th>
+            <th>Team</th>
+            <th>PL</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>F</th>
+            <th>A</th>
+            <th>GD</th>
+            <th>PTS</th>
+        </tr>
+
+        #foreach($team in $teams)
+        <tr>
+            <td><a href="/footballteams/$team.getId()">$team.getName()</a></td>
+            <td>played</td>
+            <td>won</td>
+            <td>drew</td>
+            <td>lost</td>
+            <td>for</td>
+            <td>against</td>
+            <td>goal diff</td>
+            <td>$team.getPoints()</td>
+        </tr>
+        #end
+    </table>
+</div>

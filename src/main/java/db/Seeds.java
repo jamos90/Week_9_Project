@@ -82,6 +82,8 @@ public class Seeds {
         FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Edinburgh");
         DBHelper.save(tenthfootballTeam);
 
+        League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
+
         league.addToTeams(awayfootballTeam);
         league.addToTeams(homefootballTeam);
         league.addToTeams(thirdFootballTeam);
