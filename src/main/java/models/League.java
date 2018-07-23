@@ -150,6 +150,9 @@ public class League {
         if (teams.size() % 2 != 0) {
             ghost = true;
             numberofTeams += 1;
+            Manager ghostManager = new Manager("Ghost manager", "", "");
+            Team ghostTeam = new FootballTeam("Ghost team (automatic bye).", ghostManager, this, "", "");
+            teams.add(numberofTeams-1, ghostTeam);
         }
         //ESTABLISH HOW MANY ROUNDS OF FIXTURES THERE WILL BE
         //Set int number of weeks = teams.size - 1

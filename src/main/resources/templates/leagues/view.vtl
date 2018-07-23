@@ -1,5 +1,8 @@
 <h1> $league.getName() The League</h1>
 
+#foreach ($fixture in $generatedFixtures)
+<p>$fixture.returnHomeTeam().getName()</p>
+#end
 <div class="container">
     <table align = "center">
         <tr>

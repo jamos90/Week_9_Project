@@ -54,6 +54,15 @@ public class DBFixture {
     }
 
 
+    public static void saveFixturesForLeague(League league){
+        for (Fixture fixture : league.getFixtures()){
+            DBHelper.save(fixture);
+        }
+
+
+    }
+
+
 
 
 

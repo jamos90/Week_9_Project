@@ -1,5 +1,6 @@
 package controllers;
 
+import db.DBFixture;
 import db.DBHelper;
 import db.DBLeague;
 import models.*;
@@ -20,28 +21,28 @@ public class LeagueController {
         this.setUpEndPoints();
         }
 
-        private void setUpEndPoints(){
+        private void setUpEndPoints() {
 
-        get("/leagues", (req,res) ->{
-            Map<String, Object> model = new HashMap<>();
-            List<League> leagues = DBHelper.getAll(League.class);
-            model.put("leagues", leagues);
-            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
-            model.put("fixtures", fixtures);
-            List<Team> teams = DBHelper.getAll(Team.class);
-            model.put("teams", teams);
-            model.put("template", "templates/leagues/index.vtl");
-            return new ModelAndView(model,"templates/layout.vtl");
-        }, new VelocityTemplateEngine());
-
-            get("/leagues/new", (req,res)->{
+            get("/leagues", (req, res) -> {
                 Map<String, Object> model = new HashMap<>();
-                model.put("template","templates/leagues/new.vtl");
+                List<League> leagues = DBHelper.getAll(League.class);
+                model.put("leagues", leagues);
+                List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+                model.put("fixtures", fixtures);
+                List<Team> teams = DBHelper.getAll(Team.class);
+                model.put("teams", teams);
+                model.put("template", "templates/leagues/index.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+            }, new VelocityTemplateEngine());
+
+            get("/leagues/new", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                model.put("template", "templates/leagues/new.vtl");
 
                 List<Team> allTeams = DBHelper.getAll(Team.class);
                 model.put("allTeams", allTeams);
 
-                EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
+                EnumSet leagueTypes = EnumSet.allOf(LeagueType.class);
                 model.put("leagueTypes", leagueTypes);
 
                 return new ModelAndView(model, "templates/layout.vtl");
@@ -49,13 +50,11 @@ public class LeagueController {
             }, new VelocityTemplateEngine());
 
 
-
-
-            post("/leagues", (req,res) ->{
+            post("/leagues", (req, res) -> {
                 String name = req.queryParams("name");
-                LeagueType leagueType =  LeagueType.valueOf(req.queryParams("league_type"));
+                LeagueType leagueType = LeagueType.valueOf(req.queryParams("league_type"));
                 String region = req.queryParams("region");
-                League leagueToSave = new League(name, LeagueType.valueOf(req.queryParams("league_type")),region);
+                League leagueToSave = new League(name, LeagueType.valueOf(req.queryParams("league_type")), region);
                 DBHelper.save(leagueToSave);
 
                 res.redirect("/leagues");
@@ -63,103 +62,112 @@ public class LeagueController {
 
             }, new VelocityTemplateEngine());
 
-        get("/leagues/:id", (req,res) ->{
-            Map<String, Object> model = new HashMap<>();
-            int leagueId = Integer.parseInt(req.params(":id"));
+            get("/leagues/:id", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                int leagueId = Integer.parseInt(req.params(":id"));
 
-            League league = DBHelper.find(leagueId, League.class);
-            model.put("league", league);
+                League league = DBHelper.find(leagueId, League.class);
+                model.put("league", league);
 
-            List<Fixture> fixtures = DBLeague.getFixturesForLeague(league);
-            model.put("fixtures", fixtures);
+                List<Fixture> fixtures = DBLeague.getFixturesForLeague(league);
+                model.put("fixtures", fixtures);
 
-            List<Team> teams = DBLeague.getTeamsForALeaugue(league);
-            model.put("teams", teams);
+                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+                model.put("teams", teams);
 
-            model.put("template", "templates/leagues/view.vtl");
+                model.put("template", "templates/leagues/view.vtl");
 
-            DBLeague.sortLeagueByPoints(league);
+                List <Fixture> generatedFixtures = DBLeague.getFixturesForLeague(league);
+                model.put("generatedFixtures", generatedFixtures);
 
-            return new ModelAndView(model,"templates/layout.vtl");
+                DBLeague.sortLeagueByPoints(league);
 
-
-        }, new VelocityTemplateEngine());
-
-
-        get("/leagues/:id/edit", (req,res)->{
-            Map<String, Object> model = new HashMap<>();
-            int leagueId = Integer.parseInt(req.params(":id"));
-            League leagueToEdit = DBHelper.find(leagueId,League.class);
-            model.put("league", leagueToEdit);
-
-            List<Team> allTeams = DBHelper.getAll(Team.class);
-            model.put("allTeams", allTeams);
-
-            EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
-            model.put("leagueTypes", leagueTypes);
+                return new ModelAndView(model, "templates/layout.vtl");
 
 
-            List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToEdit);
-            model.put("leaguesTeams", teams);
-
-           List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(leagueToEdit);
-           model.put("leaguesFixtures", leaguesFixtures);
-
-           model.put("template", "/templates/leagues/edit.vtl");
-           return new ModelAndView(model,"templates/layout.vtl");
-
-        }, new VelocityTemplateEngine());
-
-        post("/leagues/:id/update", (req,res) ->{
-
-            EnumSet leagueTypes =  EnumSet.allOf(LeagueType.class);
-
-            String name = req.queryParams("name");
-            LeagueType leagueType =  LeagueType.valueOf("league_type");
-            String region = req.queryParams("region");
-
-            int leagueId = Integer.parseInt(req.params(":id"));
-            League league = DBHelper.find(leagueId, League.class);
-
-            league.setName(name);
-            league.getLeagueType();
-            league.setLeagueType(leagueType);
-            league.setRegion(region);
-            DBHelper.update(league);
-
-            res.redirect("/leagues");
-            return null;
-
-        }, new VelocityTemplateEngine());
-
-        post("/leagues/:id/addTeams", (req,res) ->{
-            int leagueId = Integer.parseInt(req.params(":id"));
-            League league = DBHelper.find(leagueId, League.class);
+            }, new VelocityTemplateEngine());
 
 
+            get("/leagues/:id/edit", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
+                int leagueId = Integer.parseInt(req.params(":id"));
+                League leagueToEdit = DBHelper.find(leagueId, League.class);
+                model.put("league", leagueToEdit);
 
-            res.redirect("/leagues/:id");
-            return null;
+                List<Team> allTeams = DBHelper.getAll(Team.class);
+                model.put("allTeams", allTeams);
 
-        }, new VelocityTemplateEngine());
-
-        post("/leagues/:id/delete", (req,res)->{
-            int leagueToDeleteId = Integer.parseInt(req.params("id"));
-            League leagueToDelete = DBHelper.find(leagueToDeleteId, League.class);
-            List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToDelete);
-            List<Fixture> fixtures = DBLeague.getFixturesForLeague(leagueToDelete);
-            DBHelper.delete(leagueToDelete);
-            DBHelper.update(teams);
-            DBHelper.update(fixtures);
-
-            res.redirect("/leagues");
-            return null;
-        }, new VelocityTemplateEngine());
+                EnumSet leagueTypes = EnumSet.allOf(LeagueType.class);
+                model.put("leagueTypes", leagueTypes);
 
 
+                List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToEdit);
+                model.put("leaguesTeams", teams);
 
+                List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(leagueToEdit);
+                model.put("leaguesFixtures", leaguesFixtures);
+
+                model.put("template", "/templates/leagues/edit.vtl");
+                return new ModelAndView(model, "templates/layout.vtl");
+
+            }, new VelocityTemplateEngine());
+
+            post("/leagues/:id/update", (req, res) -> {
+
+                EnumSet leagueTypes = EnumSet.allOf(LeagueType.class);
+
+                String name = req.queryParams("name");
+                LeagueType leagueType = LeagueType.valueOf("league_type");
+                String region = req.queryParams("region");
+
+                int leagueId = Integer.parseInt(req.params(":id"));
+                League league = DBHelper.find(leagueId, League.class);
+
+                league.setName(name);
+                league.getLeagueType();
+                league.setLeagueType(leagueType);
+                league.setRegion(region);
+                DBHelper.update(league);
+
+                res.redirect("/leagues");
+                return null;
+
+            }, new VelocityTemplateEngine());
+
+            post("/leagues/:id/addTeams", (req, res) -> {
+                int leagueId = Integer.parseInt(req.params(":id"));
+                League league = DBHelper.find(leagueId, League.class);
+
+
+                res.redirect("/leagues/:id");
+                return null;
+
+            }, new VelocityTemplateEngine());
+
+            post("/leagues/:id/delete", (req, res) -> {
+                int leagueToDeleteId = Integer.parseInt(req.params("id"));
+                League leagueToDelete = DBHelper.find(leagueToDeleteId, League.class);
+                List<Team> teams = DBLeague.getTeamsForALeaugue(leagueToDelete);
+                List<Fixture> fixtures = DBLeague.getFixturesForLeague(leagueToDelete);
+                DBHelper.delete(leagueToDelete);
+                DBHelper.update(teams);
+                DBHelper.update(fixtures);
+
+                res.redirect("/leagues");
+                return null;
+            }, new VelocityTemplateEngine());
+
+
+            get("/leagues/:id/generate", (req, res) -> {
+                int leagueId = Integer.parseInt(req.params("id"));
+                League league = DBHelper.find(leagueId, League.class);
+
+                league.generateFixtures(true);
+                DBFixture.saveFixturesForLeague(league);
+                res.redirect("/leagues/"+ leagueId);
+                return null;
+            }, new VelocityTemplateEngine());
 
         }
-
 
 }
