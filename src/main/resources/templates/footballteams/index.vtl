@@ -17,18 +17,12 @@
 
         #foreach($team in $teamList)
         <tr>
-
             <td>$team.getName()</td>
             <td>$team.getLeague().getName()</td>
             <td>$team.getLeague().getRegion()</td>
             <td>$team.getPoints()</td>
 
-
-
-
-
             <td>
-
                 <a href = "footballteams/$team.getId()"> Further information</a>
 
                 <a href="footballteams/$team.getId()/edit">Edit this team</a>
