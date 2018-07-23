@@ -26,7 +26,7 @@ public class FootballTeamController {
 
     //Get index list of teams//
 
-    private  void  setUpEndPoints() {
+    private void setUpEndPoints() {
         get("/footballteams", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
@@ -59,7 +59,7 @@ public class FootballTeamController {
 
 
         //post new team
-        post("/footballteams", (req,res)->{
+        post("/footballteams", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             //getting league id
             int leagueId = Integer.parseInt(req.queryParams("league"));
@@ -78,7 +78,7 @@ public class FootballTeamController {
 
             String location = req.queryParams("location");
 
-            FootballTeam newFootballTeam = new FootballTeam(name,manager,league,teamlogo,location);
+            FootballTeam newFootballTeam = new FootballTeam(name, manager, league, teamlogo, location);
 
             league.addToTeams(newFootballTeam);
 
@@ -100,13 +100,13 @@ public class FootballTeamController {
 
 
         //view for a team
-        get("/footballteams/:id", (req,res)->{
+        get("/footballteams/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int footballTeamId = Integer.parseInt(req.params(":id"));
             FootballTeam footballTeam = DBHelper.find(footballTeamId, FootballTeam.class);
 //            int leagueId = Integer.parseInt(req.queryParams("league"));
             //find league by id
-             List<League> league = DBHelper.getAll(League.class);
+            List<League> league = DBHelper.getAll(League.class);
 //            int managerId = Integer.parseInt(req.queryParams("manager"));
 //            Manager manager = DBHelper.find(managerId, Manager.class);
             List<Manager> manager = DBHelper.getAll(Manager.class);
@@ -114,16 +114,16 @@ public class FootballTeamController {
             model.put("manage", manager);
             model.put("footballTeam", footballTeam);
             model.put("template", "templates/footballteams/view.vtl");
-            return new ModelAndView(model,"templates/layout.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 
-        get("/footballteams/:id/edit",(req,res)->{
-            Map<String,Object> model = new HashMap<>();
+        get("/footballteams/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
 
             int footballTeamId = Integer.parseInt(req.params(":id"));
 
-            FootballTeam selectedFootballTeam = DBHelper.find(footballTeamId,FootballTeam.class);
+            FootballTeam selectedFootballTeam = DBHelper.find(footballTeamId, FootballTeam.class);
             model.put("selectedTeam", selectedFootballTeam);
 
             List<League> leagues = DBHelper.getAll(League.class);
@@ -137,37 +137,32 @@ public class FootballTeamController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/footballteams/:id/update", (req,res) -> {
-                    int leagueId = Integer.parseInt(req.queryParams("league"));
-                    League league = DBHelper.find(leagueId, League.class);
+        post("/footballteams/:id/update", (req, res) -> {
+            int leagueId = Integer.parseInt(req.queryParams("league"));
+            League league = DBHelper.find(leagueId, League.class);
 
-                    int managerId = Integer.parseInt(req.queryParams("manager"));
-                    Manager manager = DBHelper.find(managerId, Manager.class);
 
-                    String name = req.queryParams("name");
+            String name = req.queryParams("name");
 
-                    String logo = req.queryParams("logo");
+            String logo = req.queryParams("logo");
 
-                   int points = Integer.parseInt(req.queryParams("points"));
+            int points = Integer.parseInt(req.queryParams("points"));
 
-                    String location = req.queryParams("location");
+            String location = req.queryParams("location");
 
-                    FootballTeam updatedFootballTeam = new FootballTeam(name, manager, league, logo, location);
+            int footballTeamId = Integer.parseInt(req.params(":id"));
+            FootballTeam footballTeam = DBHelper.find(footballTeamId, FootballTeam.class);
+            footballTeam.setName(name);
+            footballTeam.setTeamLogo(logo);
+            footballTeam.setLocation(location);
+            footballTeam.setPoints(points);
+            DBHelper.update(footballTeam);
 
-                    int teamId = Integer.parseInt(req.params(":id"));
-
-                    updatedFootballTeam.setId(teamId);
-
-                    updatedFootballTeam.setPoints(points);
-
-                    updatedFootballTeam.setManager(manager);
-
-                    DBHelper.update(updatedFootballTeam);
-                    res.redirect("/footballteams");
+            res.redirect("/footballteams");
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/footballteams/:id/delete", (req,res)->{
+        post("/footballteams/:id/delete", (req, res) -> {
             int id = Integer.parseInt(req.params(":id"));
             FootballTeam teamToDelete = DBHelper.find(id, FootballTeam.class);
 
@@ -179,12 +174,7 @@ public class FootballTeamController {
 
             res.redirect("/footballteams");
             return null;
-                }, new VelocityTemplateEngine());
-
-
-
-
-
+        }, new VelocityTemplateEngine());
 
 
     }

@@ -4,12 +4,6 @@
     <label for="name"> Name </label>
     <input type="text" value="$selectedTeam.getName()" name = "name" id = "name" required>
 
-    <label for = "manager"> Manager </label>
-    <select name = "manager" id = "manager">
-        #foreach ($manager in $managers)
-        <option value ="$manager.getId()"> $manager.getName() </option>
-        #end
-    </select>
     <label for ="points"> Points</label>
     <input type="number" value ="$selectedTeam.getPoints()" name = "points" id = "points" required min= "0" >
 
