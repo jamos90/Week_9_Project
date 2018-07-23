@@ -39,6 +39,17 @@ public class MatchReportController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+        get("/matchreports/:id", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("template", "templates/matchreports/id.vtl");
+
+            int matchreportId = Integer.parseInt(req.params(":id"));
+            Manager manager= DBHelper.find(matchreportId, MatchReport.class);
+
+            model.put("matchreport", manager);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, velocityTemplateEngine);
 
 
         //CREATE
@@ -74,8 +85,9 @@ public class MatchReportController {
 
             MatchReport newMatchReport = new MatchReport( fixture, headline, blurb, picture);
             DBHelper.save(newMatchReport);
+            fixture.setMatchReport(newMatchReport);
 
-            res.redirect("/matchreports");
+            res.redirect("/fixtures");
             return null;
         }, velocityTemplateEngine);
 
