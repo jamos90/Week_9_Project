@@ -43,6 +43,7 @@ public class DBFixture {
         try {
             Criteria cr = session.createCriteria(Fixture.class);
             cr.addOrder(Order.asc("week"));
+            cr.addOrder(Order.asc("match"));
             fixture =  cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
