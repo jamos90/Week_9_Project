@@ -97,7 +97,7 @@ public class Runner {
         league.addToTeams(seventhfootballTeam);
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
-        league.addToTeams(tenthfootballTeam);
+
 
 
         league.generateFixtures(true);

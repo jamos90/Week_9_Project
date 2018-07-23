@@ -1,5 +1,6 @@
 package models;
 
+import db.DBHelper;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -151,7 +152,9 @@ public class League {
             ghost = true;
             numberofTeams += 1;
             Manager ghostManager = new Manager("Ghost manager", "", "");
+            DBHelper.save(ghostManager);
             Team ghostTeam = new FootballTeam("Ghost team (automatic bye).", ghostManager, this, "", "");
+            DBHelper.save(ghostTeam);
             teams.add(numberofTeams-1, ghostTeam);
         }
         //ESTABLISH HOW MANY ROUNDS OF FIXTURES THERE WILL BE
