@@ -167,15 +167,21 @@ public class Fixture {
     public void inputGoalsToGenerateResult(int homeGoals, int awayGoals){
         if (homeGoals > awayGoals){
             teams.get(0).addPointsToTeam(3);
-            teams.get(0).
+            teams.get(0).incrementWins();
+            teams.get(1).incrementLosses();
         }
 
             else if (awayGoals > homeGoals){
-            teams.get(1).addPointsToTeam(3);}
+            teams.get(1).addPointsToTeam(3);
+            teams.get(1).incrementWins();
+            teams.get(0).incrementLosses();
+        }
 
             else {
             teams.get(0).addPointsToTeam(1);
             teams.get(1).addPointsToTeam(1);
+            teams.get(0).incrementDraws();
+            teams.get(1).incrementDraws();
         }
 
 
