@@ -33,6 +33,10 @@ public class MatchReportController {
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
 
+            for (Fixture fixture: fixtures){
+                fixture.setMatch(fixture.getMatch() - 1);
+            }
+
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
             model.put("footballteams", footballTeams);
 
@@ -41,12 +45,19 @@ public class MatchReportController {
 
         get("/matchreports/:id", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
-            model.put("template", "templates/matchreports/id.vtl");
+            model.put("template", "templates/matchreports/view.vtl");
 
             int matchreportId = Integer.parseInt(req.params(":id"));
-            Manager manager= DBHelper.find(matchreportId, MatchReport.class);
+            MatchReport matchreport= DBHelper.find(matchreportId, MatchReport.class);
 
-            model.put("matchreport", manager);
+            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+            model.put("fixtures", fixtures);
+
+            for (Fixture fixture: fixtures){
+                fixture.setMatch(fixture.getMatch() - 1);
+            }
+
+            model.put("matchreport", matchreport);
             return new ModelAndView(model, "templates/layout.vtl");
 
         }, velocityTemplateEngine);

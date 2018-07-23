@@ -68,8 +68,9 @@ public abstract class Team {
     }
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manager_id", nullable =false)
+    @Fetch(FetchMode.SELECT)
     public Manager getManager() {
         return manager;
     }

@@ -62,9 +62,8 @@ public Manager(String name, String phoneNo, String email){
         this.email = email;
     }
 
-    @OneToOne(mappedBy = "manager", fetch = FetchType.LAZY)
-
-
+    @OneToOne(mappedBy = "manager", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public Team getTeam() {
         return team;
     }
