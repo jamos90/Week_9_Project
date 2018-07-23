@@ -1,14 +1,29 @@
-<p class="pageHeader">All fixtures</p>
+<p class="pageHeader" align="center">Upcoming fixtures</p>
 
+#foreach($fixture in $fixtures)
+<table class="center" align="center">
 
-<br>
-<div class="container">
+    <tr>
+        <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
+    </tr>
+    <p></p>
+    <tr>
+        <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>      $fixture.getHomeGoals()      <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+    </tr>
 
-        #foreach(fixture in fixtures)
-        <tr>
-            <td><a href="/fixtures/fixture.getId()">fixture.getWeek()</a></td>
-            <td>
-            </td>
-        </tr>
-        #end
-</div>
+    <tr>
+        <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
+    </tr>
+    <tr>
+        <td align="center"><form method="get" action="/matchreports/$matchreport.getId()/edit">
+            <input type="submit" value="Enter result" align="center">
+        </form></td>
+    </tr>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</table>
+#end

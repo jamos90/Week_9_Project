@@ -102,8 +102,6 @@ public class Runner {
         league.generateFixtures(true);
         DBHelper.update(league);
 
-
-
         for (Fixture fixture : league.getFixtures()) {
             DBHelper.save(fixture);
         }

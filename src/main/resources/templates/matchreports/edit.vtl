@@ -1,0 +1,13 @@
+<h1>Edit report</h1>
+<br>
+<form action="/matchreports/$matchreport.getId()" method="post">
+    <label for="headline">Headline:</label>
+
+    <input type="text" name="headline" id="headline" value=$matchreport.getHeadline()>
+
+    <label for="blurb">Content:</label>
+    <input type="blurb" name="blurb" id="blurb" value=$matchreport.getBlurb()>
+
+    <input type="submit" value="Save report">
+
+</form>

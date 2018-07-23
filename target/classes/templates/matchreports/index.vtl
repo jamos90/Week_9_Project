@@ -5,27 +5,29 @@
     <a href="/matchreports/new" class="button center">Log new match report</a>
 </div>
 <br>
-<div class="row">
-    <div class="col">
         <table class="center">
             #foreach($matchreport in $matchreports)
         <tr>
-            <th>Week $matchreport.getFixture().getWeek(), match $matchreport.getFixture().getMatch() : $matchreport.returnHomeTeamName() vs $matchreport.returnAwayTeamName() </th>
+            <th><a href="/matchreports/$matchreport.getId()">Week $matchreport.getFixture().getWeek(), Match $matchreport.getFixture().getMatch() - $matchreport.getHeadline()</a></th>
         </tr>
 
         <tr>
-            <td><a href="/matchreports/$matchreport.getId()">$matchreport.getHeadline()</a></td>
             <td>$matchreport.getBlurb()</td>
-            <td>
-                <form action="/matchreports/$matchreport.getId()/delete" method="post">
-                    <input type="submit" value="Delete report">
-                </form>
-            </td>
         </tr>
-    </table>
-    </div>
-    <img src= $matchreport.getPicture() >
-</div>
+        </table>
+        <table class="center" align="center">
+            <tr>
+                <td align="center">
+                    <form method="get" action="/matchreports/$matchreport.getId()/edit">
+                        <input type="submit" value="Edit report" align="center">
+                    </form>
+                </td>
+                <td align="center">
+                    <form action="/matchreports/$matchreport.getId()/delete" method="post">
+                        <input type="submit" value="Delete report" align="center">
+                    </form>
+                </td>
+            </tr>
+            <img src= $matchreport.getPicture() align="center">
+        </table>
 #end
-</div>
-
