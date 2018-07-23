@@ -173,7 +173,7 @@ public class Fixture {
 
             else {
             teams.get(0).addPointsToTeam(1);
-            teams.get(0).addPointsToTeam(1);
+            teams.get(1).addPointsToTeam(1);
         }
 
     }

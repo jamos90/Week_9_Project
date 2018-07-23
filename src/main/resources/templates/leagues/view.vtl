@@ -1,13 +1,5 @@
 <h1> $league.getName() The League</h1>
 
-
-#foreach($fixture in $fixtures)
-<p> $fixture.teamNames()</p>
-<p> Scheduled on week: $fixture.getWeek() </p>
-#end
-
-
-
 <div class="container">
     <table>
         <tr>
@@ -30,11 +22,20 @@
             <td>won</td>
             <td>drew</td>
             <td>lost</td>
-            <td>for</td>
-            <td>against</td>
-            <td>goal diff</td>
+            <td>$team.getGoalsScored()</td>
+            <td>$team.getGoalsConceded()</td>
+            <td>$team.goalDifference()</td>
             <td>$team.getPoints()</td>
         </tr>
         #end
     </table>
 </div>
+
+#foreach($fixture in $fixtures)
+<p> $fixture.teamNames()</p>
+<p> Scheduled on week: $fixture.getWeek() </p>
+#end
+
+
+
+

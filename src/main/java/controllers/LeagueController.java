@@ -77,6 +77,8 @@ public class LeagueController {
 
             model.put("template", "templates/leagues/view.vtl");
 
+            DBLeague.sortLeagueByPoints(league);
+
             return new ModelAndView(model,"templates/layout.vtl");
 
 
