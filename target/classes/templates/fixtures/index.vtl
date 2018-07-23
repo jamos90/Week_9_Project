@@ -19,9 +19,18 @@
         <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
     </tr>
     <tr>
+
+        #if ($fixture.getHomeGoals() != " ")
+        <td align="center"><form method="get" action="/matchreports/$matchreport.getId()/edit">
+            <input type="submit" value="Enter result" align="center">
+            #else
+            <p> No report available</p>
+        </form></td>
+
         <td align="center">
             <input type="submit" value="Enter result" align="center">
         </td>
+
     </tr>
     <p></p>
     <p></p>
