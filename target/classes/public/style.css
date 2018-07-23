@@ -1,5 +1,6 @@
 html {
-background-color: red;   }
+background-color: #d8e9ef;
+font-family: 'Raleway', sans-serif; }
 
 
 .home-input {
@@ -9,5 +10,7 @@ background-color: red;   }
  margin-top: 300px;
  display: inline-block;
  margin-left: 600px;
+
+
 
 }

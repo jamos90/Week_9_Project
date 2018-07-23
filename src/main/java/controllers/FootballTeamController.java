@@ -159,8 +159,8 @@ public class FootballTeamController {
 //            int managerId = Integer.parseInt(req.queryParams("manager"));
 //            Manager manager = DBHelper.find(managerId, Manager.class);
             List<Manager> manager = DBHelper.getAll(Manager.class);
-            model.put("leauge", league);
-            model.put("manage", manager);
+            model.put("league", league);
+            model.put("manager", manager);
             model.put("footballTeam", footballTeam);
             model.put("template", "templates/footballteams/view.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
