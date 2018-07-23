@@ -67,6 +67,7 @@ public class FixtureController {
             awayTeam.setGoalsConceded(Integer.parseInt(homegoals));
             fixture.inputGoalsToGenerateResult(Integer.parseInt(homegoals), Integer.parseInt(awaygoals));
 
+
             DBHelper.update(homeTeam);
             DBHelper.update(awayTeam);
 

@@ -22,6 +22,9 @@ public abstract class Team {
     private Manager manager;
     private League league;
     private int points;
+    private int gamesWon;
+    private int gamesLost;
+    private int gamesDrawn;
     private String teamLogo;
     private String homePitch;
     private String location;
@@ -34,6 +37,9 @@ public abstract class Team {
         this.manager = manager;
         this.league = league;
         this.points = 0;
+        this.gamesWon = 0;
+        this.gamesLost = 0;
+        this.gamesDrawn = 0;
         this.teamLogo = teamLogo;
         this.location = location;
         this.fixtures = new ArrayList<Fixture>();
@@ -132,5 +138,17 @@ public abstract class Team {
 
     public void addPointsToTeam(int points){
      this.points += points;
+    }
+
+    public void incrementWins(){
+        this.gamesWon += 1;
+    }
+
+    public void incrementLosses(){
+        this.gamesLost += 1;
+    }
+
+    public void incrementDraws(){
+        this.gamesDrawn += 1;
     }
 }
