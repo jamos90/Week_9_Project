@@ -1,5 +1,6 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.JoinColumnOrFormula;
 
 import javax.persistence.*;
@@ -36,6 +37,7 @@ public class MatchReport {
         this.id = id;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="fixture_id", nullable = false)
     public Fixture getFixture() {

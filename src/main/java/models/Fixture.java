@@ -2,6 +2,8 @@ package models;
 
 import com.sun.javafx.beans.IDProperty;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -45,10 +47,19 @@ public class Fixture {
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     @JoinTable(name = "teams_fixtures")
     public List<Team> getTeams() {
         return teams;
+    }
+
+    public String teamNames(){
+        String teamNames = "";
+        for ( Team team : this.teams){
+            teamNames += team.getName() + " ";
+        }
+        return teamNames;
     }
 
     public void setTeams(List<Team> teams) {
@@ -104,11 +115,14 @@ public class Fixture {
         this.venue = venue;
     }
 
-    @OneToOne(mappedBy = "fixture", fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToOne(mappedBy = "fixture", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     public MatchReport getMatchReport() {
         return matchReport;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne
     @JoinColumn(name="league_id", nullable = false)
     public League getLeague() {
@@ -128,6 +142,8 @@ public class Fixture {
         this.teams.add(awayTeam);
     }
 
+
+
     public void addHomeTeamToFixture(Team homeTeam){
         this.teams.add(homeTeam);
     }
@@ -146,6 +162,20 @@ public class Fixture {
 
     public Team returnAwayTeam(){
         return this.teams.get(1);
+    }
+
+    public void inputGoalsToGenerateResult(int homeGoals, int awayGoals){
+        if (homeGoals > awayGoals){
+            teams.get(0).addPointsToTeam(3);}
+
+            else if (awayGoals > homeGoals){
+            teams.get(1).addPointsToTeam(3);}
+
+            else {
+            teams.get(0).addPointsToTeam(1);
+            teams.get(0).addPointsToTeam(1);
+        }
+
     }
 
 }

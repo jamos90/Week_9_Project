@@ -1,11 +1,11 @@
 package models;
 
 public enum LeagueType {
-    PROFESSIONAL("Professional"),
-    SCHOOLS("Schools"),
-    AMATEUR("Amateur"),
-    NATIONAL("National"),
-    INTERNATIONAL("International");
+    PROFESSIONAL("PROFESSIONAL"),
+    SCHOOLS("SCHOOLS"),
+    AMATEUR("AMATEUR"),
+    NATIONAL("NATIONAL"),
+    INTERNATIONAL("INTERNATIONAL");
 
     private final String leagueType;
 
@@ -16,4 +16,11 @@ public enum LeagueType {
     public String getLeagueType() {
         return leagueType;
     }
+
+    public LeagueType getLeagueType(String string){
+         return LeagueType.valueOf(string);
+    }
+
+
+
 }

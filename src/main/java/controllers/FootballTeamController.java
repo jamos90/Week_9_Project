@@ -80,9 +80,18 @@ public class FootballTeamController {
 
             FootballTeam newFootballTeam = new FootballTeam(name,manager,league,teamlogo,location);
 
-            DBHelper.save(newFootballTeam);
+            league.addToTeams(newFootballTeam);
+
+            DBLeague.getTeamsForALeaugue(league);
 
             league.addToTeams(newFootballTeam);
+            DBHelper.update(league);
+
+            DBHelper.save(newFootballTeam);
+            DBHelper.update(league)
+
+            ;
+
 
             res.redirect("/footballteams");
 
@@ -133,17 +142,26 @@ public class FootballTeamController {
                     League league = DBHelper.find(leagueId, League.class);
 
                     int managerId = Integer.parseInt(req.queryParams("manager"));
-
                     Manager manager = DBHelper.find(managerId, Manager.class);
+
                     String name = req.queryParams("name");
 
                     String logo = req.queryParams("logo");
 
+                   int points = Integer.parseInt(req.queryParams("points"));
+
                     String location = req.queryParams("location");
 
                     FootballTeam updatedFootballTeam = new FootballTeam(name, manager, league, logo, location);
+
                     int teamId = Integer.parseInt(req.params(":id"));
+
                     updatedFootballTeam.setId(teamId);
+
+                    updatedFootballTeam.setPoints(points);
+
+                    updatedFootballTeam.setManager(manager);
+
                     DBHelper.update(updatedFootballTeam);
                     res.redirect("/footballteams");
             return null;
@@ -152,11 +170,13 @@ public class FootballTeamController {
         post("/footballteams/:id/delete", (req,res)->{
             int id = Integer.parseInt(req.params(":id"));
             FootballTeam teamToDelete = DBHelper.find(id, FootballTeam.class);
-            League teamsLeague = teamToDelete.getLeague();
-            teamsLeague.removeTeams(teamToDelete);
-            DBHelper.update(teamsLeague);
+
+//            League teamsLeague = teamToDelete.getLeague();
+//            teamsLeague.removeTeams(teamToDelete);
+//
+//            DBHelper.update(teamsLeague);
             DBHelper.delete(teamToDelete);
-            DBHelper.update(teamsLeague);
+
             res.redirect("/footballteams");
             return null;
                 }, new VelocityTemplateEngine());

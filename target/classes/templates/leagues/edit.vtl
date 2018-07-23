@@ -38,8 +38,17 @@
         #end
     </table>
 
-    <form action="/leagues/$league.getId()/delete" method="post">
-        <input type="submit" value="Delete League">
+    <select name = "league_type" id ="league_type">
+        #foreach ($leagueType in $leagueTypes)
+        <option value="$leagueType")> $leagueType.getLeagueType()</option>
+        #end
+    </select>
+
+    <form action="/leagues/$league.getId()/update" method="post">
     <input type = "submit" value = "edit">
+    </form>
+
+    <form action = "/leagues/$league.getId()/delete" method = "delete">
+        <input type ="submit" value = "delete">
     </form>
 </form>

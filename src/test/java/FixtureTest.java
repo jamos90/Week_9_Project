@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertSame;
 
 public class FixtureTest {
@@ -80,6 +81,13 @@ public class FixtureTest {
         fixture.setAwayGoals("3");
         fixture.convertGoalsToInteger(fixture.getAwayGoals());
         assertEquals(3, fixture.getAwayGoals());
+    }
+
+    @Test
+    public void canGetTeamNames(){
+        fixture.addTeamsToFixture(thirdFootballTeam,fithfootballTeam);
+        assertEquals("Burton Albion Glasgow City", fixture.teamNames());
+
     }
 
     @Test
