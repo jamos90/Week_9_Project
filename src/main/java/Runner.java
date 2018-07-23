@@ -143,6 +143,7 @@ public class Runner {
         DBHelper.update(fithfootballTeam);
         List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
+        List<Fixture> weekTwoFixtures = DBFixture.findByWeek(3);
 
     }
 }

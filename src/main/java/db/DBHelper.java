@@ -1,5 +1,6 @@
  package db;
 
+        import models.Fixture;
         import org.hibernate.*;
         import org.hibernate.criterion.Restrictions;
 
