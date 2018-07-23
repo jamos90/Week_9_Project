@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Seeds {
 
-    public static void seedData(){
+    public static void seedData() {
 
         DBHelper.deleteAll(Manager.class);
         DBHelper.deleteAll(Team.class);
@@ -22,9 +22,8 @@ public class Seeds {
         Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
-
         Manager manager2 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
-
+        DBHelper.save(manager2);
 
         Manager manager3 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager3);
@@ -95,11 +94,8 @@ public class Seeds {
         league.addToTeams(tenthfootballTeam);
 
 
-
         league.generateFixtures(true);
         DBHelper.update(league);
-
-
 
         for (Fixture fixture : league.getFixtures()) {
             DBHelper.save(fixture);
@@ -110,7 +106,7 @@ public class Seeds {
         f.addHomeTeamToFixture(fourthfootballTeam);
         DBHelper.save(f);
 
-        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win at Edinburgh, their first away points of the season. Fans feel confident of coming out on top in the relegation dogfight.", "n");
+        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
         DBHelper.save(report1);
         f.setMatchReport(report1);
         DBHelper.update(f);
@@ -133,8 +129,15 @@ public class Seeds {
 
         List<Fixture> updatedLeagueFixtures = DBLeague.getFixturesForLeague(league);
 
-        List<Manager> mangers = DBHelper.getAll(Manager.class);
+        List<Manager> managers = DBHelper.getAll(Manager.class);
+
+        //CHECK SORTED LEAGUE
+        eighthfootballTeam.setPoints(20);
+        DBHelper.update(eighthfootballTeam);
+        fithfootballTeam.setPoints(10);
+        DBHelper.update(fithfootballTeam);
+        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
+
 
     }
-
 }
