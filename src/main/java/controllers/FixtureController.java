@@ -2,12 +2,14 @@ package controllers;
 
 import db.DBFixture;
 import db.DBHelper;
+import db.DBLeague;
 import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -39,7 +41,6 @@ public class FixtureController {
             model.put("footballteams", footballTeams);
 
 
-
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
@@ -50,7 +51,6 @@ public class FixtureController {
             String awaygoals = (req.queryParams("awaygoals"));
 
 
-
             int fixtureId = Integer.parseInt(req.params(":id"));
             Fixture fixture = DBHelper.find(fixtureId, Fixture.class);
 
@@ -59,15 +59,14 @@ public class FixtureController {
             DBHelper.update(fixture);
 
 
-            FootballTeam homeTeam = (FootballTeam)fixture.returnHomeTeam();
-            FootballTeam awayTeam = (FootballTeam)fixture.returnAwayTeam();
+            FootballTeam homeTeam = (FootballTeam) fixture.returnHomeTeam();
+            FootballTeam awayTeam = (FootballTeam) fixture.returnAwayTeam();
             homeTeam.setGoalsScored(Integer.parseInt(homegoals));
             awayTeam.setGoalsScored(Integer.parseInt(awaygoals));
             homeTeam.setGoalsConceded(Integer.parseInt(awaygoals));
             awayTeam.setGoalsConceded(Integer.parseInt(homegoals));
             fixture.inputGoalsToGenerateResult(Integer.parseInt(homegoals), Integer.parseInt(awaygoals));
-            fixture.updateGamesPlayed(homegoals,awaygoals);
-
+            fixture.updateGamesPlayed(homegoals, awaygoals);
 
 
             DBHelper.update(homeTeam);
@@ -81,7 +80,20 @@ public class FixtureController {
             res.redirect("/fixtures");
             return null;
         }, velocityTemplateEngine);
-    }
 
+        get("/fixtures/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int legueId = Integer.parseInt(req.params(":id"));
+            League league = DBHelper.find(legueId, League.class);
+            DBLeague.getFixturesForLeague(league);
+            model.put("league", league);
+            model.put("template", "templates/fixtures/leagueindex.vtl");
+            return new ModelAndView(model,"templates/layout.vtl");
+
+
+        }, new VelocityTemplateEngine());
+    }
 }
+
+
 

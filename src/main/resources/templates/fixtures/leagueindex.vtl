@@ -12,13 +12,14 @@
     </div>
 </div>
 
-<form action="">
+<form action="/leagues/$league.getId()/fixtures" method="get">
     <select>
         <option value = "default"> -select a league- </option>
         #foreach ($league in $leagues)
         <option value="$league.getId()" onclick="$league.getFixtures()">$league.getName()</option>
         #end
     </select>
+    <input type="button" value="select league">
 </form>
 
 
