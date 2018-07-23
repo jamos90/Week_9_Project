@@ -13,6 +13,14 @@
   </div>
 
 
+<select>
+    <option value = "default"> -select a league- </option>
+    #foreach ($league in $leagues)
+ <option value="/leagues/$league.getId()/fixtures" onclick="$league.getFixtures()">$league.getName()</option>
+    #end
+</select>
+
+
 
 #foreach($fixture in $fixtures)
 #if ($fixture.getHomeGoals() == "")

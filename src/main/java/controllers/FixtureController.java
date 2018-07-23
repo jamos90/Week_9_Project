@@ -38,6 +38,8 @@ public class FixtureController {
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
             model.put("footballteams", footballTeams);
 
+
+
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
