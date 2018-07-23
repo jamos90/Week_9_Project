@@ -1,4 +1,5 @@
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import controllers.FixtureController;
 import db.DBFixture;
 import db.DBHelper;
 import db.DBLeague;
@@ -144,5 +145,8 @@ public class Runner {
         List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
         League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
+
+        List<Fixture> orderedFixture = DBFixture.sorFixturesByPWeek();
+
     }
 }

@@ -26,7 +26,7 @@ public class FixtureController {
             HashMap<String, Object> model = new HashMap<>();
             model.put("template", "templates/fixtures/index.vtl");
 
-            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+            List<Fixture> fixtures = DBFixture.sortFixturesByWeeks();
             model.put("fixtures", fixtures);
 
             List<League> leagues = DBHelper.getAll(League.class);
@@ -38,7 +38,10 @@ public class FixtureController {
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
             model.put("footballteams", footballTeams);
 
-            DBFixture.sorFixturesByPWeek();
+
+
+            DBHelper.update(fixtures);
+
 
 
             return new ModelAndView(model, "templates/layout.vtl");
@@ -54,10 +57,11 @@ public class FixtureController {
 
             int fixtureId = Integer.parseInt(req.params(":id"));
             Fixture fixture = DBHelper.find(fixtureId, Fixture.class);
+
             fixture.setHomeGoals(homegoals);
             fixture.setAwayGoals(awaygoals);
             DBHelper.update(fixture);
-            DBFixture.sorFixturesByPWeek();
+
 
             FootballTeam homeTeam = (FootballTeam)fixture.returnHomeTeam();
             FootballTeam awayTeam = (FootballTeam)fixture.returnAwayTeam();
@@ -69,11 +73,14 @@ public class FixtureController {
             fixture.updateGamesPlayed(homegoals,awaygoals);
 
 
+
             DBHelper.update(homeTeam);
             DBHelper.update(awayTeam);
 
+
             League league = homeTeam.getLeague();
             DBHelper.update(league);
+
 
             res.redirect("/fixtures");
             return null;

@@ -8,6 +8,10 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.awt.print.Book;
 import java.util.List;
 
 public class DBFixture {
@@ -32,6 +36,28 @@ public class DBFixture {
     }
 
 
+    public static List<Fixture> sortFixturesByWeeks() {
+
+        List<Fixture> fixture = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Criteria cr = session.createCriteria(Fixture.class);
+            cr.addOrder(Order.asc("week"));
+            fixture =  cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return fixture;
+    }
+
+
+
+
+
+
 
 
 }
+
