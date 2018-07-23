@@ -222,11 +222,11 @@ public class League {
             // Outside second loop, add current WeekOfReversedFixtures to the list of lists of fixtures (reverseFixtures)
             // addAll of the reverseFixtures to the list of lists of fixtures (fixturesList)
         }
-        if(reverse){
+        if (reverse) {
             List<List<Fixture>> reverseFixtures = new ArrayList<List<Fixture>>();
-            for(List<Fixture> weekOfFixtures: fixturesList){
+            for (List<Fixture> weekOfFixtures : fixturesList) {
                 List<Fixture> reversedWeek = new ArrayList<Fixture>();
-                for(Fixture fixture: weekOfFixtures){
+                for (Fixture fixture : weekOfFixtures) {
                     Fixture tempfix = new Fixture((fixture.getWeek() + numberofTeams - 1), (fixture.getMatch()), this);
                     tempfix.addTeamsToFixture(fixture.returnAwayTeam(), fixture.returnHomeTeam());
                     reversedWeek.add(tempfix);
@@ -235,10 +235,30 @@ public class League {
             }
             fixturesList.addAll(reverseFixtures);
         }
+
+        // ADDING ANOTHER SUB-METHOD TO RESET THE WEEK LABEL OF FIXTURES TO THE PROPER VALUE
+
+        List<List<Fixture>> fixtureListCorrectlyNumberedByWeek = new ArrayList<List<Fixture>>();
+
+        for (int week = 0; week < numberOfWeeks * 2; week++) {
+
+            List<Fixture> weeklyFixtures = fixturesList.get(week);
+
+            for (int match = 0; match < matchesPerWeek; match++) {
+                Fixture retrievedFixture = weeklyFixtures.get(match);
+                retrievedFixture.setWeek(week + 1); // RESETS THE WEEK ATTRIBUTE FOR EACH FIXTURE
+            }
+            fixtureListCorrectlyNumberedByWeek.add(weeklyFixtures); //ADDS NEWLY RESET WEEKLY FIXTURES TO A NEW LIST OF LISTS
+        }
+        fixturesList = fixtureListCorrectlyNumberedByWeek;
+
+
         // Reassign the fixturesList
-        this.season = fixturesList;
+
+        this.season = fixtureListCorrectlyNumberedByWeek;
         this.fixtures = seasonsFixtures(reverse);
     }
+
 
 
     public ArrayList<Fixture> seasonsFixtures(Boolean reverse) {
