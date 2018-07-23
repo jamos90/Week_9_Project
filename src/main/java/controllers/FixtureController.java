@@ -85,8 +85,9 @@ public class FixtureController {
             Map<String, Object> model = new HashMap<>();
             int legueId = Integer.parseInt(req.params(":id"));
             League league = DBHelper.find(legueId, League.class);
-            DBLeague.getFixturesForLeague(league);
+            List <Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
             model.put("league", league);
+            model.put("fixtures", leaguesFixtures);
             model.put("template", "templates/fixtures/leagueindex.vtl");
             return new ModelAndView(model,"templates/layout.vtl");
 

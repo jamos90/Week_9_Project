@@ -148,5 +148,7 @@ public class Runner {
 
         List<Fixture> orderedFixture = DBFixture.sorFixturesByPWeek();
 
+        List<Fixture> leaguesFixture = DBLeague.getFixturesForLeague(league);
+
     }
 }
