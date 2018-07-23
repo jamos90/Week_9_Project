@@ -22,9 +22,9 @@ public abstract class Team {
     private Manager manager;
     private League league;
     private int points;
-    private int gamesWon;
-    private int gamesLost;
-    private int gamesDrawn;
+    private Integer gamesWon;
+    private Integer gamesLost;
+    private Integer gamesDrawn;
     private String teamLogo;
     private String homePitch;
     private String location;
@@ -150,5 +150,32 @@ public abstract class Team {
 
     public void incrementDraws(){
         this.gamesDrawn += 1;
+    }
+
+    @Column(name = "wins")
+    public Integer getGamesWon() {
+        return gamesWon;
+    }
+
+    public void setGamesWon(Integer gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
+    @Column(name = "losses")
+    public Integer getGamesLost() {
+        return gamesLost;
+    }
+
+    public void setGamesLost(Integer gamesLost) {
+        this.gamesLost = gamesLost;
+    }
+
+    @Column(name = "draws")
+    public Integer getGamesDrawn() {
+        return gamesDrawn;
+    }
+
+    public void setGamesDrawn(Integer gamesDrawn) {
+        this.gamesDrawn = gamesDrawn;
     }
 }
