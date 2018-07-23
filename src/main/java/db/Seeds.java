@@ -82,6 +82,8 @@ public class Seeds {
         FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Edinburgh");
         DBHelper.save(tenthfootballTeam);
 
+        League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
+
         league.addToTeams(awayfootballTeam);
         league.addToTeams(homefootballTeam);
         league.addToTeams(thirdFootballTeam);
@@ -131,12 +133,12 @@ public class Seeds {
 
         List<Manager> managers = DBHelper.getAll(Manager.class);
 
-        //CHECK SORTED LEAGUE
-        eighthfootballTeam.setPoints(20);
-        DBHelper.update(eighthfootballTeam);
-        fithfootballTeam.setPoints(10);
-        DBHelper.update(fithfootballTeam);
-        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
+//        //CHECK SORTED LEAGUE
+//        eighthfootballTeam.setPoints(20);
+//        DBHelper.update(eighthfootballTeam);
+//        fithfootballTeam.setPoints(10);
+//        DBHelper.update(fithfootballTeam);
+//        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
 
     }

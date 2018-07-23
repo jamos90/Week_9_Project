@@ -1,6 +1,8 @@
 <p class="pageHeader" align="center">Upcoming fixtures</p>
 
 #foreach($fixture in $fixtures)
+#if ($fixture.getHomeGoals() == "")
+<form action="fixtures/$fixture.getId()" method="post">
 <table class="center" align="center">
 
     <tr>
@@ -8,19 +10,27 @@
     </tr>
     <p></p>
     <tr>
-        <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>      $fixture.getHomeGoals()      <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+
+        <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
+            <input type = "text" required name = "homegoals" id = "homegoals" style = "width: 6px;" value = "$fixture.getHomeGoals()">  - <input type =  "text" required name = "awaygoals" id = "awaygoals" style = "width: 6px;"value = "$fixture.getAwayGoals()">   <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
     </tr>
 
     <tr>
         <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
     </tr>
     <tr>
+
         #if ($fixture.getHomeGoals() != " ")
         <td align="center"><form method="get" action="/matchreports/$matchreport.getId()/edit">
             <input type="submit" value="Enter result" align="center">
             #else
             <p> No report available</p>
         </form></td>
+
+        <td align="center">
+            <input type="submit" value="Enter result" align="center">
+        </td>
+
     </tr>
     <p></p>
     <p></p>
@@ -29,4 +39,38 @@
     <p></p>
     <p></p>
 </table>
+</form>
+
+#else
+    <table class="center" align="center">
+
+        <tr>
+            <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
+        </tr>
+        <p></p>
+        <tr>
+
+            <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
+                $fixture.getHomeGoals() - $fixture.getAwayGoals()   <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+        </tr>
+
+        <tr>
+            <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
+        </tr>
+        <td align="center">
+            <form method="get" action="/$fixture.getId()/matchreports/new">
+                <input type="submit" value="Add report" align="center">
+            </form>
+        </td>
+        <tr>
+</tr>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+</table>
+#end
+
 #end

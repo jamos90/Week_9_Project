@@ -22,6 +22,10 @@ public abstract class Team {
     private Manager manager;
     private League league;
     private int points;
+    private Integer gamesWon;
+    private Integer gamesLost;
+    private Integer gamesDrawn;
+    private Integer gamesPlayed;
     private String teamLogo;
     private String homePitch;
     private String location;
@@ -34,6 +38,10 @@ public abstract class Team {
         this.manager = manager;
         this.league = league;
         this.points = 0;
+        this.gamesWon = 0;
+        this.gamesLost = 0;
+        this.gamesDrawn = 0;
+        this.gamesPlayed = 0;
         this.teamLogo = teamLogo;
         this.location = location;
         this.fixtures = new ArrayList<Fixture>();
@@ -133,4 +141,58 @@ public abstract class Team {
     public void addPointsToTeam(int points){
      this.points += points;
     }
+
+    public void incrementWins(){
+        this.gamesWon += 1;
+    }
+
+    public void incrementLosses(){
+        this.gamesLost += 1;
+    }
+
+    public void incrementDraws(){
+        this.gamesDrawn += 1;
+    }
+
+    public void incrementGamesPlayed(){
+        this.gamesPlayed +=1;
+    }
+
+    @Column(name = "wins")
+    public Integer getGamesWon() {
+        return gamesWon;
+    }
+
+    public void setGamesWon(Integer gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
+    @Column(name = "losses")
+    public Integer getGamesLost() {
+        return gamesLost;
+    }
+
+    public void setGamesLost(Integer gamesLost) {
+        this.gamesLost = gamesLost;
+    }
+
+    @Column(name = "draws")
+    public Integer getGamesDrawn() {
+        return gamesDrawn;
+    }
+
+    public void setGamesDrawn(Integer gamesDrawn) {
+        this.gamesDrawn = gamesDrawn;
+    }
+
+    @Column(name = "games_played")
+    public Integer getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(Integer gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+
 }
