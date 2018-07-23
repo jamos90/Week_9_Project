@@ -23,9 +23,10 @@ public class Fixture {
     private MatchReport matchReport;
     private League league;
 
-    public Fixture(){}
+    public Fixture() {
+    }
 
-    public Fixture(int week, Integer match, League league){
+    public Fixture(int week, Integer match, League league) {
         this.teams = new ArrayList<Team>();
         this.homeGoals = "";
         this.awayGoals = "";
@@ -54,9 +55,9 @@ public class Fixture {
         return teams;
     }
 
-    public String teamNames(){
+    public String teamNames() {
         String teamNames = "";
-        for ( Team team : this.teams){
+        for (Team team : this.teams) {
             teamNames += team.getName() + " ";
         }
         return teamNames;
@@ -84,7 +85,7 @@ public class Fixture {
         this.awayGoals = awayGoals;
     }
 
-    public int convertGoalsToInteger(String goals){
+    public int convertGoalsToInteger(String goals) {
         return Integer.parseInt(goals);
     }
 
@@ -124,7 +125,7 @@ public class Fixture {
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne
-    @JoinColumn(name="league_id", nullable = false)
+    @JoinColumn(name = "league_id", nullable = false)
     public League getLeague() {
         return league;
     }
@@ -137,47 +138,42 @@ public class Fixture {
         this.matchReport = matchReport;
     }
 
-    public void addTeamsToFixture(Team homeTeam, Team awayTeam){
+    public void addTeamsToFixture(Team homeTeam, Team awayTeam) {
         this.teams.add(homeTeam);
         this.teams.add(awayTeam);
     }
 
 
-
-    public void addHomeTeamToFixture(Team homeTeam){
+    public void addHomeTeamToFixture(Team homeTeam) {
         this.teams.add(homeTeam);
     }
 
-    public void addAwayTeamToFixture(Team awayTeam){
+    public void addAwayTeamToFixture(Team awayTeam) {
         this.teams.add(awayTeam);
     }
 
-    public int countTeams(){
+    public int countTeams() {
         return this.teams.size();
     }
 
-    public Team returnHomeTeam(){
+    public Team returnHomeTeam() {
         return this.teams.get(0);
     }
 
-    public Team returnAwayTeam(){
+    public Team returnAwayTeam() {
         return this.teams.get(1);
     }
 
-    public void inputGoalsToGenerateResult(int homeGoals, int awayGoals){
-        if (homeGoals > awayGoals){
+    public void inputGoalsToGenerateResult(int homeGoals, int awayGoals) {
+        if (homeGoals > awayGoals) {
             teams.get(0).addPointsToTeam(3);
             teams.get(0).incrementWins();
             teams.get(1).incrementLosses();
-        }
-
-            else if (awayGoals > homeGoals){
+        } else if (awayGoals > homeGoals) {
             teams.get(1).addPointsToTeam(3);
             teams.get(1).incrementWins();
             teams.get(0).incrementLosses();
-        }
-
-            else {
+        } else {
             teams.get(0).addPointsToTeam(1);
             teams.get(1).addPointsToTeam(1);
             teams.get(0).incrementDraws();
@@ -187,6 +183,12 @@ public class Fixture {
 
     }
 
+    public void updateGamesPlayed(String homeGoals, String awayGoals) {
+        if (homeGoals != "") {
+            teams.get(0).incrementGamesPlayed();
+            teams.get(1).incrementGamesPlayed();
+        }
 
 
+    }
 }

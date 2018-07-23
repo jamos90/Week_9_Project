@@ -25,6 +25,7 @@ public abstract class Team {
     private Integer gamesWon;
     private Integer gamesLost;
     private Integer gamesDrawn;
+    private Integer gamesPlayed;
     private String teamLogo;
     private String homePitch;
     private String location;
@@ -40,6 +41,7 @@ public abstract class Team {
         this.gamesWon = 0;
         this.gamesLost = 0;
         this.gamesDrawn = 0;
+        this.gamesPlayed = 0;
         this.teamLogo = teamLogo;
         this.location = location;
         this.fixtures = new ArrayList<Fixture>();
@@ -152,6 +154,10 @@ public abstract class Team {
         this.gamesDrawn += 1;
     }
 
+    public void incrementGamesPlayed(){
+        this.gamesPlayed +=1;
+    }
+
     @Column(name = "wins")
     public Integer getGamesWon() {
         return gamesWon;
@@ -178,4 +184,15 @@ public abstract class Team {
     public void setGamesDrawn(Integer gamesDrawn) {
         this.gamesDrawn = gamesDrawn;
     }
+
+    @Column(name = "games_played")
+    public Integer getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(Integer gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+
 }
