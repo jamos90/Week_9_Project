@@ -1,9 +1,32 @@
 <h1> $league.getName() The League</h1>
 
 #foreach ($fixture in $generatedFixtures)
-<p>$fixture.returnHomeTeam().getName()</p>
+<form action="fixtures/$fixture.getId()" method="post">
+    <table class="center" align="center">
+
+        <tr>
+            <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
+        </tr>
+        <p></p>
+        <tr>
+            <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
+                $fixture.getHomeGoals() v $fixture.getAwayGoals()   <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+        </tr>
+
+        <tr>
+            <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
+        </tr>
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </table>
+</form>
 #end
-<div class="container">
+<div class="table">
     <table align = "center">
         <tr>
             <th >Team</th>
@@ -48,11 +71,6 @@
         #end
     </table>
 </div>
-
-#foreach($fixture in $fixtures)
-<p> $fixture.teamNames()</p>
-<p> Scheduled on week: $fixture.getWeek() </p>
-#end
 
 
 
