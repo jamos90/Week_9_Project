@@ -3,13 +3,12 @@ package controllers;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import db.DBHelper;
 import db.DBLeague;
-import models.FootballTeam;
-import models.League;
-import models.Manager;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +96,56 @@ public class FootballTeamController {
 
             return null;
         }, new VelocityTemplateEngine());
+
+        //CREATE TEAM FOR LEAGUE
+
+        get("/:id/teams/new", (req,res)->{
+
+            int leagueId = Integer.parseInt(req.params(":id"));
+            League league = DBHelper.find(leagueId, League.class);
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("template","templates/footballteams/createForLeague.vtl");
+            model.put("league", league);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, new VelocityTemplateEngine());
+
+        post("/:id/footballteams", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            //getting league id
+            int leagueId = Integer.parseInt(req.params("id"));
+
+            //find league by id
+            League league = DBHelper.find(leagueId, League.class);
+
+
+            String name = req.queryParams("name");
+
+            String teamlogo = req.queryParams("team_logo");
+
+            String location = req.queryParams("location");
+
+            String managerName = req.queryParams("mgrname");
+            String managerEmail = req.queryParams("email");
+            String managerPhone = req.queryParams("phone");
+
+            Manager newManager = new Manager(managerName, managerEmail, managerPhone);
+            DBHelper.save(newManager);
+
+            FootballTeam newFootballTeam = new FootballTeam(name, newManager, league, teamlogo, location);
+            DBHelper.save(newFootballTeam);
+
+            league.addToTeams(newFootballTeam);
+            DBHelper.update(league);
+
+            res.redirect("/footballteams");
+
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+
 
 
         //view for a team

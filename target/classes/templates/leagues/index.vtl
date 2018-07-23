@@ -15,14 +15,15 @@
             <td>$league.getLeagueType()</td>
 
             <td>
-                <form action="/leagues/$league.getId()/delete" method="post">
-                    <input type="submit" value="Delete Team">
-                </form>
 
                 <a href = "/leagues/$league.getId()"> Further information</a>
 
                 <a href="/leagues/$league.getId()/edit">Edit this team</a>
                 <br>
+
+                <a href = "/leagues/new"> Create new league</a>
+
+                <a href = "/$league.getId()/teams/new"> Add teams to league </a>
             </td>
         </tr>
         #end

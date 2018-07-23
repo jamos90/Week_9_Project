@@ -50,6 +50,7 @@ public class LeagueController {
 
 
 
+
             post("/leagues", (req,res) ->{
                 String name = req.queryParams("name");
                 LeagueType leagueType =  LeagueType.valueOf(req.queryParams("league_type"));
