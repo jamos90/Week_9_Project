@@ -120,7 +120,6 @@ public class Runner {
 
 
         List<Manager> allManagers = DBHelper.getAll(Manager.class);
-        List<MatchReport> allReports = DBHelper.getAll(MatchReport.class);
         List<FootballTeam> allFootballTeams = DBHelper.getAll(FootballTeam.class);
         List<League> allLeagues = DBHelper.getAll(League.class);
         List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
@@ -129,8 +128,25 @@ public class Runner {
         Fixture Foundfixture = DBHelper.find(f.getId(), Fixture.class);
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
+        List<Fixture> sortedFix = DBFixture.sortFixturesByWeeks();
 
 
+        Fixture fixtureForFirstReport = sortedFix.get(1);
+        Fixture fixtureForSecondReport = sortedFix.get(2);
+        MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Bolton: Spencer-Clark (1), Lowe (2)", "");
+        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfights gets into full swing.", "Burton Albion: Davies (red card)", "");
+        DBHelper.save(reportForSite);
+        DBHelper.save(secondReportForSite);
+        fixtureForFirstReport.setMatchReport(reportForSite);
+        fixtureForSecondReport.setMatchReport(secondReportForSite);
+        DBHelper.update(fixtureForFirstReport);
+        DBHelper.update(fixtureForSecondReport);
+        fixtureForFirstReport.setHomeGoals("3");
+        fixtureForFirstReport.setAwayGoals("0");
+        fixtureForSecondReport.setHomeGoals("0");
+        fixtureForSecondReport.setAwayGoals("0");
+
+        List<MatchReport> allReports = DBHelper.getAll(MatchReport.class);
 
 //        DBLeague.getFullSeasonFixtures(2, league);
 

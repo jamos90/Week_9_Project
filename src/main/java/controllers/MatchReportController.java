@@ -71,6 +71,8 @@ public class MatchReportController {
 
             HashMap<String, Object> model = new HashMap<>();
 
+           fixture.setMatch(fixture.getMatch()-1);
+
             model.put("fixture", fixture);
 
             List<MatchReport> matchReports = DBHelper.getAll(MatchReport.class);
@@ -98,6 +100,8 @@ public class MatchReportController {
             DBHelper.save(newMatchReport);
             fixture.setMatchReport(newMatchReport);
 
+            fixture.setMatch(fixture.getMatch()-1);
+
             res.redirect("/fixtures");
             return null;
         }, velocityTemplateEngine);
@@ -113,6 +117,12 @@ public class MatchReportController {
             int matchreportId = Integer.parseInt(req.params(":id"));
             MatchReport matchreport = DBHelper.find(matchreportId, MatchReport.class);
 
+            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+
+            for (Fixture fixture1: fixtures){
+                fixture1.setMatch(fixture1.getMatch() - 1);
+            }
+
             model.put("matchreport", matchreport);
             model.put("template", "templates/matchreports/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -127,6 +137,7 @@ public class MatchReportController {
             matchreport.setHeadline(headline);
             matchreport.setBlurb(blurb);
             DBHelper.update(matchreport);
+
 
             res.redirect("/matchreports");
             return null;
