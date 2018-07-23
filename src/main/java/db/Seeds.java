@@ -119,7 +119,7 @@ public class Seeds {
         Fixture fixtureForFirstReport = sortedFix.get(1);
         Fixture fixtureForSecondReport = sortedFix.get(2);
         MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Bolton: Spencer-Clark (1), Lowe (2)", "");
-        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfights gets into full swing.", "Burton Albion: Davies (red card)", "");
+        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfight gets into full swing.", "Burton Albion: Davies (red card)", "");
         DBHelper.save(reportForSite);
         DBHelper.save(secondReportForSite);
         fixtureForFirstReport.setMatchReport(reportForSite);
@@ -130,8 +130,29 @@ public class Seeds {
         fixtureForFirstReport.setAwayGoals("0");
         fixtureForSecondReport.setHomeGoals("0");
         fixtureForSecondReport.setAwayGoals("0");
+        FootballTeam homeTeam = (FootballTeam)fixtureForFirstReport.returnHomeTeam();
+        FootballTeam awayTeam = (FootballTeam)fixtureForFirstReport.returnAwayTeam();
+        FootballTeam homeTeam2 = (FootballTeam)fixtureForSecondReport.returnHomeTeam();
+        FootballTeam awayTeam2 = (FootballTeam)fixtureForSecondReport.returnAwayTeam();
+
+        homeTeam.setGoalsScored(Integer.parseInt(fixtureForFirstReport.getHomeGoals()));
+        homeTeam2.setGoalsScored(Integer.parseInt(fixtureForSecondReport.getHomeGoals()));
+        awayTeam.setGoalsScored(Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        awayTeam2.setGoalsScored(Integer.parseInt(fixtureForSecondReport.getAwayGoals()));
+        homeTeam.setGoalsConceded(Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        homeTeam2.setGoalsConceded(Integer.parseInt(fixtureForSecondReport.getAwayGoals()));
+        awayTeam.setGoalsConceded(Integer.parseInt(fixtureForFirstReport.getHomeGoals()));
+        awayTeam2.setGoalsConceded(Integer.parseInt(fixtureForSecondReport.getHomeGoals()));
+
+        fixtureForFirstReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        fixtureForSecondReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+
+        fixtureForFirstReport.updateGamesPlayed(fixtureForFirstReport.getHomeGoals(), fixtureForFirstReport.getAwayGoals());
+        fixtureForSecondReport.updateGamesPlayed(fixtureForFirstReport.getHomeGoals(), fixtureForFirstReport.getAwayGoals());
+
         DBHelper.update(fixtureForFirstReport);
         DBHelper.update(fixtureForSecondReport);
+
 
 
         List<Manager> allManagers = DBHelper.getAll(Manager.class);
