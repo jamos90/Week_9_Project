@@ -70,12 +70,12 @@ public class FixtureController {
             homeTeam.setGoalsConceded(Integer.parseInt(awaygoals));
             awayTeam.setGoalsConceded(Integer.parseInt(homegoals));
             fixture.inputGoalsToGenerateResult(Integer.parseInt(homegoals), Integer.parseInt(awaygoals));
-<<<<<<< HEAD
+
             fixture.updateGamesPlayed(homegoals,awaygoals);
-=======
+
             fixture.updateGamesPlayed(homegoals, awaygoals);
 
->>>>>>> feature/drop_down_menus
+
 
             DBHelper.update(homeTeam);
             DBHelper.update(awayTeam);
