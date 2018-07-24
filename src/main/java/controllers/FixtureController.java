@@ -38,7 +38,6 @@ public class FixtureController {
                 }
             }
 
-
             List<League> leagues = DBHelper.getAll(League.class);
             model.put("leagues", leagues);
 

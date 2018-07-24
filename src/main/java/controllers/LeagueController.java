@@ -68,10 +68,19 @@ public class LeagueController {
 
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
+                List <Team> sortedLeague =  DBLeague.sortLeagueByPoints(league);
+                model.put("teams", sortedLeague);
 
 
                 List<Fixture> fixtures = DBFixture.sortLeaguesFixturesByWeeks(league);
                 model.put("fixtures", fixtures);
+
+                for (Fixture fixture: fixtures){
+                    if (fixture.getLeague().ghostInLeague())
+                    {
+                        fixture.setMatch(fixture.getMatch() - 1);
+                    }
+                }
 
                 List<Team> teams = DBLeague.getTeamsForALeaugue(league);
                 model.put("teams", teams);
@@ -79,12 +88,12 @@ public class LeagueController {
                 model.put("template", "templates/leagues/view.vtl");
 
                 DBLeague.sortLeagueByPoints(league);
-                DBHelper.update(league);
 
                 return new ModelAndView(model, "templates/layout.vtl");
 
 
             }, new VelocityTemplateEngine());
+
 
 
             get("/leagues/:id/edit", (req, res) -> {
