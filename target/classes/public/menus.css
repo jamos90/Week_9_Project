@@ -16,7 +16,7 @@ display: inline;
     color: white;
     padding: 10px 12px;
     background-color: inherit;
-    font-family: inherit;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
 }
 
@@ -27,7 +27,7 @@ display: inline;
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: hsla(203, 60%, 57%,0.7);
     min-width: 160px;
     z-index: 1;
     top: 45px;
@@ -49,7 +49,8 @@ display: inline;
 }
 
 .dropdown-content a:hover {
-    background-color: blue;
+    background-color: hsla(203, 60%, 57%, 0.9)
+;
 }
 
 .dropdown:hover .dropdown-content {
