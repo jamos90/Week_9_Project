@@ -28,18 +28,19 @@
             <td>
 
                 <form action = "/leagues/$league.getId()" method="get">
-                <input type="submit" value="Further Information">
+                <input type="submit" value="View league hub">
             </form>
 
 
                 <form action = "/leagues/$league.getId()/edit" method="get">
-                    <input type="submit" value="Edit League">
+                    <input type="submit" value="Edit">
                 </form>
 
-
+                #if ($league.getFixtures() == [])
                 <form action = "/$league.getId()/teams/new" method="get">
                     <input type="submit" value="Add teams to league">
                 </form>
+                #end
 
 
                 #if ($league.getFixtures() == [] and $league.getTeams() != [])
