@@ -7,21 +7,29 @@
 #elseif ($fixture.returnAwayTeam().getManager().getName() == "Ghost manager")
 #elseif ($fixture.getHomeGoals() == "")
 <form action="fixtures/$fixture.getId()" method="post">
-    <table class="center" align="center">
+        <table class="center" align="center">
+            <table class="center" align="center">
+            <td>
+            <tr>
+                <th>$fixture.getLeague().getName() </th>
+            </tr>
+            <tr>
+                <td align="center">Week $fixture.getWeek(), Match $fixture.getMatch() </td>
+            </tr>
+            </table>
+            <table class="center" align="center">
+            <tr>
+                <td>
+                <th><a href="/footballteams/$fixture.returnHomeTeam().getId()"> <img src="$fixture.returnHomeTeam().getTeamLogo()" height="50rem" style="vertical-align:middle" hspace="23"> $fixture.returnHomeTeam().getName()</a>
+                <input type = "text" required name = "homegoals" id = "homegoals" style = "width: 12px;" value = "$fixture.getHomeGoals()">  - <input type =  "text" required name = "awaygoals" id = "awaygoals" style = "width: 12px;" value = "$fixture.getAwayGoals()">   <a href="/footballteams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+                </td>
+                <td>
+                    <img src="$fixture.returnHomeTeam().getTeamLogo()" height="50rem" hspace="23" style="vertical-align:middle">
+                </td>
 
-        <tr>
-            <th>$fixture.getLeague().getName() </th>
-        </tr>
-        <tr>
-            <td align="center">Week $fixture.getWeek(), Match $fixture.getMatch() </td>
-        </tr>
-        <p></p>
-        <tr>
-
-            <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
-                <input type = "text" required name = "homegoals" id = "homegoals" style = "width: 12px;" value = "$fixture.getHomeGoals()">  - <input type =  "text" required name = "awaygoals" id = "awaygoals" style = "width: 12px;"value = "$fixture.getAwayGoals()">   <a href="/footballteams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
-        </tr>
-
+            </tr>
+            </table>
+            <table align="center">
         <tr>
             <td align="center">$fixture.returnHomeTeam().getLocation()</td>
         </tr>
@@ -30,6 +38,7 @@
                 <input type="submit" value="Enter result" align="center">
             </td>
         </tr>
+            </table>
         <p></p>
         <p></p>
         <p></p>
@@ -37,6 +46,7 @@
         <p></p>
         <p></p>
     </table>
+
 </form>
 
 #elseif ($fixture.getMatchReport().getHeadline().length() >= 0)
@@ -111,5 +121,4 @@
 
 #end
 <hr>
-<img src="$fixture.returnHomeTeam().getTeamLogo()" height="50rem">
 #end
