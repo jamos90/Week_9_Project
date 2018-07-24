@@ -82,13 +82,13 @@
     <tr>
         <td align="center">Week $fixture.getWeek(), Match $fixture.getMatch() </td>
     </tr>
+
     <p></p>
     <tr>
 
         <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
             $fixture.getHomeGoals() - $fixture.getAwayGoals()   <a href="/footballteams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
     </tr>
-
     <tr>
         <td align="center">$fixture.returnHomeTeam().getLocation()</td>
     </tr>
@@ -107,7 +107,9 @@
     <p></p>
 </table>
 
+
+
 #end
 <hr>
-
+<img src="$fixture.returnHomeTeam().getLogo()">
 #end
