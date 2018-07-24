@@ -300,6 +300,7 @@ public class League {
     }
 
     public boolean ghostInLeague(){
+        this.generateFixtures(true);
         if (this.getTeams().get(this.teamCount() - 1).getManager().getName().equals("Ghost manager")) {
             return true;
         }
