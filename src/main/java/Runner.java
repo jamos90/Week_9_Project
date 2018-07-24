@@ -162,5 +162,7 @@ public class Runner {
 //        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
 
+        List<Fixture> leaguesFixture = DBLeague.getFixturesForLeague(league);
+
     }
 }

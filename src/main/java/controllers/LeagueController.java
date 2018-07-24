@@ -168,6 +168,21 @@ public class LeagueController {
                 return null;
             }, new VelocityTemplateEngine());
 
+            get("/leagues/:id/fixtures", (req,res) -> {
+                Map<String, Object> model = new HashMap<>();
+                int leagueId = Integer.parseInt(req.params(":id"));
+                League league = DBHelper.find(leagueId, League.class);
+                model.put("leagues", league);
+                List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
+                model.put("fixtures", leaguesFixtures);
+                res.redirect("/fixtures/" + leagueId);
+
+                return null;
+
+
+
+            }, new VelocityTemplateEngine());
+
         }
 
 }
