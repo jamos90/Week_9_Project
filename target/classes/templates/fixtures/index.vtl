@@ -1,18 +1,7 @@
 <p class="pageHeader" align="center">Upcoming fixtures</p>
 
-<<<<<<< HEAD
-=======
-<div class="dropdown">
-<button class="dropbtn">Dropdown
-    <i class="fa fa-caret-down"></i>
-</button>
-  <div class = "dropdown-content">
-      <a href = "/leagues">Leagues</a>
-      <a href = "/all">Home</a>
-      <a href = "/footballteams">Football Teams</a>
 
-     </div>
-  </div>
+
 
 <form action="/leagues/$league.getId()/fixtures" method="get">
     <select>
@@ -23,9 +12,6 @@
     </select>
     <input type="submit" value="select league">
 </form>
-
-
->>>>>>> feature/drop_down_menus
 
 #foreach($fixture in $fixtures)
 
@@ -54,7 +40,7 @@
         </tr>
 
         <tr>
-            <td align="center">At $fixture.returnHomeTeam().getName()'s stadium</td>
+            <td align="center">$fixture.returnHomeTeam().getLocation()</td>
         </tr>
         <tr>
             <td align="center">
@@ -68,54 +54,6 @@
         <p></p>
         <p></p>
     </table>
-</form>
-
-#else
-<table class="center" align="center">
-
-    <tr>
-        <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
-    </tr>
-    <p></p>
-    <tr>
-
-        <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
-            $fixture.getHomeGoals() - $fixture.getAwayGoals()   <a href="/teams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
-    </tr>
-
-    <tr>
-        <td align="center">$fixture.returnHomeTeam().getLocation()</td>
-    </tr>
-    <td align="center">
-        <form method="get" action="/$fixture.getId()/matchreports/new">
-            <input type="submit" value="Add report" align="center">
-        </form>
-    </td>
-    <tr>
-<<<<<<< HEAD
-
-        #if ($fixture.getHomeGoals() != " ")
-        <td align="center"><form method="get" action="/matchreports/$matchreport.getId()/edit">
-            <input type="submit" value="Enter result" align="center">
-            #else
-            <p> No report available</p>
-        </form></td>
-
-        <td align="center">
-            <input type="submit" value="Enter result" align="center">
-        </td>
-
-=======
->>>>>>> feature/drop_down_menus
-    </tr>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-</table>
-<<<<<<< HEAD
 </form>
 
 #elseif ($fixture.getMatchReport().getHeadline().length() >= 0)
@@ -180,8 +118,6 @@
     <p></p>
 </table>
 
-=======
->>>>>>> feature/drop_down_menus
 #end
 
 #end
