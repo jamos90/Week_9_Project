@@ -1,0 +1,102 @@
+
+
+    <h1 align = "center"> $league.getName()</h1>
+
+    <div class="table" align="center">
+        <table align = "center" border="0.1">
+            <tr>
+                <th >Team</th>
+                <th></th>
+                <th>PL</th>
+                <th></th>
+                <th>W</th>
+                <th></th>
+                <th>D</th>
+                <th></th>
+                <th>L</th>
+                <th></th>
+                <th>F</th>
+                <th></th>
+                <th>A</th>
+                <th></th>
+                <th>GD</th>
+                <th></th>
+                <th>PTS</th>
+            </tr>
+            #foreach($team in $teams)
+            #if ($team.getManager().getName() == "Ghost manager")
+            <tr>
+
+            </tr>
+
+
+            #else
+            <tr>
+                <td align = "center"><a href="/footballteams/$team.getId()">$team.getName()</a></td>
+                <td></td>
+                <td align = "center">$team.getGamesPlayed()</td>
+                <td></td>
+                <td align = "center">$team.getGamesWon()</td>
+                <td></td>
+                <td align = "center">$team.getGamesDrawn()</td>
+                <td></td>
+                <td align = "center">$team.getGamesLost()</td>
+                <td></td>
+                <td align = "center">$team.getGoalsScored()</td>
+                <td></td>
+                <td align = "center">$team.getGoalsConceded()</td>
+                <td></td>
+                <td align = "center">$team.goalDifference()</td>
+                <td></td>
+                <td align = "center">$team.getPoints()</td>
+            </tr>
+                #end
+                #end
+        </table>
+    </div>
+
+    <br>
+
+
+#foreach ($fixture in $fixtures)
+#if ($fixture.returnHomeTeam().getManager().getName() == "Ghost manager")
+<table class="center" align="center">
+</table>
+
+#elseif ($fixture.returnAwayTeam().getManager().getName() == "Ghost manager")
+<table class="center" align="center">
+</table>
+
+#else
+<form action="fixtures/$fixture.getId()" method="post">
+    <table class="center" align="center">
+
+        <tr>
+            <th>Week $fixture.getWeek(), Match $fixture.getMatch() </th>
+        </tr>
+        <p></p>
+        <tr>
+            <th><a href="/footballteams/$fixture.returnHomeTeam().getId()">$fixture.returnHomeTeam().getName()</a>
+                $fixture.getHomeGoals() v $fixture.getAwayGoals()   <a href="/footballteams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
+        </tr>
+
+        <tr>
+            <td align="center">$fixture.returnHomeTeam().getLocation()</td>
+        </tr>
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <hr>
+    </table>
+</form>
+#end
+#end
+
+
+
+
+
