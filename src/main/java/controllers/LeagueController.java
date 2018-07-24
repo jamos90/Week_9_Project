@@ -82,9 +82,6 @@ public class LeagueController {
                     }
                 }
 
-                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
-                model.put("teams", teams);
-
                 model.put("template", "templates/leagues/view.vtl");
 
                 DBLeague.sortLeagueByPoints(league);
