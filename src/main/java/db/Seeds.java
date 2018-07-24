@@ -55,31 +55,31 @@ public class Seeds {
         FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "/images/selkirk.jpeg", "Selkirkshire Indoor Ground");
         DBHelper.save(homefootballTeam);
 
-        FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Colts", manager2, league, "yes", "Ocean Promenade, Kyle of Lochalsh");
+        FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Colts", manager2, league, "/images/westerross.png", "Ocean Promenade, Kyle of Lochalsh");
         DBHelper.save(awayfootballTeam);
 
-        FootballTeam thirdFootballTeam = new FootballTeam("Broxburn Albion", manager3, league, "yes", "Albion Crossway");
+        FootballTeam thirdFootballTeam = new FootballTeam("Broxburn Albion", manager3, league, "/images/broxburn.jpeg", "Albion Crossway");
         DBHelper.save(thirdFootballTeam);
 
-        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh North", manager4, league, "no", "Leith Walk Cemetery Stadium");
+        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh North", manager4, league, "/images/edinburgh.png", "Leith Walk Cemetery Stadium");
         DBHelper.save(fourthfootballTeam);
 
-        FootballTeam fithfootballTeam = new FootballTeam("West Clydeside", manager5, league, "no", "Easterhouse Playing Field, Glasgow");
+        FootballTeam fithfootballTeam = new FootballTeam("West Clydeside", manager5, league, "/images/glasgow.jpeg", "Easterhouse Playing Field, Glasgow");
         DBHelper.save(fithfootballTeam);
 
-        FootballTeam sixthfootballTeam = new FootballTeam("Tayside Blades", manager6, league, "no", "Stadium of Discovery");
+        FootballTeam sixthfootballTeam = new FootballTeam("Tayside Blades", manager6, league, "/images/tayside.png", "Stadium of Discovery");
         DBHelper.save(sixthfootballTeam);
 
-        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil FC", manager7, league, "/images/aberdeen.jpg", "Granite Paradise");
+        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil FC", manager7, league, "/images/aberdeen.jpeg", "Granite Paradise");
         DBHelper.save(seventhfootballTeam);
 
-        FootballTeam eighthfootballTeam = new FootballTeam("Fort William Red", manager8, league, "no", "Nevis Training Facility");
+        FootballTeam eighthfootballTeam = new FootballTeam("Fort William Red", manager8, league, "/images/fortwilliam.png", "Nevis Training Facility");
         DBHelper.save(eighthfootballTeam);
 
-        FootballTeam ninethfootballTeam = new FootballTeam("City of Inverness", manager9, league, "no", "Ness Walk Stadium, Inverness");
+        FootballTeam ninethfootballTeam = new FootballTeam("City of Inverness", manager9, league, "/images/inverness.png", "Ness Walk Stadium, Inverness");
         DBHelper.save(ninethfootballTeam);
 
-        FootballTeam tenthfootballTeam = new FootballTeam("Grampian Mountains B", manager10, league, "no", "Speyside Fishing Stadium, Aberlour");
+        FootballTeam tenthfootballTeam = new FootballTeam("Grampian Rovers", manager10, league, "/images/speyside.png", "Speyside Fishing Stadium, Aberlour");
         DBHelper.save(tenthfootballTeam);
 
         League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");

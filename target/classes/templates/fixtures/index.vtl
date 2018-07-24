@@ -25,11 +25,12 @@
                 <input type = "text" required name = "homegoals" id = "homegoals" style = "width: 12px;" value = "$fixture.getHomeGoals()">  - <input type =  "text" required name = "awaygoals" id = "awaygoals" style = "width: 12px;" value = "$fixture.getAwayGoals()">   <a href="/footballteams/$fixture.returnAwayTeam().getId()">$fixture.returnAwayTeam().getName()</a></th>
                 </td>
                 <td>
-                    <img src="$fixture.returnHomeTeam().getTeamLogo()" height="50rem" hspace="23" style="vertical-align:middle">
+                    <img src="$fixture.returnAwayTeam().getTeamLogo()" height="50rem" hspace="23" style="vertical-align:middle">
                 </td>
 
             </tr>
             </table>
+            <br>
             <table align="center">
         <tr>
             <td align="center">$fixture.returnHomeTeam().getLocation()</td>
