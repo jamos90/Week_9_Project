@@ -28,10 +28,11 @@ content: center;
    text-align: center;
    border: 2px solid  black;
    border-radius: 10px;
-   color: black;
+   color: #454552;
    padding-top: 2px;
    padding-bottom: 3px;
-   background-color: hsla(196, 42%, 95%, 0.5);
+   background-color: white;
+
 
    content-align: center;
 }
