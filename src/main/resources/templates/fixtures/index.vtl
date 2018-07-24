@@ -12,6 +12,7 @@
      </div>
   </div>
 
+
 <form action="/leagues/$league.getId()/fixtures" method="get">
     <select>
         <option value = "default"> -select a league- </option>
@@ -23,7 +24,9 @@
 </form>
 
 
+
     </tr>
+
 #foreach($fixture in $fixtures)
 
 #if ($fixture.returnHomeTeam().getManager().getName() == "Ghost manager")

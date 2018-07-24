@@ -76,7 +76,6 @@ public class FixtureController {
             fixture.updateGamesPlayed(homegoals, awaygoals);
 
 
-
             DBHelper.update(homeTeam);
             DBHelper.update(awayTeam);
 
