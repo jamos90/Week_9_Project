@@ -93,6 +93,7 @@ public class Seeds {
         league.addToTeams(seventhfootballTeam);
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
+        league.addToTeams(tenthfootballTeam);
 
 
         league.generateFixtures(true);
@@ -145,7 +146,7 @@ public class Seeds {
         awayTeam2.setGoalsConceded(Integer.parseInt(fixtureForSecondReport.getHomeGoals()));
 
         fixtureForFirstReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
-        fixtureForSecondReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        fixtureForSecondReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForSecondReport.getHomeGoals()), Integer.parseInt(fixtureForSecondReport.getAwayGoals()));
 
         fixtureForFirstReport.updateGamesPlayed(fixtureForFirstReport.getHomeGoals(), fixtureForFirstReport.getAwayGoals());
         fixtureForSecondReport.updateGamesPlayed(fixtureForSecondReport.getHomeGoals(), fixtureForSecondReport.getAwayGoals());
