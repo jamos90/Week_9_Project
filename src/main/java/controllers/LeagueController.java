@@ -69,7 +69,7 @@ public class LeagueController {
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
 
-                List<Fixture> fixtures = DBLeague.getFixturesForLeague(league);
+                List<Fixture> fixtures = DBFixture.sortFixturesByWeeks();
                 model.put("fixtures", fixtures);
 
                 List<Team> teams = DBLeague.getTeamsForALeaugue(league);
@@ -77,10 +77,8 @@ public class LeagueController {
 
                 model.put("template", "templates/leagues/view.vtl");
 
-                List <Fixture> generatedFixtures = DBLeague.getFixturesForLeague(league);
-                model.put("generatedFixtures", generatedFixtures);
-
                 DBLeague.sortLeagueByPoints(league);
+                DBHelper.update(league);
 
                 return new ModelAndView(model, "templates/layout.vtl");
 

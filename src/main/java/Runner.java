@@ -158,12 +158,12 @@ public class Runner {
 
         List<Manager> managers = DBHelper.getAll(Manager.class);
 
-//        //CHECK SORTED LEAGUE
-//        eighthfootballTeam.setPoints(20);
-//        DBHelper.update(eighthfootballTeam);
-//        fithfootballTeam.setPoints(10);
-//        DBHelper.update(fithfootballTeam);
-//        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
+        //CHECK SORTED LEAGUE
+        eighthfootballTeam.setPoints(20);
+        DBHelper.update(eighthfootballTeam);
+        fithfootballTeam.setPoints(10);
+        DBHelper.update(fithfootballTeam);
+        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
 
         List<Fixture> leaguesFixture = DBLeague.getFixturesForLeague(league);
