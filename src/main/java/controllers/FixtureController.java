@@ -33,7 +33,14 @@ public class FixtureController {
 
             for (Fixture fixture: fixtures){
                 if (fixture.getLeague().ghostInLeague())
-               {
+                {
+                    fixture.setMatch(fixture.getMatch() - 1);
+                }
+            }
+
+            for (Fixture fixture: fixtures){
+                if (fixture.getLeague().ghostInNewLeague())
+                {
                     fixture.setMatch(fixture.getMatch() - 1);
                 }
             }
