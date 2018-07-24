@@ -175,8 +175,7 @@ public class LeagueController {
                 model.put("leagues", league);
                 List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
                 model.put("fixtures", leaguesFixtures);
-                res.redirect("/fixtures/" + leagueId);
-
+                res.redirect(":id/fixtures/");
                 return null;
 
 
