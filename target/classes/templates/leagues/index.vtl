@@ -5,6 +5,7 @@
         <tr>
             <th>League Name</th>
             <th>League Region</th>
+            <th>League Type</th>
         </tr>
 
         #foreach($league in $leagues)
@@ -18,7 +19,7 @@
 
                 <a href = "/leagues/$league.getId()"> Further information</a>
 
-                <a href="/leagues/$league.getId()/edit">Edit this team</a>
+                <a href="/leagues/$league.getId()/edit">Edit this league</a>
 
                 <a href = "/leagues/new"> Create new league</a>
 
