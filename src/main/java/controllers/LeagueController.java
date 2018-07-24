@@ -79,10 +79,18 @@ public class LeagueController {
                 model.put("fixtures", fixtures);
 
                 for (Fixture fixture: fixtures){
-                    if (fixture.getLeague().ghostInLeague())
+                    fixture.setLeague(league);
+                }
+
+                for (Fixture fixture: fixtures){
+                    if (fixture.getLeague().ghostInNewLeague())
                     {
                         fixture.setMatch(fixture.getMatch() - 1);
                     }
+                }
+
+                for (Fixture fixture: fixtures){
+                    DBHelper.update(fixture);
                 }
 
                 model.put("template", "templates/leagues/view.vtl");
@@ -173,6 +181,13 @@ public class LeagueController {
 
                 league.generateFixtures(true);
                 DBFixture.saveFixturesForLeague(league);
+
+                List<Fixture> fixtures = DBFixture.sortLeaguesFixturesByWeeks(league);
+                model.put("fixtures", fixtures);
+
+                for (Fixture fixtureToUpdate : fixtures){
+                    fixtureToUpdate.setLeague(league);
+                }
 
                 List<Team> teams = DBLeague.getTeamsForALeaugue(league);
                 model.put("teams", teams);
