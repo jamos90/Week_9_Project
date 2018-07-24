@@ -7,6 +7,7 @@ import models.MatchReport;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class MatchReportController {
 
             List<MatchReport> matchreports = DBHelper.getAll(MatchReport.class);
             model.put("matchreports", matchreports);
+
+            List<Fixture> fixtureGhostsToKill = new ArrayList<>();
+
+            for (MatchReport report1 : matchreports) {
+                Fixture fixture = report1.getFixture();
+            }
 
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);

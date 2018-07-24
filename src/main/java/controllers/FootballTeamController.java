@@ -70,7 +70,6 @@ public class FootballTeamController {
             int managerId = Integer.parseInt(req.queryParams("manager"));
             Manager manager = DBHelper.find(managerId, Manager.class);
 
-
             String name = req.queryParams("name");
             String teamlogo = req.queryParams("team_logo");
             String location = req.queryParams("location");
@@ -212,17 +211,7 @@ public class FootballTeamController {
 
             league.addToTeams(newFootballTeam5);
 
-
-
-
-
-
-
-
-
-
-
-            DBHelper.update(league);
+            DBHelper.save(league);
 
             res.redirect("/footballteams");
 

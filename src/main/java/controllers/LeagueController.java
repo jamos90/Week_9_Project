@@ -157,11 +157,15 @@ public class LeagueController {
 
 
             get("/leagues/:id/generate", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
                 int leagueId = Integer.parseInt(req.params("id"));
                 League league = DBHelper.find(leagueId, League.class);
 
                 league.generateFixtures(true);
                 DBFixture.saveFixturesForLeague(league);
+
+                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+                model.put("teams", teams);
                 res.redirect("/leagues/"+ leagueId);
                 return null;
             }, new VelocityTemplateEngine());
@@ -171,6 +175,9 @@ public class LeagueController {
                 int leagueId = Integer.parseInt(req.params(":id"));
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("leagues", league);
+                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+                model.put("teams", teams);
+
                 List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
                 model.put("fixtures", leaguesFixtures);
                 res.redirect("/fixtures/" + leagueId);
