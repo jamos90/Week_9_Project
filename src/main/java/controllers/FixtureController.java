@@ -72,8 +72,6 @@ public class FixtureController {
             fixture.inputGoalsToGenerateResult(Integer.parseInt(homegoals), Integer.parseInt(awaygoals));
             fixture.updateGamesPlayed(homegoals,awaygoals);
 
-            fixture.updateGamesPlayed(homegoals, awaygoals);
-
 
             DBHelper.update(homeTeam);
             DBHelper.update(awayTeam);
