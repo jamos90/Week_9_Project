@@ -4,11 +4,7 @@
 #foreach($fixture in $fixtures)
 
 #if ($fixture.returnHomeTeam().getManager().getName() == "Ghost manager")
-
 #elseif ($fixture.returnAwayTeam().getManager().getName() == "Ghost manager")
-
-
-
 #elseif ($fixture.getHomeGoals() == "")
 <form action="fixtures/$fixture.getId()" method="post">
     <table class="center" align="center">

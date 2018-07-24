@@ -19,67 +19,67 @@ public class Seeds {
         DBHelper.deleteAll(Manager.class);
 
 
-        Manager manager = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager = new Manager("Zsolt Poboda-Szalai", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager);
 
-        Manager manager2 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager2 = new Manager("Duncan Bain", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager2);
 
-        Manager manager3 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager3 = new Manager("Lesley Archer", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager3);
 
-        Manager manager4 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager4 = new Manager("Lionel Spencer-Clark", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager4);
 
-        Manager manager5 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager5 = new Manager("D. Baxter", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager5);
 
-        Manager manager6 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager6 = new Manager("Humphrey Bogart", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager6);
 
-        Manager manager7 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager7 = new Manager("Erik Svensson", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager7);
 
-        Manager manager8 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager8 = new Manager("Tim Maxwell", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager8);
 
-        Manager manager9 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager9 = new Manager("Ellington Harrington", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager9);
 
-        Manager manager10 = new Manager("Zsolt Poboda-Salai", "07610335467", "Zsolt@hungarianmail.hu");
+        Manager manager10 = new Manager("Zach Fields", "07610335467", "Zsolt@hungarianmail.hu");
         DBHelper.save(manager10);
 
-        League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
+        League league = new League("Northern Regional Division", LeagueType.NATIONAL, "United Kingdom");
         DBHelper.save(league);
 
-        FootballTeam homefootballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "The Reebok Stadium");
+        FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "nothing", "Selkirkshire Indoor Ground");
         DBHelper.save(homefootballTeam);
 
-        FootballTeam awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager2, league, "yes", "Dagenham Meadows Ground");
+        FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Supernova", manager2, league, "yes", "Ocean Promenade, Kyle of Lochalsh");
         DBHelper.save(awayfootballTeam);
 
-        FootballTeam thirdFootballTeam = new FootballTeam("Burton Albion", manager3, league, "yes", "Albion Crossway");
+        FootballTeam thirdFootballTeam = new FootballTeam("Broxburn Albion", manager3, league, "yes", "Albion Crossway");
         DBHelper.save(thirdFootballTeam);
 
-        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh City", manager4, league, "no", "Leith Walk Cemetery Stadium");
+        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh North", manager4, league, "no", "Leith Walk Cemetery Stadium");
         DBHelper.save(fourthfootballTeam);
 
-        FootballTeam fithfootballTeam = new FootballTeam("Glasgow City", manager5, league, "no", "Easterhouse Playing Field");
+        FootballTeam fithfootballTeam = new FootballTeam("West Clydeside", manager5, league, "no", "Easterhouse Playing Field, Glasgow");
         DBHelper.save(fithfootballTeam);
 
-        FootballTeam sixthfootballTeam = new FootballTeam("Dundee City", manager6, league, "no", "Tayside Mews");
+        FootballTeam sixthfootballTeam = new FootballTeam("Tayside Blades", manager6, league, "no", "Stadium of Discovery");
         DBHelper.save(sixthfootballTeam);
 
-        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen City", manager7, league, "no", "Granite Paradise");
+        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil Workers", manager7, league, "no", "Granite Paradise");
         DBHelper.save(seventhfootballTeam);
 
-        FootballTeam eighthfootballTeam = new FootballTeam("FortWilliam City", manager8, league, "no", "Nevis Training Facility");
+        FootballTeam eighthfootballTeam = new FootballTeam("Fort William Blues", manager8, league, "no", "Nevis Training Facility");
         DBHelper.save(eighthfootballTeam);
 
-        FootballTeam ninethfootballTeam = new FootballTeam("Inverness City", manager9, league, "no", "Ness Walk Stadium");
+        FootballTeam ninethfootballTeam = new FootballTeam("Locksmiths of Inverness", manager9, league, "no", "Ness Walk Stadium, Inverness");
         DBHelper.save(ninethfootballTeam);
 
-        FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Random Ground");
+        FootballTeam tenthfootballTeam = new FootballTeam("Grampian Mountains B", manager10, league, "no", "Speyside Fishing Stadium, Aberlour");
         DBHelper.save(tenthfootballTeam);
 
         League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
@@ -119,8 +119,8 @@ public class Seeds {
 
         Fixture fixtureForFirstReport = sortedFix.get(1);
         Fixture fixtureForSecondReport = sortedFix.get(2);
-        MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Bolton: Spencer-Clark (1), Lowe (2)", "");
-        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfight gets into full swing.", "Burton Albion: Davies (red card)", "");
+        MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Selkirk: Spencer-Clark (1), Lowe (2)", "");
+        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfight gets into full swing.", "Broxburn Albion: Davies (red card)", "");
        reportForSite.setFixture(fixtureForFirstReport);
         secondReportForSite.setFixture(fixtureForSecondReport);
         DBHelper.save(reportForSite);
