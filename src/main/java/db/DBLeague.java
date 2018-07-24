@@ -1,5 +1,6 @@
 package db;
 
+import com.sun.tools.corba.se.idl.constExpr.Or;
 import models.Fixture;
 import models.League;
 import models.LeagueType;
@@ -60,6 +61,7 @@ public class DBLeague {
                     Criteria cr = session.createCriteria(Team.class);
                     cr.add(Restrictions.eq("league", league));
                     cr.addOrder(Order.desc("points"));
+
                     teams = cr.list();
                 } catch (HibernateException e) {
                     e.printStackTrace();

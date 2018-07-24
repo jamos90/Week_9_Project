@@ -213,7 +213,7 @@ public class FootballTeamController {
 
             DBHelper.save(league);
 
-            res.redirect("/footballteams");
+            res.redirect("/leagues");
 
             return null;
         }, new VelocityTemplateEngine());
