@@ -7,6 +7,7 @@
     <link rel="stylesheet"  type ="text/css" href="/menus.css">
     <link rel="stylesheet"  type ="text/css" href="/style.css">
     <link rel="stylesheet"  type ="text/css" href="/index.css">
+    <link rel="stylesheet"  type ="text/css" href="/table.css">
 </head>
 <body>
 <nav>
@@ -30,7 +31,7 @@
         <button class ="dropbtn">Leagues</button>
         <div class ="dropdown-content">
         <a href = "/leagues"> All leagues</a>
-        <a href = "/leagues/new"> Add a new league</a>
+        <a href = "/leagues/new"> Create a new league</a>
             #foreach ($league in $leagues)
             <a href="leagues/$league.getId()"> $league.getName()'s page </a>
             #end
