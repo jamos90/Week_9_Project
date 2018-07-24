@@ -1,9 +1,9 @@
-<h1 id = "header_text"> Your Current Saved Leagues</h1>
+<h1 id = "header_text">Current Active Leagues</h1>
 
 <div class="container">
 
     <form action = "/leagues/new">
-    <input type="submit" value="Create a new league">
+    <input type="submit" value="Create a new league" align = "center">
     </form>
 
     <br>
@@ -27,13 +27,28 @@
 
             <td>
 
-                <a href = "/leagues/$league.getId()"> Further information</a>
+                <form action = "/leagues/$league.getId()" method="get">
+                <input type="submit" value="Further Information">
+            </form>
 
-                <a href="/leagues/$league.getId()/edit">Edit this league</a>
 
-                <a href = "/$league.getId()/teams/new"> Add teams to league </a>
+                <form action = "/leagues/$league.getId()/edit" method="get">
+                    <input type="submit" value="Edit League">
+                </form>
+
+
+                <form action = "/$league.getId()/teams/new" method="get">
+                    <input type="submit" value="Add teams to league">
+                </form>
+
+
                 #if ($league.getFixtures() == [])
-                <a href = "/leagues/$league.getId()/generate"> Generate Fixtures </a>
+                <form action = "/leagues/$league.getId()/generate" method="get">
+                    <input type="submit" value="Generate Fixtures">
+                </form>
+
+
+
                 #end
 
 

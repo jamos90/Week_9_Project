@@ -1,11 +1,11 @@
 html {
 background-color: #d8e9ef;
-font-family: 'Raleway', sans-serif;
-
+font-family: 'Open Sans', sans-serif;
 }
 
 
 .home-input {
+vertical-align: middle;
   display: flex;
  justify-content: center;
  align-items: center;
@@ -40,6 +40,13 @@ a:active{
   position: relative;
   top:0.25em;
   }
+
+
+ a {
+ text-decoration: none;
+ color: #4ea1d3;
+
+ }
 
 
 
