@@ -29,6 +29,10 @@ public class FixtureController {
             List<Fixture> fixtures = DBFixture.sortFixturesByWeeks();
             model.put("fixtures", fixtures);
 
+            for (Fixture fixture: fixtures){
+                fixture.setMatch(fixture.getMatch() - 1);
+            }
+
             List<League> leagues = DBHelper.getAll(League.class);
             model.put("leagues", leagues);
 

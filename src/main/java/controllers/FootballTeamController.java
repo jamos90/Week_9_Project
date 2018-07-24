@@ -72,9 +72,7 @@ public class FootballTeamController {
 
 
             String name = req.queryParams("name");
-
             String teamlogo = req.queryParams("team_logo");
-
             String location = req.queryParams("location");
 
             FootballTeam newFootballTeam = new FootballTeam(name, manager, league, teamlogo, location);
@@ -120,23 +118,110 @@ public class FootballTeamController {
             League league = DBHelper.find(leagueId, League.class);
 
 
-            String name = req.queryParams("name");
+            String name1 = req.queryParams("name1");
 
-            String teamlogo = req.queryParams("team_logo");
+            String teamlogo1 = req.queryParams("team_logo1");
 
-            String location = req.queryParams("location");
+            String location1 = req.queryParams("location1");
 
-            String managerName = req.queryParams("mgrname");
-            String managerEmail = req.queryParams("email");
-            String managerPhone = req.queryParams("phone");
+            String managerName1 = req.queryParams("mgrname1");
+            String managerEmail1 = req.queryParams("email1");
+            String managerPhone1 = req.queryParams("phone1");
 
-            Manager newManager = new Manager(managerName, managerEmail, managerPhone);
-            DBHelper.save(newManager);
+            Manager newManager1 = new Manager(managerName1, managerEmail1, managerPhone1);
+            DBHelper.save(newManager1);
 
-            FootballTeam newFootballTeam = new FootballTeam(name, newManager, league, teamlogo, location);
-            DBHelper.save(newFootballTeam);
+            FootballTeam newFootballTeam1 = new FootballTeam(name1, newManager1, league, teamlogo1, location1);
+            DBHelper.save(newFootballTeam1);
 
-            league.addToTeams(newFootballTeam);
+            league.addToTeams(newFootballTeam1);
+
+
+            String name2 = req.queryParams("name2");
+
+            String teamlogo2 = req.queryParams("team_logo2");
+
+            String location2 = req.queryParams("location2");
+
+            String managerName2 = req.queryParams("mgrname2");
+            String managerEmail2 = req.queryParams("email2");
+            String managerPhone2 = req.queryParams("phone2");
+
+            Manager newManager2 = new Manager(managerName2, managerEmail2, managerPhone2);
+            DBHelper.save(newManager2);
+
+            FootballTeam newFootballTeam2 = new FootballTeam(name2, newManager2, league, teamlogo2, location2);
+            DBHelper.save(newFootballTeam2);
+
+            league.addToTeams(newFootballTeam2);
+
+
+            String name3 = req.queryParams("name3");
+
+            String teamlogo3 = req.queryParams("team_logo3");
+
+            String location3 = req.queryParams("location3");
+
+            String managerName3 = req.queryParams("mgrname3");
+            String managerEmail3= req.queryParams("email3");
+            String managerPhone3 = req.queryParams("phone3");
+
+            Manager newManager3 = new Manager(managerName3, managerEmail3, managerPhone3);
+            DBHelper.save(newManager3);
+
+            FootballTeam newFootballTeam3 = new FootballTeam(name3, newManager3, league, teamlogo3, location3);
+            DBHelper.save(newFootballTeam3);
+
+            league.addToTeams(newFootballTeam3);
+
+            String name4 = req.queryParams("name4");
+
+            String teamlogo4 = req.queryParams("team_logo4");
+
+            String location4 = req.queryParams("location4");
+
+            String managerName4 = req.queryParams("mgrname4");
+            String managerEmail4= req.queryParams("email4");
+            String managerPhone4 = req.queryParams("phone4");
+
+            Manager newManager4 = new Manager(managerName4, managerEmail4, managerPhone4);
+            DBHelper.save(newManager4);
+
+            FootballTeam newFootballTeam4 = new FootballTeam(name4, newManager4, league, teamlogo4, location4);
+            DBHelper.save(newFootballTeam4);
+
+            league.addToTeams(newFootballTeam4);
+
+
+
+            String name5 = req.queryParams("name5");
+
+            String teamlogo5 = req.queryParams("team_logo5");
+
+            String location5 = req.queryParams("location5");
+
+            String managerName5 = req.queryParams("mgrname5");
+            String managerEmail5= req.queryParams("email5");
+            String managerPhone5 = req.queryParams("phone5");
+
+            Manager newManager5 = new Manager(managerName5, managerEmail5, managerPhone5);
+            DBHelper.save(newManager5);
+
+            FootballTeam newFootballTeam5 = new FootballTeam(name5, newManager5, league, teamlogo5, location5);
+            DBHelper.save(newFootballTeam5);
+
+            league.addToTeams(newFootballTeam5);
+
+
+
+
+
+
+
+
+
+
+
             DBHelper.update(league);
 
             res.redirect("/footballteams");
@@ -159,8 +244,8 @@ public class FootballTeamController {
 //            int managerId = Integer.parseInt(req.queryParams("manager"));
 //            Manager manager = DBHelper.find(managerId, Manager.class);
             List<Manager> manager = DBHelper.getAll(Manager.class);
-            model.put("league", league);
-            model.put("manager", manager);
+            model.put("leauge", league);
+            model.put("manage", manager);
             model.put("footballTeam", footballTeam);
             model.put("template", "templates/footballteams/view.vtl");
             return new ModelAndView(model, "templates/layout.vtl");

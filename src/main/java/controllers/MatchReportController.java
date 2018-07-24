@@ -33,12 +33,34 @@ public class MatchReportController {
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
 
+            for (Fixture fixture: fixtures){
+                fixture.setMatch(fixture.getMatch() - 1);
+            }
+
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
             model.put("footballteams", footballTeams);
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, velocityTemplateEngine);
 
+        get("/matchreports/:id", (req, res) -> {
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("template", "templates/matchreports/view.vtl");
+
+            int matchreportId = Integer.parseInt(req.params(":id"));
+            MatchReport matchreport= DBHelper.find(matchreportId, MatchReport.class);
+
+            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+            model.put("fixtures", fixtures);
+
+            for (Fixture fixture: fixtures){
+                fixture.setMatch(fixture.getMatch() - 1);
+            }
+
+            model.put("matchreport", matchreport);
+            return new ModelAndView(model, "templates/layout.vtl");
+
+        }, velocityTemplateEngine);
 
 
         //CREATE
@@ -48,6 +70,8 @@ public class MatchReportController {
             Fixture fixture = DBHelper.find(fixtureId, Fixture.class);
 
             HashMap<String, Object> model = new HashMap<>();
+
+           fixture.setMatch(fixture.getMatch()-1);
 
             model.put("fixture", fixture);
 
@@ -74,8 +98,11 @@ public class MatchReportController {
 
             MatchReport newMatchReport = new MatchReport( fixture, headline, blurb, picture);
             DBHelper.save(newMatchReport);
+            fixture.setMatchReport(newMatchReport);
 
-            res.redirect("/matchreports");
+            fixture.setMatch(fixture.getMatch()-1);
+
+            res.redirect("/fixtures");
             return null;
         }, velocityTemplateEngine);
 
@@ -89,6 +116,12 @@ public class MatchReportController {
 
             int matchreportId = Integer.parseInt(req.params(":id"));
             MatchReport matchreport = DBHelper.find(matchreportId, MatchReport.class);
+
+            List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
+
+            for (Fixture fixture1: fixtures){
+                fixture1.setMatch(fixture1.getMatch() - 1);
+            }
 
             model.put("matchreport", matchreport);
             model.put("template", "templates/matchreports/edit.vtl");
@@ -104,6 +137,7 @@ public class MatchReportController {
             matchreport.setHeadline(headline);
             matchreport.setBlurb(blurb);
             DBHelper.update(matchreport);
+
 
             res.redirect("/matchreports");
             return null;

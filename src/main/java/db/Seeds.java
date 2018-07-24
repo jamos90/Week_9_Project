@@ -52,34 +52,34 @@ public class Seeds {
         League league = new League("North of England Regional Division", LeagueType.NATIONAL, "Lancashire");
         DBHelper.save(league);
 
-        FootballTeam homefootballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "Bolton");
+        FootballTeam homefootballTeam = new FootballTeam("Bolton Wanderers", manager, league, "nothing", "The Reebok Stadium");
         DBHelper.save(homefootballTeam);
 
-        FootballTeam awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager2, league, "yes", "Dagenham");
+        FootballTeam awayfootballTeam = new FootballTeam("Dagenham and Redbridge", manager2, league, "yes", "Dagenham Meadows Ground");
         DBHelper.save(awayfootballTeam);
 
-        FootballTeam thirdFootballTeam = new FootballTeam("Burton Albion", manager3, league, "yes", "Burton");
+        FootballTeam thirdFootballTeam = new FootballTeam("Burton Albion", manager3, league, "yes", "Albion Crossway");
         DBHelper.save(thirdFootballTeam);
 
-        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh City", manager4, league, "no", "Edinburgh");
+        FootballTeam fourthfootballTeam = new FootballTeam("Edinburgh City", manager4, league, "no", "Leith Walk Cemetery Stadium");
         DBHelper.save(fourthfootballTeam);
 
-        FootballTeam fithfootballTeam = new FootballTeam("Glasgow City", manager5, league, "no", "Edinburgh");
+        FootballTeam fithfootballTeam = new FootballTeam("Glasgow City", manager5, league, "no", "Easterhouse Playing Field");
         DBHelper.save(fithfootballTeam);
 
-        FootballTeam sixthfootballTeam = new FootballTeam("Dundee City", manager6, league, "no", "Edinburgh");
+        FootballTeam sixthfootballTeam = new FootballTeam("Dundee City", manager6, league, "no", "Tayside Mews");
         DBHelper.save(sixthfootballTeam);
 
-        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen City", manager7, league, "no", "Edinburgh");
+        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen City", manager7, league, "no", "Granite Paradise");
         DBHelper.save(seventhfootballTeam);
 
-        FootballTeam eighthfootballTeam = new FootballTeam("FortWilliam City", manager8, league, "no", "Edinburgh");
+        FootballTeam eighthfootballTeam = new FootballTeam("FortWilliam City", manager8, league, "no", "Nevis Training Facility");
         DBHelper.save(eighthfootballTeam);
 
-        FootballTeam ninethfootballTeam = new FootballTeam("Inverness City", manager9, league, "no", "Edinburgh");
+        FootballTeam ninethfootballTeam = new FootballTeam("Inverness City", manager9, league, "no", "Ness Walk Stadium");
         DBHelper.save(ninethfootballTeam);
 
-        FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Edinburgh");
+        FootballTeam tenthfootballTeam = new FootballTeam("Random City", manager10, league, "no", "Random Ground");
         DBHelper.save(tenthfootballTeam);
 
         League league2 = new League("Highland Schools Hockey Championship", LeagueType.SCHOOLS, "Highlands and Islands");
@@ -93,7 +93,6 @@ public class Seeds {
         league.addToTeams(seventhfootballTeam);
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
-        league.addToTeams(tenthfootballTeam);
 
 
         league.generateFixtures(true);
@@ -103,25 +102,65 @@ public class Seeds {
             DBHelper.save(fixture);
         }
 
-        Fixture f = new Fixture(4, 2, league);
-        f.addAwayTeamToFixture(awayfootballTeam);
-        f.addHomeTeamToFixture(fourthfootballTeam);
-        DBHelper.save(f);
+//        Fixture f = new Fixture(4, 2, league);
+//        f.addAwayTeamToFixture(awayfootballTeam);
+//        f.addHomeTeamToFixture(fourthfootballTeam);
+//        DBHelper.save(f);
+//
+//        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
+//        DBHelper.save(report1);
+//        f.setMatchReport(report1);
+//        DBHelper.update(f);
 
-        MatchReport report1 = new MatchReport(f, "Dagenham pull off shock victory at Edinburgh", "Against all expectations, Dagenham and Redbridge eked out a battling win away at Edinburgh, their first away points of the season.", "n");
-        DBHelper.save(report1);
-        f.setMatchReport(report1);
-        DBHelper.update(f);
+        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
+        List<Fixture> sortedFix = DBFixture.sortFixturesByWeeks();
+
+
+        Fixture fixtureForFirstReport = sortedFix.get(1);
+        Fixture fixtureForSecondReport = sortedFix.get(2);
+        MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Bolton: Spencer-Clark (1), Lowe (2)", "");
+        MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfight gets into full swing.", "Burton Albion: Davies (red card)", "");
+        DBHelper.save(reportForSite);
+        DBHelper.save(secondReportForSite);
+        fixtureForFirstReport.setMatchReport(reportForSite);
+        fixtureForSecondReport.setMatchReport(secondReportForSite);
+        DBHelper.update(fixtureForFirstReport);
+        DBHelper.update(fixtureForSecondReport);
+        fixtureForFirstReport.setHomeGoals("3");
+        fixtureForFirstReport.setAwayGoals("0");
+        fixtureForSecondReport.setHomeGoals("0");
+        fixtureForSecondReport.setAwayGoals("0");
+        FootballTeam homeTeam = (FootballTeam)fixtureForFirstReport.returnHomeTeam();
+        FootballTeam awayTeam = (FootballTeam)fixtureForFirstReport.returnAwayTeam();
+        FootballTeam homeTeam2 = (FootballTeam)fixtureForSecondReport.returnHomeTeam();
+        FootballTeam awayTeam2 = (FootballTeam)fixtureForSecondReport.returnAwayTeam();
+
+        homeTeam.setGoalsScored(Integer.parseInt(fixtureForFirstReport.getHomeGoals()));
+        homeTeam2.setGoalsScored(Integer.parseInt(fixtureForSecondReport.getHomeGoals()));
+        awayTeam.setGoalsScored(Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        awayTeam2.setGoalsScored(Integer.parseInt(fixtureForSecondReport.getAwayGoals()));
+        homeTeam.setGoalsConceded(Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        homeTeam2.setGoalsConceded(Integer.parseInt(fixtureForSecondReport.getAwayGoals()));
+        awayTeam.setGoalsConceded(Integer.parseInt(fixtureForFirstReport.getHomeGoals()));
+        awayTeam2.setGoalsConceded(Integer.parseInt(fixtureForSecondReport.getHomeGoals()));
+
+        fixtureForFirstReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+        fixtureForSecondReport.inputGoalsToGenerateResult(Integer.parseInt(fixtureForFirstReport.getHomeGoals()), Integer.parseInt(fixtureForFirstReport.getAwayGoals()));
+
+        fixtureForFirstReport.updateGamesPlayed(fixtureForFirstReport.getHomeGoals(), fixtureForFirstReport.getAwayGoals());
+        fixtureForSecondReport.updateGamesPlayed(fixtureForFirstReport.getHomeGoals(), fixtureForFirstReport.getAwayGoals());
+
+        DBHelper.update(fixtureForFirstReport);
+        DBHelper.update(fixtureForSecondReport);
+
 
 
         List<Manager> allManagers = DBHelper.getAll(Manager.class);
         List<MatchReport> allReports = DBHelper.getAll(MatchReport.class);
         List<FootballTeam> allFootballTeams = DBHelper.getAll(FootballTeam.class);
         List<League> allLeagues = DBHelper.getAll(League.class);
-        List<Fixture> allFixtures = DBHelper.getAll(Fixture.class);
 
         Manager foundManager = DBHelper.find(manager.getId(), Manager.class);
-        Fixture Foundfixture = DBHelper.find(f.getId(), Fixture.class);
 
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
 

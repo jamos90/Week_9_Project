@@ -153,7 +153,7 @@ public class League {
             numberofTeams += 1;
             Manager ghostManager = new Manager("Ghost manager", "", "");
             DBHelper.save(ghostManager);
-            Team ghostTeam = new FootballTeam("Ghost team (automatic bye).", ghostManager, this, "", "");
+            Team ghostTeam = new FootballTeam("Ghost", ghostManager, this, "", "Ghost Ground");
             DBHelper.save(ghostTeam);
             teams.add(numberofTeams-1, ghostTeam);
         }
