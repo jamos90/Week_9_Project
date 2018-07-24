@@ -4,15 +4,11 @@
     <title>FixturePal</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-<<<<<<< HEAD
-
-=======
->>>>>>> 7e86b13c2af50d0f323f3906abe619d928db08e8
     <link rel="stylesheet"  type ="text/css" href="/menus.css">
     <link rel="stylesheet"  type ="text/css" href="/style.css">
 </head>
 <body>
-
+<nav>
     <div class ="dropdown">
     <button class="dropbtn">Home
     <i class ="home_button"></i></button>
@@ -21,27 +17,11 @@
     </div>
 </div>
 
-    <div class ="dropdown">
-        <button class ="dropbtn"> Managers</button>
-        <div class ="dropdown-content">
-            <a href="/managers" class="button center">Managers</a>
-            <a href = "/managers/new"> New Manager</a>
-        </div>
-    </div>
 
     <div class = "dropdown">
-        <button class="dropbtn"> Match Reports</button>
-        <div class="dropdown-content">
-            <a href ="/matchreports"> All Match reports</a>
-            <a href ="/matchreports/new">Create a match report</a>
-        </div>
-
-        </div>
-    <div class = "dropdown">
-        <button class="dropbtn">Football Teams</button>
+        <button class="dropbtn">Teams</button>
         <div class ="dropdown-content">
-            <a href="/footballteams"> All Football Teams</a>
-            <a href="/footballteams/new"> Create a new Football Team</a>
+            <a href="/footballteams">Football Teams</a>
         </div>
     </div>
 
@@ -53,12 +33,26 @@
         </div>
     </div>
 
-    <a href="/fixtures" class="button center"> Fixtures</a>
+    <div class = "dropdown">
+        <button class="dropbtn"> Match Reports</button>
+        <div class="dropdown-content">
+            <a href ="/matchreports"> All Match reports</a>
 
+        </div>
+    </div>
+
+    <div class = "dropdown">
+        <button class="dropbtn">Fixtures and Results</button>
+        <div class="dropdown-content">
+    <a href="/fixtures" class="button center"> All Fixtures</a>
+            #foreach ($league in $leagues)
+            <a href="leagues/$league.getId()"> Fixtures and results for $league.getName() </a>
+            #end
+        </div>
+    </div>
 
 </div>
-<title>Sports Tracker</title>
-</head>
+</nav>
 <!-- begin inner template-->
 <div class="container">
     #parse( $template )
