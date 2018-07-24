@@ -224,7 +224,7 @@ public class FootballTeamController {
 
             DBHelper.update(league);
 
-            res.redirect("/footballteams");
+            res.redirect("/leagues");
 
             return null;
         }, new VelocityTemplateEngine());

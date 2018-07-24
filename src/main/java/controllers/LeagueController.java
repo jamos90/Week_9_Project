@@ -66,6 +66,9 @@ public class LeagueController {
                 Map<String, Object> model = new HashMap<>();
                 int leagueId = Integer.parseInt(req.params(":id"));
 
+                List<League> allLeauges = DBHelper.getAll(League.class);
+                model.put("leagues", allLeauges);
+
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
 
@@ -175,11 +178,8 @@ public class LeagueController {
                 model.put("leagues", league);
                 List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
                 model.put("fixtures", leaguesFixtures);
-                res.redirect(":id/fixtures/");
+                res.redirect("/" +leagueId +"/fixtures");
                 return null;
-
-
-
             }, new VelocityTemplateEngine());
 
         }
