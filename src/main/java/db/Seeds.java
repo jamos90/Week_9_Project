@@ -52,10 +52,10 @@ public class Seeds {
         League league = new League("Northern Regional Division", LeagueType.NATIONAL, "United Kingdom");
         DBHelper.save(league);
 
-        FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "nothing", "Selkirkshire Indoor Ground");
+        FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "/images/selkirk.jpeg", "Selkirkshire Indoor Ground");
         DBHelper.save(homefootballTeam);
 
-        FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Supernova", manager2, league, "yes", "Ocean Promenade, Kyle of Lochalsh");
+        FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Colts", manager2, league, "yes", "Ocean Promenade, Kyle of Lochalsh");
         DBHelper.save(awayfootballTeam);
 
         FootballTeam thirdFootballTeam = new FootballTeam("Broxburn Albion", manager3, league, "yes", "Albion Crossway");
@@ -70,13 +70,13 @@ public class Seeds {
         FootballTeam sixthfootballTeam = new FootballTeam("Tayside Blades", manager6, league, "no", "Stadium of Discovery");
         DBHelper.save(sixthfootballTeam);
 
-        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil Workers", manager7, league, "/images/aberdeen.jpg", "Granite Paradise");
+        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil FC", manager7, league, "/images/aberdeen.jpg", "Granite Paradise");
         DBHelper.save(seventhfootballTeam);
 
-        FootballTeam eighthfootballTeam = new FootballTeam("Fort William Blues", manager8, league, "no", "Nevis Training Facility");
+        FootballTeam eighthfootballTeam = new FootballTeam("Fort William Red", manager8, league, "no", "Nevis Training Facility");
         DBHelper.save(eighthfootballTeam);
 
-        FootballTeam ninethfootballTeam = new FootballTeam("Locksmiths of Inverness", manager9, league, "no", "Ness Walk Stadium, Inverness");
+        FootballTeam ninethfootballTeam = new FootballTeam("City of Inverness", manager9, league, "no", "Ness Walk Stadium, Inverness");
         DBHelper.save(ninethfootballTeam);
 
         FootballTeam tenthfootballTeam = new FootballTeam("Grampian Mountains B", manager10, league, "no", "Speyside Fishing Stadium, Aberlour");
