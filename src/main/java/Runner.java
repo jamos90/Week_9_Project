@@ -99,6 +99,7 @@ public class Runner {
         league.addToTeams(seventhfootballTeam);
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
+        league.addToTeams(tenthfootballTeam);
 
 
         league.generateFixtures(true);
@@ -107,6 +108,8 @@ public class Runner {
         for (Fixture fixture : league.getFixtures()) {
             DBHelper.save(fixture);
         }
+
+
 
         Fixture f = new Fixture(4, 2, league);
         f.addAwayTeamToFixture(awayfootballTeam);
@@ -130,6 +133,7 @@ public class Runner {
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
         List<Fixture> sortedFix = DBFixture.sortFixturesByWeeks();
 
+        boolean ghost = sortedFix.get(0).getLeague().ghostInLeague();
 
         Fixture fixtureForFirstReport = sortedFix.get(1);
         Fixture fixtureForSecondReport = sortedFix.get(2);
