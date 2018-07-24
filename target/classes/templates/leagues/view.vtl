@@ -21,15 +21,14 @@
                 <th></th>
                 <th>PTS</th>
             </tr>
-        </table>
-
             #foreach($team in $teams)
             #if ($team.getManager().getName() == "Ghost manager")
-            <td></td>
+            <tr>
+               
+            </tr>
 
 
             #else
-            <table align="center">
             <tr>
                 <td align = "center"><a href="/footballteams/$team.getId()">$team.getName()</a></td>
                 <td></td>
@@ -53,6 +52,8 @@
                 #end
         </table>
     </div>
+
+    <br>
 
 
 #foreach ($fixture in $fixtures)
