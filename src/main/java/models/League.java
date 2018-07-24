@@ -298,6 +298,14 @@ public class League {
             return newFixtures;
         }
     }
+
+    public boolean ghostInLeague(){
+        this.generateFixtures(true);
+        if (this.getTeams().get(this.teamCount() - 1).getManager().getName().equals("Ghost manager")) {
+            return true;
+        }
+        return false;
+    }
 }
 
 

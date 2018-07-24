@@ -32,7 +32,10 @@ public class FixtureController {
             model.put("fixtures", fixtures);
 
             for (Fixture fixture: fixtures){
-                fixture.setMatch(fixture.getMatch() - 1);
+                if (fixture.getLeague().ghostInLeague())
+               {
+                    fixture.setMatch(fixture.getMatch() - 1);
+                }
             }
 
             List<League> leagues = DBHelper.getAll(League.class);
@@ -72,8 +75,6 @@ public class FixtureController {
             fixture.inputGoalsToGenerateResult(Integer.parseInt(homegoals), Integer.parseInt(awaygoals));
 
             fixture.updateGamesPlayed(homegoals,awaygoals);
-
-            fixture.updateGamesPlayed(homegoals, awaygoals);
 
 
             DBHelper.update(homeTeam);

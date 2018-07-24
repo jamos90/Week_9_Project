@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -52,6 +53,25 @@ public class DBFixture {
         }
         return fixture;
     }
+
+    public static List<Fixture> sortLeaguesFixturesByWeeks(League league) {
+
+        List<Fixture> fixture = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            Criteria cr = session.createCriteria(Fixture.class);
+            cr.add(Restrictions.eq("league", league));
+            cr.addOrder(Order.asc("week"));
+            cr.addOrder(Order.asc("match"));
+            fixture =  cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return fixture;
+    }
+
 
 
     public static void saveFixturesForLeague(League league){

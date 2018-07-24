@@ -108,6 +108,8 @@ public class Runner {
             DBHelper.save(fixture);
         }
 
+
+
         Fixture f = new Fixture(4, 2, league);
         f.addAwayTeamToFixture(awayfootballTeam);
         f.addHomeTeamToFixture(fourthfootballTeam);
@@ -130,6 +132,7 @@ public class Runner {
         List<Fixture> FixturesForOurLeague = DBLeague.getFixturesForLeague(league);
         List<Fixture> sortedFix = DBFixture.sortFixturesByWeeks();
 
+        boolean ghost = sortedFix.get(0).getLeague().ghostInLeague();
 
         Fixture fixtureForFirstReport = sortedFix.get(1);
         Fixture fixtureForSecondReport = sortedFix.get(2);
@@ -154,12 +157,12 @@ public class Runner {
 
         List<Manager> managers = DBHelper.getAll(Manager.class);
 
-//        //CHECK SORTED LEAGUE
-//        eighthfootballTeam.setPoints(20);
-//        DBHelper.update(eighthfootballTeam);
-//        fithfootballTeam.setPoints(10);
-//        DBHelper.update(fithfootballTeam);
-//        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
+        //CHECK SORTED LEAGUE
+        eighthfootballTeam.setPoints(20);
+        DBHelper.update(eighthfootballTeam);
+        fithfootballTeam.setPoints(10);
+        DBHelper.update(fithfootballTeam);
+        List<Team> sortedLeague = DBLeague.sortLeagueByPoints(league);
 
 
         List<Fixture> leaguesFixture = DBLeague.getFixturesForLeague(league);

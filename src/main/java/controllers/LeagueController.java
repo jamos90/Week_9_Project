@@ -68,17 +68,21 @@ public class LeagueController {
 
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
+                List <Team> sortedLeague =  DBLeague.sortLeagueByPoints(league);
+                model.put("teams", sortedLeague);
 
-                List<Fixture> fixtures = DBLeague.getFixturesForLeague(league);
+
+                List<Fixture> fixtures = DBFixture.sortLeaguesFixturesByWeeks(league);
                 model.put("fixtures", fixtures);
 
-                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
-                model.put("teams", teams);
+                for (Fixture fixture: fixtures){
+                    if (fixture.getLeague().ghostInLeague())
+                    {
+                        fixture.setMatch(fixture.getMatch() - 1);
+                    }
+                }
 
                 model.put("template", "templates/leagues/view.vtl");
-
-                List <Fixture> generatedFixtures = DBLeague.getFixturesForLeague(league);
-                model.put("generatedFixtures", generatedFixtures);
 
                 DBLeague.sortLeagueByPoints(league);
 
@@ -86,6 +90,7 @@ public class LeagueController {
 
 
             }, new VelocityTemplateEngine());
+
 
 
             get("/leagues/:id/edit", (req, res) -> {
@@ -159,11 +164,15 @@ public class LeagueController {
 
 
             get("/leagues/:id/generate", (req, res) -> {
+                Map<String, Object> model = new HashMap<>();
                 int leagueId = Integer.parseInt(req.params("id"));
                 League league = DBHelper.find(leagueId, League.class);
 
                 league.generateFixtures(true);
                 DBFixture.saveFixturesForLeague(league);
+
+                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+                model.put("teams", teams);
                 res.redirect("/leagues/"+ leagueId);
                 return null;
             }, new VelocityTemplateEngine());
@@ -173,6 +182,9 @@ public class LeagueController {
                 int leagueId = Integer.parseInt(req.params(":id"));
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("leagues", league);
+                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
+                model.put("teams", teams);
+
                 List<Fixture> leaguesFixtures = DBLeague.getFixturesForLeague(league);
                 model.put("fixtures", leaguesFixtures);
                 res.redirect("/fixtures/" + leagueId);

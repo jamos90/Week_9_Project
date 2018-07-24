@@ -58,6 +58,7 @@ public class DBLeague {
                 session = HibernateUtil.getSessionFactory().openSession();
                 try {
                     Criteria cr = session.createCriteria(Team.class);
+                    cr.add(Restrictions.eq("league", league));
                     cr.addOrder(Order.desc("points"));
                     teams = cr.list();
                 } catch (HibernateException e) {
