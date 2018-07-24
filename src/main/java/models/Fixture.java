@@ -193,4 +193,14 @@ public class Fixture {
 
 
     }
+
+    public boolean hasGhost(League league) {
+        int numberOfTeams = league.getTeams().size();
+        Team lastTeam = league.getTeams().get(numberOfTeams - 1);
+        String managerName = lastTeam.getManager().getName();
+        if (managerName.equals("Ghost manager")) {
+        }
+        return true;
+
+    }
 }

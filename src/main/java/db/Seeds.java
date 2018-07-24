@@ -93,7 +93,6 @@ public class Seeds {
         league.addToTeams(seventhfootballTeam);
         league.addToTeams(eighthfootballTeam);
         league.addToTeams(ninethfootballTeam);
-        league.addToTeams(tenthfootballTeam);
 
 
         league.generateFixtures(true);
