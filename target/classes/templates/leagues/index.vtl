@@ -42,7 +42,7 @@
                 </form>
 
 
-                #if ($league.getFixtures() == [])
+                #if ($league.getFixtures() == [] and $league.getTeams() != [])
                 <form action = "/leagues/$league.getId()/generate" method="get">
                     <input type="submit" value="Generate Fixtures">
                 </form>
