@@ -68,17 +68,16 @@ public class LeagueController {
 
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
+                List <Team> sortedLeague =  DBLeague.sortLeagueByPoints(league);
+                model.put("teams", sortedLeague);
 
                 List<Fixture> fixtures = DBFixture.sortFixturesByWeeks();
                 model.put("fixtures", fixtures);
 
-                List<Team> teams = DBLeague.getTeamsForALeaugue(league);
-                model.put("teams", teams);
 
                 model.put("template", "templates/leagues/view.vtl");
 
                 DBLeague.sortLeagueByPoints(league);
-                DBHelper.update(league);
 
                 return new ModelAndView(model, "templates/layout.vtl");
 
