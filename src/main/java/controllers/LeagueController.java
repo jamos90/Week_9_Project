@@ -77,10 +77,8 @@ public class LeagueController {
 
                 model.put("template", "templates/leagues/view.vtl");
 
-                List <Fixture> generatedFixtures = DBLeague.getFixturesForLeague(league);
-                model.put("generatedFixtures", generatedFixtures);
-
                 DBLeague.sortLeagueByPoints(league);
+                DBHelper.update(league);
 
                 return new ModelAndView(model, "templates/layout.vtl");
 
