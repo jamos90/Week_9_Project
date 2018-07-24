@@ -1,31 +1,5 @@
 <p class="pageHeader" align="center">Upcoming fixtures</p>
 
-<div class="dropdown">
-<button class="dropbtn">Dropdown
-    <i class="fa fa-caret-down"></i>
-</button>
-  <div class = "dropdown-content">
-      <a href = "/leagues">Leagues</a>
-      <a href = "/all">Home</a>
-      <a href = "/footballteams">Football Teams</a>
-
-     </div>
-  </div>
-
-
-<form action="/leagues/$league.getId()/fixtures" method="get">
-    <select>
-        <option value = "default"> -select a league- </option>
-        #foreach ($league in $leagues)
-        <option value= "$league.getId()">$league.getName()</option>
-        #end
-    </select>
-    <input type="submit" value="select league">
-</form>
-
-
-
-    </tr>
 
 #foreach($fixture in $fixtures)
 
