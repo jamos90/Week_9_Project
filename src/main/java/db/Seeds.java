@@ -52,7 +52,7 @@ public class Seeds {
         League league = new League("Northern Regional Division", LeagueType.NATIONAL, "United Kingdom");
         DBHelper.save(league);
 
-        FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "/images/selkirk.jpeg", "Selkirkshire Indoor Ground");
+        FootballTeam homefootballTeam = new FootballTeam("Selkirk Wanderers", manager, league, "/images/selkirk.png", "Selkirkshire Indoor Ground");
         DBHelper.save(homefootballTeam);
 
         FootballTeam awayfootballTeam = new FootballTeam("Wester Ross Colts", manager2, league, "/images/westerross.png", "Ocean Promenade, Kyle of Lochalsh");
