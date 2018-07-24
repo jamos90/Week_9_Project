@@ -70,7 +70,7 @@ public class Seeds {
         FootballTeam sixthfootballTeam = new FootballTeam("Tayside Blades", manager6, league, "no", "Stadium of Discovery");
         DBHelper.save(sixthfootballTeam);
 
-        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil Workers", manager7, league, "aberdeen.jpg", "Granite Paradise");
+        FootballTeam seventhfootballTeam = new FootballTeam("Aberdeen Oil Workers", manager7, league, "/images/aberdeen.jpg", "Granite Paradise");
         DBHelper.save(seventhfootballTeam);
 
         FootballTeam eighthfootballTeam = new FootballTeam("Fort William Blues", manager8, league, "no", "Nevis Training Facility");
