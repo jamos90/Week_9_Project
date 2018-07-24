@@ -121,6 +121,8 @@ public class Seeds {
         Fixture fixtureForSecondReport = sortedFix.get(2);
         MatchReport reportForSite = new MatchReport(fixtureForFirstReport, "Experienced Wanderers side make light work of Highland upstarts.", "Bolton: Spencer-Clark (1), Lowe (2)", "");
         MatchReport secondReportForSite = new MatchReport(fixtureForSecondReport, "League minnows play out a drab stalemate as the relegation dogfight gets into full swing.", "Burton Albion: Davies (red card)", "");
+       reportForSite.setFixture(fixtureForFirstReport);
+        secondReportForSite.setFixture(fixtureForSecondReport);
         DBHelper.save(reportForSite);
         DBHelper.save(secondReportForSite);
         fixtureForFirstReport.setMatchReport(reportForSite);

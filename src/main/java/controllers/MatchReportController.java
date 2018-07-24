@@ -40,8 +40,18 @@ public class MatchReportController {
             List<Fixture> fixtures = DBHelper.getAll(Fixture.class);
             model.put("fixtures", fixtures);
 
-            for (Fixture fixture: fixtures){
-                fixture.setMatch(fixture.getMatch() - 1);
+            for (MatchReport report: matchreports){
+                if (report.getFixture().getLeague().ghostInLeague())
+                {
+                    report.getFixture().setMatch(report.getFixture().getMatch() - 1);
+                }
+            }
+
+            for (MatchReport report: matchreports){
+                if (report.getFixture().getLeague().ghostInNewLeague())
+                {
+                    report.getFixture().setMatch(report.getFixture().getMatch() - 1);
+                }
             }
 
             List<FootballTeam> footballTeams = DBHelper.getAll(FootballTeam.class);
@@ -61,7 +71,17 @@ public class MatchReportController {
             model.put("fixtures", fixtures);
 
             for (Fixture fixture: fixtures){
-                fixture.setMatch(fixture.getMatch() - 1);
+                if (fixture.getLeague().ghostInLeague())
+                {
+                    fixture.setMatch(fixture.getMatch() - 1);
+                }
+            }
+
+            for (Fixture fixture: fixtures){
+                if (fixture.getLeague().ghostInNewLeague())
+                {
+                    fixture.setMatch(fixture.getMatch() - 1);
+                }
             }
 
             model.put("matchreport", matchreport);
@@ -106,6 +126,8 @@ public class MatchReportController {
             MatchReport newMatchReport = new MatchReport( fixture, headline, blurb, picture);
             DBHelper.save(newMatchReport);
             fixture.setMatchReport(newMatchReport);
+
+            newMatchReport.setFixture(fixture);
 
             fixture.setMatch(fixture.getMatch()-1);
 
