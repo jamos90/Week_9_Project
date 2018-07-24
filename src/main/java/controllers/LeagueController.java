@@ -69,7 +69,8 @@ public class LeagueController {
                 League league = DBHelper.find(leagueId, League.class);
                 model.put("league", league);
 
-                List<Fixture> fixtures = DBFixture.sortFixturesByWeeks();
+
+                List<Fixture> fixtures = DBFixture.sortLeaguesFixturesByWeeks(league);
                 model.put("fixtures", fixtures);
 
                 List<Team> teams = DBLeague.getTeamsForALeaugue(league);
